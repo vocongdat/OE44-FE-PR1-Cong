@@ -1,0 +1,74 @@
+- const infoCustomer = ['Tài khoản của tôi', 'Sản phẩm yêu thích', 'Lịch sử mua hàng', 'Chính sách dổi trả', 'Góp ý, khiếu nại']
+- const service = ['Hệ thống cửa hàng', 'Hướng dẫn mua hàng', 'Hướng dẫn thanh toán', 'Tích điểm đổi quà', 'Câu hỏi thường gắp']
+- const benefits = ['Chính sách giao hàng', 'Chính sách đổi trả sản phẩm', 'Chính sách bảo hành', 'Giới thiệu sản phẩm mới', 'Chính sách trả góp']
+- const news = ['Tin tức', 'Khuyễn mãi', 'Tuyển dụng', 'Download', 'Tags']
+- const other = ['Sitemap', 'Danh mục sản phẩm', 'Hợp tác','Thông tin liên hệ','Câu hỏi thường gặp']
+- const pay = ['fab fa-cc-visa','fab fa-cc-mastercard','fab fa-cc-paypal','fab fa-cc-discover' ]
+
+
+mixin footerList(title, list)
+    h3.footer__body-title= title
+    ul.footer__list
+        each item in list
+            li.footer__item
+                a.footer__item-link(href="#", target="_blank")= item
+
+.footer__header 
+    .grid.wide 
+        .row
+            .col.l-4.m-12.c-12
+                h3.footer__title KÊNH THÔNG TIN TỪ CHÚNG TÔI :
+                +iconSocial
+            .col.l-2.m-4.c-12
+                h3.footer__title 
+                    | ĐĂNG KÍ NHẬN EMAIL TỪ CHÚNG TÔI
+            .col.l-5.l-o-1.m-8.c-12
+                form(action="/", method="post").form__register
+                    input(type="email", name="Email").form-control
+                    button(type="submit").register__btn
+                        i.fas.fa-paper-plane
+.footer__body 
+    .grid.wide
+        .row
+            .col.l-4.m-6.c-12
+                .footer__logo-wrap
+                    +logoPage
+                .footer__logo-body 
+                    p.footer__description
+                        | Green shop được thành lập từ 8/2010 được sự tin tưởng của 
+                        | khách hàng trong suốt thời gian hoạt động đên nay cửa hàng 
+                        | ngày một phát triển
+                    ul.footer__contact-list
+                        li.footer__contact-item 
+                            i.fas.fa-mobile-alt 
+                            span Điện thoại :
+                            a(href="tel:+8466558868").contact__link (84-4) 66.558.868
+                        li.footer__contact-item 
+                            i.far.fa-envelope
+                            span Email :
+                            a(href="mailto:info@dkt.com.vn").contact__link info@dkt.com.vn
+                    
+            .col.l-2.m-6.c-12
+                +footerList('THÔNG TIN KHÁCH HÀNG',infoCustomer)
+            .col.l-2.m-6.c-12
+                +footerList('HỖ TRỢ DỊCH VỤ',service)
+
+            .col.l-2.m-6.c-12
+                +footerList('CHÍNH SÁCH ƯU ĐÃI',benefits)
+
+            .col.l-2.m-6.c-12
+                +footerList('TIN TỨC',news)
+.footer__other 
+    .grid.wide
+        .row
+            .col.l-12.m-12.c-0
+                .other__wrap
+                    ul.other__list 
+                        each item in other
+                            li.other__item 
+                                a.other__item-link(href="#")= item
+                    ul.other__list 
+                        each item in pay
+                            li.other__item 
+                                a.other__item-link(href="#")
+                                    i(class= item)
