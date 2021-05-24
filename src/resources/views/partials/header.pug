@@ -1,0 +1,69 @@
+- const navbarList = ['Trang chủ', 'Giới thiệu', 'Sản phẩm', 'Sản phẩm mới', 'Tin tức', 'Liên hệ']
+- const iconSocial = ['fab fa-facebook-f','fab fa-twitter','fab fa-youtube','fab fa-vimeo-v' ]
+
+mixin logoPage 
+    .logo__name
+        img.img__green-shop(src="./assets/img/logo.png", alt="Green Shop")
+    p.logo__slogan Món quà từ thiên nhiên
+
+mixin iconSocial 
+    ul.social__icon-list
+        each icon in iconSocial
+            li.social__icon-item
+                a.social__icon-link(class= icon, href="#")
+.navbar__sub
+    .grid.wide
+        .row
+            .col.l-6.m-0.c-0
+                .subnav__left 
+                    i.far.fa-clock
+                    span.time__open Open time: 8:00 - 18:00  Monday - Sunday
+                    +iconSocial
+            .col.l-3.l-o-3.m-0.c-0
+                ul.subnav__right-list
+                    li.subnav__right-item
+                        a(href="#")
+                            i.fas.fa-user
+                            span Đăng nhập
+                    li.subnav__right-item
+                        a(href="#")
+                            i.fas.fa-user-plus
+                            span Đăng kí
+section.header
+    .grid.wide
+        .row 
+            .col.l-6.m-10.c-12
+                .header__logo
+                    .row 
+                        .col.l-6.m-6.c-12
+                            +logoPage
+                        .col.l-6.m-0.c-0
+                            .logo__img
+                                img(src="./assets/img/logo-2.png", alt="Logo Green Shop 2").logo__img-first
+                                img(src="./assets/img/logo-1.png", alt="Logo Green Shop 1").logo__img-second
+            .col.l-6.m-0.c-0
+                .header__contact
+                    i.fas.fa-phone-alt.header__icon-phone
+                    span.contact__title HỖ TRỢ :
+                    a(href="tel:+0466742332").contact__link--tel (04) 6674 2334 - 
+                    a(href="tel:+0437868904").contact__link--tel (04) 3786 8904
+                form(action="", method="get").form-search
+                    input(type="text", placeholder="Tìm kiếm..." name="Search").form-control
+                    p.contact__separate
+                    i.fas.fa-search.icon__search
+                    span.qnt 0
+                    span Sản phẩm
+nav.navbar
+    .grid.wide
+        .row
+            .col-l-2
+                i.fas.fa-bars.navbar__icon         
+            .col.l-10.m-0.c-0    
+                ul.navbar__list 
+                    each item in navbarList
+                        li.navbar__item 
+                            a(href="#").navbar__link= item
+            .col.l-0.m-4.m-o-7.c-4.c-o-7
+                .navbar__icon--mobile
+                    i.fas.fa-search
+                    i.fas.fa-shopping-basket

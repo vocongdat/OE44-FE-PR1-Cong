@@ -1,0 +1,60 @@
+@mixin logoPage($top) {
+  .logo__name {
+    display: flex;
+    align-items: center;
+    height: $height-header;
+    .img__green-shop {
+      width: 120%;
+    }
+  }
+
+  .logo__slogan {
+    position: absolute;
+    top: $top;
+
+    margin-left: 8px;
+
+    color: $text-light;
+
+    font-size: 2rem;
+    font-weight: 200;
+    letter-spacing: 1.2px;
+  }
+}
+
+@mixin iconSocial($font-size, $border: false) {
+  .social__icon-list {
+    @media (max-width: 1023px) {
+      margin-top: 18px;
+      margin-bottom: 18px;
+    }
+    display: inline-flex;
+
+    .social__icon-item {
+      list-style: none;
+      padding: 0 8px;
+      @if $border {
+        border-right: 1px solid $border-color;
+        &:first-child {
+          border-left: 1px solid $border-color;
+        }
+      }
+
+      .social__icon-link {
+        font-size: $font-size;
+        color: $text-light;
+        text-decoration: none;
+        width: 14px;
+        height: 14px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@mixin logoImg($top, $left, $z-index) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  z-index: $z-index;
+}
