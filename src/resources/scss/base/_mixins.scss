@@ -58,3 +58,8 @@
   left: $left;
   z-index: $z-index;
 }
+
+@mixin textStyle($font-size, $line-height) {
+  font-size: $font-size;
+  line-height: $line-height;
+}
