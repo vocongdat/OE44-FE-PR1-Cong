@@ -1,17 +1,11 @@
+include ../base/mixin.pug
+
 - const infoCustomer = ['Tài khoản của tôi', 'Sản phẩm yêu thích', 'Lịch sử mua hàng', 'Chính sách dổi trả', 'Góp ý, khiếu nại']
 - const service = ['Hệ thống cửa hàng', 'Hướng dẫn mua hàng', 'Hướng dẫn thanh toán', 'Tích điểm đổi quà', 'Câu hỏi thường gắp']
 - const benefits = ['Chính sách giao hàng', 'Chính sách đổi trả sản phẩm', 'Chính sách bảo hành', 'Giới thiệu sản phẩm mới', 'Chính sách trả góp']
 - const news = ['Tin tức', 'Khuyễn mãi', 'Tuyển dụng', 'Download', 'Tags']
 - const other = ['Sitemap', 'Danh mục sản phẩm', 'Hợp tác','Thông tin liên hệ','Câu hỏi thường gặp']
 - const pay = ['fab fa-cc-visa','fab fa-cc-mastercard','fab fa-cc-paypal','fab fa-cc-discover' ]
-
-
-mixin footerList(title, list)
-    h3.footer__body-title= title
-    ul.footer__list
-        each item in list
-            li.footer__item
-                a.footer__item-link(href="#", target="_blank")= item
 
 .footer__header 
     .grid.wide 

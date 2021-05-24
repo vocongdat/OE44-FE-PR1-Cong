@@ -1,16 +1,8 @@
+include ../base/mixin.pug
+
 - const navbarList = ['Trang chủ', 'Giới thiệu', 'Sản phẩm', 'Sản phẩm mới', 'Tin tức', 'Liên hệ']
 - const iconSocial = ['fab fa-facebook-f','fab fa-twitter','fab fa-youtube','fab fa-vimeo-v' ]
 
-mixin logoPage 
-    .logo__name
-        img.img__green-shop(src="./assets/img/logo.png", alt="Green Shop")
-    p.logo__slogan Món quà từ thiên nhiên
-
-mixin iconSocial 
-    ul.social__icon-list
-        each icon in iconSocial
-            li.social__icon-item
-                a.social__icon-link(class= icon, href="#")
 .navbar__sub
     .grid.wide
         .row

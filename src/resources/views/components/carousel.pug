@@ -1,0 +1,31 @@
+-
+    const slides = [
+        {
+            headerSub: 'Green Shop 1',
+            header: 'Cho thuê cây cảnh tết 2021',
+            description: '( Miễn phí vận chuyển với những đơn hàng có giá trị trên 5,000,000đ )'
+        },
+        {
+            headerSub: 'Green Shop 2',
+            header: 'Cho thuê cây cảnh tết 2021',
+            description: '( Miễn phí vận chuyển với những đơn hàng có giá trị trên 5,000,000đ )'
+        },
+        {
+            headerSub: 'Green Shop 3',
+            header: 'Cho thuê cây cảnh tết 2021',
+            description: '( Miễn phí vận chuyển với những đơn hàng có giá trị trên 5,000,000đ )'
+        }
+        
+    ]
+
+.carousel
+    input#left(type='radio' name='carousel' )
+    input#center(type='radio' name='carousel'  checked)
+    input#right(type='radio' name='carousel' )
+    .carousel__control 
+        label(for='left')
+        label(for='center')
+        label(for='right')
+    .slider
+        each slide in slides
+            +sliderItem(slide.headerSub,slide.header,slide.description)

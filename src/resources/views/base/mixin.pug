@@ -1,0 +1,26 @@
+mixin footerList(title, list)
+    h3.footer__body-title= title
+    ul.footer__list
+        each item in list
+            li.footer__item
+                a.footer__item-link(href="#", target="_blank")= item
+
+mixin logoPage 
+    .logo__name
+        img.img__green-shop(src="./assets/img/logo.png", alt="Green Shop")
+    p.logo__slogan Món quà từ thiên nhiên
+
+mixin iconSocial 
+    ul.social__icon-list
+        each icon in iconSocial
+            li.social__icon-item
+                a.social__icon-link(class= icon, href="#")
+
+mixin sliderItem(headerSub,header,des)
+    .slider-item
+        .text-content
+            h2.text-heading_sub= headerSub 
+            h3.text-heading= header
+            p.text-description= des
+            button.btn__detail 
+                a(href="#").btn__detail-link Xem chi tiết 
