@@ -24,3 +24,13 @@ mixin sliderItem(headerSub,header,des)
             p.text-description= des
             button.btn__detail 
                 a(href="#").btn__detail-link Xem chi tiết 
+
+mixin breadcrumbs(navigation,link)
+    .grid.wide 
+        .row 
+            .col.l-12.m-12.c-12
+                .breadcrumbs
+                    a(href="#").breadcrumbs__link
+                        .span.breadcrumbs__home Home /
+                    a(href= link).breadcrumbs__link
+                        .span.breadcrumbs__navigation= navigation
