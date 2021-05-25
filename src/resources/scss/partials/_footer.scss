@@ -18,50 +18,7 @@ footer {
     line-height: 1.6;
   }
 
-  .form__register {
-    display: flex;
-    flex-direction: row;
-
-    @media (max-width: 1023px) {
-      margin-top: 18px;
-    }
-
-    .form-control {
-      padding: 12px;
-      width: 100%;
-      height: 46px;
-
-      border: none;
-      font-size: 1.8rem;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .register__btn {
-      border: none;
-      cursor: pointer;
-
-      i {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        width: 46px;
-        height: 46px;
-
-        font-size: 1.4rem;
-
-        color: $white-color;
-        background-color: $primary-color;
-      }
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-  }
+  @extend %form-register-style;
 }
 
 .footer__logo-wrap {
