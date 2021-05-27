@@ -50,3 +50,16 @@
     }
   }
 }
+
+%animation-zoom {
+  &:hover img {
+    transform: scale(1.1);
+    transition: all ease-out 0.3s;
+  }
+}
+
+%display-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

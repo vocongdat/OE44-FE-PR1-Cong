@@ -1,0 +1,48 @@
+.news_wrap {
+  margin-top: 38px;
+  margin-bottom: 76px;
+
+  @extend %animation-zoom;
+
+  .news__img {
+    display: block;
+    height: 200px;
+
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      transition: all ease-out 0.3s;
+    }
+  }
+
+  .news__body {
+    font-size: 1.2rem;
+    line-height: 1.4;
+
+    time {
+      display: inline-block;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    .news__body--header {
+      margin: 12px 0;
+      font-size: 1.4rem;
+      color: $primary-color;
+    }
+
+    .news__body--dsc {
+      margin-bottom: 10px;
+    }
+
+    .read__more {
+      padding: 12px 0;
+      color: $primary-color;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

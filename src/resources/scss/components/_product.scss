@@ -1,0 +1,15 @@
+.products__featured {
+  @include product($horizontal: false);
+}
+
+.products__buy-a-lot {
+  @include product($horizontal: true);
+}
+
+.products__sale {
+  @include product($horizontal: false);
+}
+
+.products__new {
+  @include product($horizontal: false);
+}
