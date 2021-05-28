@@ -10,6 +10,7 @@ const FilesPath = {
   pug: {
     src: './src/resources/views/layouts/*.pug',
     dest: './public',
+    watch: './src/resources/views/**/*.pug',
   },
   scripts: {
     src: './src/resources/js/*.js',
@@ -67,7 +68,7 @@ function assets() {
 
 function watchFiles() {
   browserSync.init({ server: { baseDir: FilesPath.browserSync.baseDir } });
-  watch(FilesPath.pug.src, views);
+  watch(FilesPath.pug.watch, views);
   watch(FilesPath.scripts.src, scripts);
   watch(FilesPath.styles.src, styles);
 }

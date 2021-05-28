@@ -1,87 +1,5 @@
-- 
-    const productList = [
-        {
-            name: 'Cây chậu treo',
-            qnt: 10
-        },
-        {
-            name: 'Cây có hoa',
-            qnt: 5
-        },
-        {
-            name: 'Cây dây leo',
-            qnt: 15
-        },
-        {
-            name: 'Cây để bàn',
-            qnt: 10
-        },
-        {
-            name: 'Cây may mắn',
-            qnt: 7
-        },
-        {
-            name: 'Cây trang trí',
-            qnt: 8
-        },
-        {
-            name: 'Cây nội thất',
-            qnt: 9
-        }
-    ]
-
-- 
-    const priceList = [
-        {
-            priceRange: '200.000 - 400.000 Đ'
-        },
-        {
-            priceRange: '400.000 - 600.000 Đ'
-           
-        },
-        {
-            priceRange: '600.000 - 800.000 Đ'
-        },
-        {
-            priceRange: '800.000 - 1.000.000 Đ'
-        },
-        
-        {
-            priceRange: '1.000.000 - 2.000.000 Đ'
-        }
-    ]
-
--
-    const colorList = [
-        {
-            nameColor: 'Xanh cây',
-            color: '#98cb4a'
-        },
-        {
-            nameColor: 'Đỏ cam',
-            color: '#f76d3c'
-        },
-        {
-            nameColor: 'Tím',
-            color: '#913ccd'
-        },
-        {
-            nameColor: 'Xanh trời',
-            color: '#5481e6'
-        },
-        {
-            nameColor: 'Vàng',
-            color: '#f7d842'
-        },
-        
-        {
-            nameColor: 'Hồng',
-            color: '#f15f74'
-        }
-    ]
-
 article.product-list
-    +productHeader('Danh mục sản phẩm')
+    +titleHeader('Danh mục sản phẩm')
     ul.category__list 
         each item in productList
             li.category__item
@@ -89,10 +7,10 @@ article.product-list
                 label(for=item.name).category__item-title
                     i.fas.fa-angle-right
                     span.category__item-name= item.name
-                    span.category__item-qnt= '(' + item.qnt + ')'
+                    span.category__item-qnt= `( ${item.qnt} )`
 
 article.price-list
-    +productHeader('Tìm theo giá')
+    +titleHeader('Tìm theo giá')
     ul.category__list 
         each item in priceList
             li.category__item
@@ -100,9 +18,9 @@ article.price-list
                 label(for=item.priceRange).category__item-title
                     i.fas.fa-angle-right
                     span.category__item-name= item.priceRange
-    
+
 article.color-list
-    +productHeader('Tìm theo màu')
+    +titleHeader('Tìm theo màu')
     ul.category__list
         .row
             each item in colorList

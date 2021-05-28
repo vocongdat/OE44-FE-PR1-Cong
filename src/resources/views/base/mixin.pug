@@ -1,3 +1,4 @@
+//- Footer List
 mixin footerList(title, list)
     h3.footer__body-title= title
     ul.footer__list
@@ -6,17 +7,20 @@ mixin footerList(title, list)
                 i.fas.fa-angle-right
                 a.footer__item-link(href="#", target="_blank")= item
 
+//- Logo Page
 mixin logoPage 
     .logo__name
         img.img__green-shop(src="./assets/img/logo.png", alt="Green Shop")
     p.logo__slogan Món quà từ thiên nhiên
 
+//- Icon Social
 mixin iconSocial 
     ul.social__icon-list
         each icon in iconSocial
             li.social__icon-item
                 a.social__icon-link(class= icon, href="#")
 
+//- Carousel
 mixin sliderItem(headerSub, header, des)
     .slider-item
         .text-content
@@ -26,6 +30,7 @@ mixin sliderItem(headerSub, header, des)
             button.btn__detail 
                 a(href="#").btn__detail-link Xem chi tiết 
 
+//- Breadcrumbs
 mixin breadcrumbs(navigation, link)
     .grid.wide 
         .row 
@@ -35,35 +40,24 @@ mixin breadcrumbs(navigation, link)
                         .span.breadcrumbs__home Home /
                     a(href= link).breadcrumbs__link
                         .span.breadcrumbs__navigation= navigation
-
-mixin productHeader(title)
-    h2.products__title= title
-    .separate
-
-mixin controlProduct(controlLeft,controlRight)
-    .control-mobile
-        label(for= controlLeft)
-            i.fas.fa-chevron-left
-        label(for= controlRight)
-            i.fas.fa-chevron-right
-
+//- Show Product
 mixin productDisplay(urlImg, productType, productName, rateStar, priceSale, priceCurrent, productDsc, _id)
     .product
         .product__header
             .product__header-img
-                img(src= "./assets/img/product/" + urlImg, alt= productName)
+                img(src= `./assets/img/product/${urlImg}`, alt= productName)
             if productType != ''
                 if productType == 'new'
                     span= productType
                 else 
-                   span(style='background-color: #d64146;')= '-' + productType + '%'
+                    span(style='background-color: #d64146;')= `- ${productType}%`
             .form__control 
                 a(href="#").btn__buy-now Mua ngay
                 a(href="").icon__link-search
                     i.fas.fa-search.icon__search
         .product__body 
             p.product__name= productName
-            
+
             span.product__star
                 - for (var i = 0; i< rateStar; i++)
                     if rateStar - i < 1
@@ -71,51 +65,77 @@ mixin productDisplay(urlImg, productType, productName, rateStar, priceSale, pric
                     else 
                         i.fas.fa-star
             p.product__dsc= productDsc
-            
+
             .product__price
-                span.product__price-sale= priceSale + '.000 đ'
+                span.product__price-sale=`${priceSale}.000 đ`
                 if priceCurrent
-                    span.product__price-current= priceCurrent + '.000 đ'
-            
+                    span.product__price-current=`${priceCurrent}.000 đ`
+
             .product__control
                 button.btn__buy-now Mua ngay
-                
+
                 a(href="").product__control-link
                     i.fas.fa-search.product__control-icon.icon__search
-                
+
                 input(id= _id, type="checkbox", name= productName)
                 label(for= _id).item__heart-label
                     i.fas.fa-heart.product__control-icon.icon__heart
 
-
+//- News
 mixin news(urlImg, time, header, dsc)
     .news_wrap
         a(href= header).news__img 
-            img(src="./assets/img/news/" + urlImg, alt= header)
+            img(src=`./assets/img/news/${urlImg}`, alt= header)
         .news__body
             time= time
             h6.news__body--header= header
             p.news__body--dsc= dsc
             a(href= header).read__more Đọc tiếp
 
-mixin slideMobile(controlLeft, controlRight, slideName, itemSlide, moreItem)
-    .product__slide-mobile
+mixin titleHeader(title)
+    h2.products__title= title
+    .separate
+
+mixin controlProduct(controlLeft,controlRight)
+    .control-slide
+        label(for= controlLeft)
+            i.fas.fa-chevron-left
+        label(for= controlRight)
+            i.fas.fa-chevron-right
+
+//- Slide Product
+mixin slideProduct(controlLeft, controlRight, slideName, itemSlide, typeDevice)
+    .product__slide-control
         input(id= controlLeft, type='radio', name= slideName checked)
         input(id= controlRight,type='radio', name= slideName)
-        
-        .slider-mobile
+
+        .slider-product
             .overflow
                 .inner__content
-                    if moreItem
-                        - for(var i = 0 ; i < itemSlide.length / 3 ; i++)
-                            .col.l-0.m-0.c-12
-                                +productDisplay(itemSlide[i].urlImg,itemSlide[i].type ,itemSlide[i].name, itemSlide[i].star,itemSlide[i].priceSale)
-                                +productDisplay(itemSlide[i+1].urlImg,itemSlide[i+1].type ,itemSlide[i+1].name, itemSlide[i+1].star,itemSlide[i+1].priceSale,itemSlide[i+1].priceCurrent)
-                                +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
-                    else 
-                        each product in itemSlide
-                            .col.l-0.m-0.c-12
-                                +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent)
+                    case typeDevice
+                        //- Mobile slide more item
+                        when 'mobile-more'
+                            - for(var i = 0 ; i < itemSlide.length / 3 ; i++)
+                                .col.l-0.m-0.c-12
+                                    +productDisplay(itemSlide[i].urlImg,itemSlide[i].type ,itemSlide[i].name, itemSlide[i].star,itemSlide[i].priceSale)
+                                    +productDisplay(itemSlide[i+1].urlImg,itemSlide[i+1].type ,itemSlide[i+1].name, itemSlide[i+1].star,itemSlide[i+1].priceSale,itemSlide[i+1].priceCurrent)
+                                    +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
+                        //- Laptop
+                        when 'laptop'
+                            - for(var i = 0 ; i < itemSlide.length / 4 ; i++)
+                                .col.l-3.m-4.c-6
+                                    +productDisplay(itemSlide[i].urlImg,itemSlide[i].type ,itemSlide[i].name, itemSlide[i].star,itemSlide[i].priceSale)
+                                .col.l-3.m-4.c-6
+                                    +productDisplay(itemSlide[i+1].urlImg,itemSlide[i+1].type ,itemSlide[i+1].name, itemSlide[i+1].star,itemSlide[i+1].priceSale,itemSlide[i+1].priceCurrent)
+                                .col.l-3.m-4.c-6
+                                    +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
+                                .col.l-3.m-4.c-6
+                                    +productDisplay(itemSlide[i+3].urlImg,itemSlide[i+3].type ,itemSlide[i+3].name, itemSlide[i+3].star,itemSlide[i+3].priceSale,itemSlide[i+3].priceCurrent)
+                        //- Mobile
+                        default
+                            each product in itemSlide
+                                .col.l-0.m-0.c-12
+                                    +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent)
 
 mixin banner(urlImg, altImg)
     .banner

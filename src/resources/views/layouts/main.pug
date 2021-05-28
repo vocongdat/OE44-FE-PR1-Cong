@@ -14,12 +14,21 @@ html(lang="en")
         <![endif]-->    
     body
         .app
+            //- Add Data, Variables, Mixin
+            include ../base/mixin
+            include ../base/data
+            include ../base/variables
+            
             header
-                include ../partials/header.pug
+                block header
+                    include ../partials/header
+
             .container
-                include ../pages/products.pug
-                //- include ../home.pug
+                block container
+                    include ../pages/products-detail
+                    //- include ../pages/products
+                    //- include ../home
+
             footer
-                include ../partials/footer.pug  
-            p.copy-right Thiết kế bởi
-                a(href="#") Bizweb ©
+                block footer
+                    include ../partials/footer
