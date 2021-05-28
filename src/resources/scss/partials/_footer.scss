@@ -71,9 +71,15 @@ footer {
   list-style: none;
 
   .footer__item {
-    ::before {
-      content: '>';
-      padding-right: 4px;
+    display: flex;
+
+    i {
+      width: 14px;
+      height: 14px;
+      margin-top: 1px;
+
+      font-size: 1.4rem;
+      color: $text-color-footer;
     }
 
     &:hover {
@@ -124,11 +130,13 @@ footer {
 }
 
 .copy-right {
-  font-size: 1.2rem;
-  color: $white-color;
-  text-align: center;
-  background-color: $dark-light;
   padding: 12px 0;
+
+  font-size: 1.2rem;
+  text-align: center;
+
+  color: $white-color;
+  background-color: $dark-light;
 
   a {
     color: $white-color;

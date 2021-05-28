@@ -1,0 +1,48 @@
+.category__list {
+  list-style: none;
+
+  @include textStyle(1.4rem, 1.6);
+
+  .category__item {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid $color__separate;
+
+    input:checked ~ label {
+      color: $primary-color !important;
+    }
+
+    .category__item-title {
+      display: flex;
+      align-items: center;
+    }
+
+    i {
+      width: 14px;
+      height: 14px;
+
+      font-size: 1.4rem;
+    }
+
+    .category__item-color {
+      width: 28px;
+      height: 28px;
+      margin-right: 8px;
+      border-radius: 50%;
+
+      background-color: var(--tooltip-data);
+    }
+
+    .category__item-name {
+      cursor: pointer;
+    }
+
+    .category__item-qnt {
+      margin-left: 4px;
+    }
+  }
+}
+
+input[type='radio'] {
+  display: none;
+}

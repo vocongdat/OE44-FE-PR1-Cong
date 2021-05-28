@@ -12,9 +12,11 @@
 @import './components/breadcrumbs';
 @import './components/product';
 @import './components/news';
+@import './components/sidebar';
 
 // Page
 @import './pages/home';
+@import './pages/product';
 
 // Partials
 @import './partials/header';

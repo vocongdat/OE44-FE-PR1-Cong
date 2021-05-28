@@ -1,0 +1,131 @@
+.product-grid {
+  @include product($horizontal: false);
+}
+
+.product-list {
+  @include product($horizontal: true, $large: true);
+}
+
+#grid-layout:checked ~ .product-list {
+  display: none;
+}
+
+#grid-layout:checked .product__header-layout label {
+  color: $primary-color;
+}
+
+#list-layout:checked ~ .product-grid {
+  display: none;
+}
+
+.product__header-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 0;
+
+  .product__header-layout {
+    @extend %display-center;
+
+    flex-direction: row;
+
+    .icon__layout {
+      width: 20px;
+      height: 20px;
+      font-size: 1.8rem;
+      margin-right: 12px;
+
+      color: $text-light;
+      cursor: pointer;
+    }
+  }
+
+  .product__header-sort-wrap {
+    display: flex;
+    flex-direction: row;
+
+    @media (max-width: 414px) {
+      margin: 0 12px;
+    }
+
+    .product__header-sort {
+      display: flex;
+      font-size: 1.6rem;
+      align-items: center;
+      justify-content: space-between;
+
+      &:last-child {
+        margin-left: 16px;
+      }
+
+      .title__sort {
+        margin-right: 8px;
+      }
+
+      #sort-category {
+        width: 130px;
+        height: 40px;
+
+        @media (max-width: 768px) {
+          width: 80px;
+          height: 30px;
+        }
+      }
+
+      #show__item {
+        width: 60px;
+        height: 40px;
+
+        @media (max-width: 768px) {
+          height: 30px;
+        }
+      }
+    }
+  }
+}
+
+.page__number {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  width: 100%;
+  margin: 44px 0px 44px 40px;
+
+  @media (max-width: 768px) {
+    margin: 44px 0;
+  }
+
+  input:checked ~ label {
+    color: $white-color !important;
+    background-color: $primary-color !important;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  label {
+    font-size: 1.6rem;
+    padding: 14px 18px;
+    margin-right: 8px;
+    border: 1px solid $color__separate;
+
+    @extend %display-blur;
+
+    @media (max-width: 768px) {
+      padding: 12px;
+      margin-right: 4px;
+    }
+    @media (max-width: 375px) {
+      padding: 8px;
+      margin-right: 2px;
+    }
+    @media (max-width: 320px) {
+      padding: 6px 4px;
+      margin-right: 4px;
+    }
+  }
+}

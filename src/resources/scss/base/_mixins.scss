@@ -65,33 +65,36 @@
 }
 
 //Show Product
-@mixin product($horizontal: false) {
+@mixin product($horizontal: false, $large: false) {
   .product {
     @extend %display-center;
 
     flex-direction: column;
 
-    margin-top: 16px;
-    margin-bottom: 16px;
+    margin: 16px 0;
     border: 1px solid $color__separate;
 
     @if $horizontal {
       flex-direction: row;
       justify-content: flex-start;
 
-      padding: 22px 0 22px 18px;
-      margin-top: 0px;
-      margin-bottom: 0px;
-      max-height: 120px;
+      @if $large == false {
+        padding-left: 14px;
+      }
 
       &:first-child {
         margin-top: 30px;
+      }
+
+      @if $large {
+        @media (max-width: 768px) {
+          flex-direction: column;
+        }
       }
     }
 
     .product__header {
       position: relative;
-      overflow: hidden;
 
       @if $horizontal == false {
         &:hover .form__control {
@@ -101,12 +104,35 @@
         }
       }
 
-      img {
-        @if $horizontal {
-          width: 76px;
-          height: 76px;
-        } @else {
-          width: 100%;
+      .product__header-img {
+        @if $large {
+          height: 252px;
+          margin-right: 16px;
+        }
+
+        img {
+          @if $horizontal {
+            @if $large {
+              height: 100%;
+              width: 240px;
+            } @else {
+              height: 78px;
+              width: 78px;
+            }
+          } @else {
+            width: 100%;
+          }
+        }
+
+        @if $large {
+          @media (max-width: 768px) {
+            height: 100%;
+            margin-right: 0;
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
         }
       }
 
@@ -175,7 +201,7 @@
     }
 
     .product__body {
-      padding: 12px 0 11px 0;
+      padding: 16px 0;
 
       color: $text-color;
 
@@ -188,11 +214,33 @@
         text-align: start;
         margin-left: 16px;
       }
-
       .product__name {
+        @media (max-width: 768px) {
+          text-align: center;
+        }
+      }
+
+      .product__dsc {
+        margin-top: 4px;
+        @media (max-width: 768px) {
+          text-align: justify;
+          margin-right: 14px;
+        }
+      }
+
+      @if ($large == false) {
+        .product__dsc {
+          display: none;
+        }
       }
 
       .product__star {
+        @media (max-width: 768px) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
         i {
           color: yellow;
           &:not(:first-child) {
@@ -202,6 +250,10 @@
       }
 
       .product__price {
+        @if $large {
+          margin-top: 14px;
+          margin-bottom: 14px;
+        }
         .product__price-sale {
           color: $red-color;
           margin-right: 12px;
@@ -212,6 +264,78 @@
           font-size: 1.6rem;
         }
       }
+      .product__control {
+        display: flex;
+        flex-direction: row;
+
+        @media (max-width: 768px) {
+          justify-content: center;
+        }
+        @if $large == false {
+          display: none;
+        }
+
+        .btn__buy-now {
+          @extend %display-center;
+
+          background-color: $primary-color;
+          color: $white-color;
+
+          border: none;
+          width: 120px;
+          height: 40px;
+          border-radius: 40px;
+
+          font-size: 1.4rem;
+          text-transform: uppercase;
+
+          @extend %display-blur;
+        }
+
+        .product__control-link {
+          color: $text-color;
+          text-decoration: none;
+
+          .icon__search {
+            margin: 0 12px;
+
+            @extend %display-blur;
+          }
+        }
+
+        .product__control-icon {
+          @extend %display-center;
+
+          width: 40px;
+          height: 40px;
+          margin-left: 4px;
+          border-radius: 50%;
+          border: 1px solid $color__separate;
+
+          background-color: $white-color;
+        }
+
+        .item__heart-label {
+          cursor: grabbing;
+        }
+
+        input[type='checkbox'] {
+          display: none;
+        }
+
+        input:checked ~ label {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+@mixin banner($width) {
+  .banner {
+    height: 100%;
+    img {
+      width: $width;
     }
   }
 }
