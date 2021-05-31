@@ -1,3 +1,27 @@
+@mixin media-laptop {
+  @media screen and (min-width: 64em) {
+    @content;
+  }
+}
+
+@mixin media-tablet {
+  @media screen and (max-width: 63.9375em) and (min-width: 46.25em) {
+    @content;
+  }
+}
+
+@mixin media-mobile {
+  @media screen and (max-width: 46.1875em) {
+    @content;
+  }
+}
+
+@mixin textStyle($font-size, $line-height) {
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+// Logo Text Page
 @mixin logoPage($top) {
   .logo__name {
     display: flex;
@@ -22,6 +46,15 @@
   }
 }
 
+// Logo Image Page
+@mixin logoImg($top, $left, $z-index) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  z-index: $z-index;
+}
+
+// Social Icon
 @mixin iconSocial($font-size, $border: false) {
   .social__icon-list {
     @media (max-width: 1023px) {
@@ -50,18 +83,6 @@
       }
     }
   }
-}
-
-@mixin logoImg($top, $left, $z-index) {
-  position: absolute;
-  top: $top;
-  left: $left;
-  z-index: $z-index;
-}
-
-@mixin textStyle($font-size, $line-height) {
-  font-size: $font-size;
-  line-height: $line-height;
 }
 
 //Show Product
@@ -222,6 +243,7 @@
 
       .product__dsc {
         margin-top: 4px;
+
         @media (max-width: 768px) {
           text-align: justify;
           margin-right: 14px;
@@ -242,7 +264,7 @@
         }
 
         i {
-          color: yellow;
+          color: $yellow-color;
           &:not(:first-child) {
             margin-left: 2px;
           }
@@ -331,11 +353,44 @@
   }
 }
 
+// Banner
 @mixin banner($width) {
   .banner {
     height: 100%;
     img {
       width: $width;
+    }
+  }
+}
+
+// Control Slide
+@mixin controlCarousel($typeDevice) {
+  .control-slide {
+    position: absolute;
+    right: 0;
+    top: 50%;
+
+    @if $typeDevice == mobile {
+      @media (min-width: 768px) {
+        display: none;
+      }
+    } @else {
+      display: inline-flex;
+    }
+
+    i {
+      @extend %display-center;
+
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid $border-dark;
+
+      font-size: 1.2rem;
+
+      &:first-child {
+        margin-right: 4px;
+      }
     }
   }
 }
