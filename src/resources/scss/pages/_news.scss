@@ -1,0 +1,59 @@
+.news {
+  line-height: 2;
+  article {
+    margin-top: 54px;
+  }
+  .news__title {
+    font-size: 1.6rem;
+
+    .news__title-link {
+      color: $text-color;
+    }
+  }
+
+  .news__daytime {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.4rem;
+
+    list-style: none;
+
+    @include media-mobile {
+      flex-direction: column;
+    }
+
+    li {
+      margin: 0 8px;
+
+      .news__icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        font-size: 1.6rem;
+
+        color: $primary-color;
+      }
+    }
+  }
+
+  .news__img {
+    margin: 20px 0;
+    height: 380px;
+    width: 100%;
+
+    font-size: 1.4rem;
+
+    background-position: center -70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include media-mobile {
+      height: 200px;
+    }
+  }
+
+  .news__content {
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+}

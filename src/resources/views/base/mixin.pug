@@ -140,3 +140,12 @@ mixin slideProduct(controlLeft, controlRight, slideName, itemSlide, typeDevice)
 mixin banner(urlImg, altImg)
     .banner
         img(src= urlImg, alt= altImg)
+
+//- Page
+mixin pageNumber
+    .row
+        ul.page__number
+            each page in pageNumber
+                li
+                    input(id= page._id, type="radio", name="page")
+                    label(for= page._id)= page.name

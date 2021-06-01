@@ -6,7 +6,7 @@
   th,
   td {
     text-align: center;
-    border: 1px solid $color__separate;
+    border: 1px solid $color-separate;
   }
 
   @include tableMobile($primary-color);

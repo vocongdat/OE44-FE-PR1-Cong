@@ -6,7 +6,8 @@
   .category__item {
     display: flex;
     padding: 12px 0;
-    border-bottom: 1px solid $color__separate;
+    border-bottom: 1px solid $color-separate;
+    align-items: center;
 
     input:checked ~ label {
       color: $primary-color !important;
@@ -40,9 +41,61 @@
     .category__item-qnt {
       margin-left: 4px;
     }
+
+    .new__feed-wrap {
+      .new__feed-img {
+        border: 2px solid $color-separate;
+        width: 80px;
+        height: 80px;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        cursor: pointer;
+        transition: all ease-in-out 0.3s;
+      }
+    }
+
+    .new__feed-title {
+      margin-left: 12px;
+      color: $text-color;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    &:hover .new__feed-img {
+      transform: scale(1.1);
+    }
   }
 }
 
 input[type='radio'] {
   display: none;
+}
+
+.blog-tag {
+  .category__list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .category__item {
+      padding: 0;
+      border-bottom: none;
+
+      .category__item-title {
+        margin: 8px;
+        padding: 4px;
+        border: 1px solid $color-border;
+      }
+
+      input:checked ~ label {
+        color: $white-color !important;
+        background-color: $primary-color;
+      }
+    }
+  }
 }
