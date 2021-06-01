@@ -394,3 +394,45 @@
     }
   }
 }
+
+@mixin tableMobile($textColorBefore) {
+  @include media-mobile {
+    td {
+      display: flex;
+      padding: 16px 8px;
+      align-items: center;
+      justify-content: space-between;
+
+      &::before {
+        content: attr(data-label);
+
+        float: left;
+        font-weight: bold;
+        color: $textColorBefore;
+      }
+    }
+
+    tr {
+      display: block;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@mixin btn($width, $height) {
+  width: $width;
+  height: $height;
+  background-color: $white-color;
+  border: 1px solid $color__separate;
+
+  cursor: pointer;
+
+  .icon__qnt {
+    font-size: 1.2rem;
+  }
+
+  &:hover {
+    color: $primary-color;
+    border-color: $primary-color;
+  }
+}

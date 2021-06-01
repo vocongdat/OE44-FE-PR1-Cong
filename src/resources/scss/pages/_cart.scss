@@ -1,0 +1,148 @@
+.cart {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+
+  th,
+  td {
+    text-align: center;
+    border: 1px solid $color__separate;
+  }
+
+  @include tableMobile($primary-color);
+
+  .cart__table {
+    width: 100%;
+
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    .cart__caption {
+      margin-bottom: 30px;
+      padding-top: 4px;
+
+      font-weight: 500;
+      font-size: 1.6rem;
+      text-align: start;
+      color: $primary-color;
+
+      @include media-mobile {
+        text-align: center;
+        font-size: 2rem;
+      }
+    }
+
+    thead {
+      tr {
+        height: 48px;
+        color: $white-color;
+        background-color: $primary-color;
+
+        letter-spacing: 0.5px;
+      }
+
+      @include media-mobile {
+        display: none;
+      }
+    }
+
+    tbody {
+      .cart__body-img {
+        width: 150px;
+        height: 150px;
+
+        @include media-mobile {
+          width: 100%;
+          border-top: 3px solid $border-dark;
+        }
+
+        .cart__img {
+          width: 100%;
+        }
+      }
+
+      .cart__name {
+        color: $primary-color;
+      }
+
+      #input-qnt {
+        text-align: center;
+        padding: 14px 0px;
+        border: none;
+      }
+
+      th {
+        padding: 14px;
+      }
+
+      .cart__icon--trash {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+      }
+      .btn {
+        @include btn(30px, 30px);
+      }
+    }
+  }
+
+  .cart__btn {
+    clear: both;
+
+    margin: 40px 0;
+    text-align: end;
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 24px;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      @extend %display-blur;
+    }
+
+    .btn--cancel {
+      border: 1px solid $primary-color;
+      background-color: $white-color;
+    }
+
+    .btn--continue {
+      border: none;
+      color: $white-color;
+      background-color: $primary-color;
+    }
+  }
+
+  #t02 {
+    float: right;
+
+    width: 50%;
+    margin-bottom: 18px;
+
+    color: $primary-color;
+    border-collapse: collapse;
+
+    @include media-mobile {
+      width: 100%;
+    }
+
+    td {
+      padding: 14px;
+    }
+
+    @include tableMobile($text-color);
+
+    @include media-mobile {
+      th {
+        display: none;
+      }
+    }
+
+    tfoot {
+      tr {
+        background-color: $primary-color;
+        color: $white-color;
+      }
+    }
+  }
+}
