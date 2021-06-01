@@ -93,7 +93,7 @@
     flex-direction: column;
 
     margin: 16px 0;
-    border: 1px solid $color__separate;
+    border: 1px solid $color-separate;
 
     @if $horizontal {
       flex-direction: row;
@@ -332,7 +332,7 @@
           height: 40px;
           margin-left: 4px;
           border-radius: 50%;
-          border: 1px solid $color__separate;
+          border: 1px solid $color-separate;
 
           background-color: $white-color;
         }
@@ -423,7 +423,7 @@
   width: $width;
   height: $height;
   background-color: $white-color;
-  border: 1px solid $color__separate;
+  border: 1px solid $color-separate;
 
   cursor: pointer;
 
