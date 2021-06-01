@@ -1,10 +1,14 @@
+include ../components/sidebar.pug
+
 +breadcrumbs('Danh sách sản phẩm', 'product')
 
 .grid.wide 
     .row
         .col.l-3.m-4.c-0
             section.sidebar
-                include ../components/sidebar.pug
+                +product-list
+                +price-list
+                +color-list
 
         .col.l-9.m-8
             .row
@@ -50,10 +54,4 @@
                     each product in products
                         .col.l-12.m-12.c-12
                             +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent, product.dsc,product._id)
-
-            .row
-                ul.page__number
-                    each page in pageNumber
-                        li
-                            input(id= page._id, type="radio", name="page")
-                            label(for= page._id)= page.name
+            +pageNumber

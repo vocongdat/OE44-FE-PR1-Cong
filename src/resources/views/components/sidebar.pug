@@ -1,33 +1,57 @@
-article.product-list
-    +titleHeader('Danh mục sản phẩm')
-    ul.category__list 
-        each item in productList
-            li.category__item
-                input(id= item.name, type="radio", name="product-category", value= item.name)
-                label(for=item.name).category__item-title
-                    i.fas.fa-angle-right
-                    span.category__item-name= item.name
-                    span.category__item-qnt= `( ${item.qnt} )`
+mixin product-list
+    article.product-list
+        +titleHeader('Danh mục sản phẩm')
+        ul.category__list 
+            each item in productList
+                li.category__item
+                    input(id= item.name, type="radio", name="product-category", value= item.name)
+                    label(for=item.name).category__item-title
+                        i.fas.fa-angle-right
+                        span.category__item-name= item.name
+                        span.category__item-qnt= `( ${item.qnt} )`
 
-article.price-list
-    +titleHeader('Tìm theo giá')
-    ul.category__list 
-        each item in priceList
-            li.category__item
-                input(id= item.priceRange, type="radio", name="price-category", value= item.name)
-                label(for=item.priceRange).category__item-title
-                    i.fas.fa-angle-right
-                    span.category__item-name= item.priceRange
+mixin price-list
+    article.price-list
+        +titleHeader('Tìm theo giá')
+        ul.category__list 
+            each item in priceList
+                li.category__item
+                    input(id= item.priceRange, type="radio", name="price-category", value= item.name)
+                    label(for=item.priceRange).category__item-title
+                        i.fas.fa-angle-right
+                        span.category__item-name= item.priceRange
 
-article.color-list
-    +titleHeader('Tìm theo màu')
-    ul.category__list
-        .row
-            each item in colorList
-                .col.l-6.m-12
-                    li.category__item
-                        input(id= item.nameColor, type="radio", name="color-category", value= item.name)
-                        label(for=item.nameColor).category__item-title
-                            - var color = item.color;
-                            p.category__item-color(style={'--tooltip-data':  color })
-                            span.category__item-name= item.nameColor
+mixin color-list
+    article.color-list
+        +titleHeader('Tìm theo màu')
+        ul.category__list
+            .row
+                each item in colorList
+                    .col.l-6.m-12
+                        li.category__item
+                            input(id= item.nameColor, type="radio", name="color-category", value= item.nameColor)
+                            label(for=item.nameColor).category__item-title
+                                - var color = item.color;
+                                p.category__item-color(style={'--tooltip-data':  color })
+                                span.category__item-name= item.nameColor
+
+mixin new-feed
+    article.new-feed
+        +titleHeader('Tin tức nổi bật')
+        ul.category__list 
+            each item,index in newFeed
+                li.category__item
+                    .new__feed-wrap
+                        .new__feed-img(style=`background-image:url(./assets/img/news/${item.url})`)
+                        //- img(src= `./assets/img/news/${item.url}`, alt= item.url)
+                    a(href="#").new__feed-title= item.title
+
+mixin blog-tag
+    article.blog-tag
+        +titleHeader('Blog tag')
+        ul.category__list
+            each item in newFeed
+                li.category__item
+                    input(id= item.blogTag, type="radio", name="blog-tag", value= item.blogTag)
+                    label(for=item.blogTag).category__item-title
+                        span.blog__tag-item= item.blogTag
