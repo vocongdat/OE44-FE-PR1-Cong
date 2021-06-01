@@ -47,6 +47,10 @@
     background-repeat: no-repeat;
     background-size: cover;
 
+    @include media-tablet {
+      height: 250px;
+    }
+
     @include media-mobile {
       height: 200px;
     }

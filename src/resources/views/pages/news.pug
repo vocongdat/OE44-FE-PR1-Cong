@@ -9,31 +9,31 @@ include ../components/sidebar.pug
                 +product-list
                 +new-feed
                 +blog-tag
-
-        .col.l-9.m-8.c-12
-            .row
-                section.news
-                    .col.l-12.m-12.c-12
-                        each item in newsList 
-                            article
-                                h4.news__title
-                                    a(href="#").news__title-link= item.title 
-                                
-                                ul.news__daytime
-                                    time(datetime=`${item.day}T${item.time}`)
+        block newContent
+            .col.l-9.m-8.c-12
+                .row
+                    section.news
+                        .col.l-12.m-12.c-12
+                            each item in newsList 
+                                article
+                                    h4.news__title
+                                        a(href="#").news__title-link= item.title 
                                     
-                                    li.day
-                                        i.far.fa-calendar-minus.news__icon
-                                        span= item.day
+                                    ul.news__daytime
+                                        time(datetime=`${item.day}T${item.time}`)
+                                        
+                                        li.day
+                                            i.far.fa-calendar-minus.news__icon
+                                            span= item.day
+                                        
+                                        li.time
+                                            i.far.fa-clock.news__icon
+                                            span= item.time
+                                        
+                                        li.day
+                                            i.far.fa-comment-dots.news__icon
+                                            span= `${item.comment} Bình luận`
                                     
-                                    li.time
-                                        i.far.fa-clock.news__icon
-                                        span= item.time
-                                    
-                                    li.day
-                                        i.far.fa-comment-dots.news__icon
-                                        span= `${item.comment} Bình luận`
-                                
-                                .news__img(style=`background-image:url(./assets/img/news/${item.urlImg})`)
-                                .news__content= item.content
-            +pageNumber
+                                    .news__img(style=`background-image:url(./assets/img/news/${item.urlImg})`)
+                                    .news__content= item.content
+                +pageNumber

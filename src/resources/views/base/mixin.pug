@@ -143,9 +143,9 @@ mixin banner(urlImg, altImg)
 
 //- Page
 mixin pageNumber
-        .row
-            ul.page__number
-                each page in pageNumber
-                    li
-                        input(id= page._id, type="radio", name="page")
-                        label(for= page._id)= page.name
+    .row
+        ul.page__number
+            each page in pageNumber
+                li
+                    input(id= page._id, type="radio", name="page")
+                    label(for= page._id)= page.name

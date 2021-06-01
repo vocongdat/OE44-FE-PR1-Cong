@@ -1,0 +1,126 @@
+.news__detail-cmt {
+  padding: 40px 0;
+
+  .news__title {
+    text-transform: uppercase;
+
+    @include textStyle(1.6rem, 1.6);
+  }
+
+  .cmt__wrap {
+    display: flex;
+    flex-direction: row;
+
+    padding: 20px 0;
+    border-bottom: 1px solid $color-separate;
+
+    &[data-answer='true'] {
+      margin-left: 90px;
+      @include media-mobile {
+        margin-left: 18px;
+      }
+    }
+  }
+  .cmt__img-wrap {
+    .cmt__img {
+      width: 80px;
+      height: 80px;
+      border-radius: 9999px;
+
+      background-size: cover;
+      background-position: center left -54px;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .cmt__body {
+    margin-left: 20px;
+
+    line-height: 1.6;
+    font-size: 1.3rem;
+  }
+
+  .cmt__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .cmt__username {
+      font-weight: 400;
+      font-size: 1.6rem;
+    }
+
+    .cmt__replace {
+      position: relative;
+
+      font-style: italic;
+      text-decoration: underline;
+      text-decoration-color: $text-color-footer;
+
+      cursor: pointer;
+      &:hover:after {
+        content: attr(data-username);
+        position: absolute;
+        width: 100%;
+        right: -40px;
+        font-size: 0.8rem;
+        border: 1px solid $primary-color;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .cmt__content {
+    margin: 4px 0;
+    font-weight: 300;
+  }
+
+  .cmt__daytime {
+    font-style: italic;
+    font-weight: 200;
+  }
+}
+.form__cmt-wrap {
+  .news__title {
+    text-transform: uppercase;
+
+    @include textStyle(1.6rem, 1.6);
+  }
+
+  .form__cmt {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .form__cmt-info {
+      display: flex;
+      gap: 30px;
+      @include media-mobile {
+        flex-direction: column;
+      }
+    }
+    .form__control {
+      font-size: 1.4rem;
+      padding: 12px;
+      width: 100%;
+    }
+  }
+  .btn {
+    border: none;
+    padding: 12px 40px;
+    margin: 20px 0 40px 0;
+    border-radius: 9999px;
+    float: right;
+    color: $white-color;
+    background-color: $primary-color;
+
+    cursor: pointer;
+    text-transform: uppercase;
+
+    @extend %display-blur;
+
+    @include media-mobile {
+      width: 100%;
+    }
+  }
+}
