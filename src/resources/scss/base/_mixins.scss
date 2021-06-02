@@ -164,15 +164,13 @@
 
         @extend %display-center;
 
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-
+        border-radius: 9999px;
         background-color: $primary-color;
         color: $white-color;
-
-        text-transform: uppercase;
         font-size: 1.4rem;
+        height: 60px;
+        text-transform: uppercase;
+        width: 60px;
       }
 
       @if $horizontal {
@@ -196,44 +194,39 @@
         .btn__buy-now {
           @extend %display-center;
 
+          border: none;
+          border-radius: 9999px;
           background-color: $primary-color;
           color: $white-color;
-
-          border: none;
-          width: 120px;
-          height: 40px;
-          border-radius: 40px;
-
           font-size: 1.4rem;
+          height: 40px;
           text-transform: uppercase;
+          width: 120px;
         }
 
         .icon__search {
           @extend %display-center;
 
-          width: 40px;
+          border-radius: 9999px;
+          background-color: $white-color;
           height: 40px;
           margin-left: 4px;
-          border-radius: 50%;
-
-          background-color: $white-color;
+          width: 40px;
         }
       }
     }
 
     .product__body {
-      padding: 16px 0;
-
-      color: $text-color;
-
       @include textStyle(1.6rem, 1.6);
 
-      text-align: center;
+      color: $text-color;
       font-weight: 300;
+      padding: 16px 0;
+      text-align: center;
 
       @if $horizontal {
-        text-align: start;
         margin-left: 16px;
+        text-align: start;
       }
       .product__name {
         @media (max-width: 768px) {
@@ -245,8 +238,8 @@
         margin-top: 4px;
 
         @media (max-width: 768px) {
-          text-align: justify;
           margin-right: 14px;
+          text-align: justify;
         }
       }
 
@@ -258,13 +251,14 @@
 
       .product__star {
         @media (max-width: 768px) {
+          align-items: center;
           display: flex;
           justify-content: center;
-          align-items: center;
         }
 
         i {
           color: $yellow-color;
+
           &:not(:first-child) {
             margin-left: 2px;
           }
@@ -282,8 +276,8 @@
         }
 
         .product__price-current {
-          text-decoration: line-through;
           font-size: 1.6rem;
+          text-decoration: line-through;
         }
       }
       .product__control {
@@ -299,19 +293,16 @@
 
         .btn__buy-now {
           @extend %display-center;
-
-          background-color: $primary-color;
-          color: $white-color;
+          @extend %display-blur;
 
           border: none;
-          width: 120px;
-          height: 40px;
-          border-radius: 40px;
-
+          border-radius: 9999px;
+          background-color: $primary-color;
+          color: $white-color;
           font-size: 1.4rem;
+          height: 40px;
           text-transform: uppercase;
-
-          @extend %display-blur;
+          width: 120px;
         }
 
         .product__control-link {
@@ -328,13 +319,12 @@
         .product__control-icon {
           @extend %display-center;
 
-          width: 40px;
+          border-radius: 9999px;
+          border: 1px solid $color-separate;
+          background-color: $white-color;
           height: 40px;
           margin-left: 4px;
-          border-radius: 50%;
-          border: 1px solid $color-separate;
-
-          background-color: $white-color;
+          width: 40px;
         }
 
         .item__heart-label {
@@ -357,6 +347,7 @@
 @mixin banner($width) {
   .banner {
     height: 100%;
+
     img {
       width: $width;
     }
@@ -381,12 +372,11 @@
     i {
       @extend %display-center;
 
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
+      border-radius: 9999px;
       border: 1px solid $border-dark;
-
       font-size: 1.2rem;
+      height: 28px;
+      width: 28px;
 
       &:first-child {
         margin-right: 4px;
@@ -398,17 +388,16 @@
 @mixin tableMobile($textColorBefore) {
   @include media-mobile {
     td {
-      display: flex;
-      padding: 16px 8px;
       align-items: center;
+      display: flex;
       justify-content: space-between;
+      padding: 16px 8px;
 
       &::before {
+        color: $textColorBefore;
         content: attr(data-label);
-
         float: left;
         font-weight: bold;
-        color: $textColorBefore;
       }
     }
 
@@ -420,19 +409,18 @@
 }
 
 @mixin btn($width, $height) {
-  width: $width;
-  height: $height;
   background-color: $white-color;
   border: 1px solid $color-separate;
-
   cursor: pointer;
+  height: $height;
+  width: $width;
 
   .icon__qnt {
     font-size: 1.2rem;
   }
 
   &:hover {
-    color: $primary-color;
     border-color: $primary-color;
+    color: $primary-color;
   }
 }

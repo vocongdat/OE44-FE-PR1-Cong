@@ -56,17 +56,14 @@
 
     .btn__detail {
       border: none;
-      border-radius: 32px;
-
+      border-radius: 9999px;
       background-color: $primary-color;
 
       .btn__detail-link {
-        display: inline-block;
-        padding: 16px 30px;
-
         color: $white-color;
-
+        display: inline-block;
         font-size: 1.6rem;
+        padding: 16px 30px;
         text-transform: uppercase;
       }
 
@@ -77,21 +74,20 @@
   }
 
   .carousel__control {
-    position: absolute;
-    z-index: 1;
-    left: 50%;
     bottom: 32px;
-
+    position: absolute;
+    left: 50%;
     transform: translateX(-50%);
-    label {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      margin: 0 4px;
+    z-index: 1;
 
-      border-radius: 100%;
+    label {
+      border-radius: 9999px;
       background: $white-color;
       cursor: pointer;
+      display: inline-block;
+      height: 16px;
+      margin: 0 4px;
+      width: 16px;
     }
   }
 }

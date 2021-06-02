@@ -48,8 +48,14 @@ nav.navbar
             .col.l-10.m-0.c-0    
                 ul.navbar__list 
                     each item in navbarList
-                        li.navbar__item 
+                        li.navbar__item
                             a(href= item.url).navbar__link= item.name
+                            if item.listMore
+                                i.fas.fa-caret-down.icon__subnav
+                                ul.navbar__product-list
+                                    each i in item.listMore
+                                        li.navbar__product-item= i
+
             .col.l-0.m-4.m-o-7.c-4.c-o-7
                 .navbar__icon--mobile
                     i.fas.fa-search

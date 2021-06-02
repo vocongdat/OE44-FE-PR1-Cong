@@ -4,34 +4,32 @@
   @include textStyle(1.4rem, 1.6);
 
   .category__item {
+    align-items: center;
+    border-bottom: 1px solid $color-separate;
     display: flex;
     padding: 12px 0;
-    border-bottom: 1px solid $color-separate;
-    align-items: center;
 
     input:checked ~ label {
       color: $primary-color !important;
     }
 
     .category__item-title {
-      display: flex;
       align-items: center;
+      display: flex;
     }
 
     i {
-      width: 14px;
-      height: 14px;
-
       font-size: 1.4rem;
+      height: 14px;
+      width: 14px;
     }
 
     .category__item-color {
-      width: 28px;
+      border-radius: 9999px;
+      background-color: var(--tooltip-data);
       height: 28px;
       margin-right: 8px;
-      border-radius: 50%;
-
-      background-color: var(--tooltip-data);
+      width: 28px;
     }
 
     .category__item-name {
@@ -44,22 +42,20 @@
 
     .new__feed-wrap {
       .new__feed-img {
-        border: 2px solid $color-separate;
-        width: 80px;
-        height: 80px;
-
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-
+        border: 2px solid $color-separate;
         cursor: pointer;
+        height: 80px;
         transition: all ease-in-out 0.3s;
+        width: 80px;
       }
     }
 
     .new__feed-title {
-      margin-left: 12px;
       color: $text-color;
+      margin-left: 12px;
 
       &:hover {
         color: $primary-color;
@@ -83,18 +79,18 @@ input[type='radio'] {
     flex-direction: row;
 
     .category__item {
-      padding: 0;
       border-bottom: none;
+      padding: 0;
 
       .category__item-title {
-        margin: 8px;
-        padding: 4px;
         border: 1px solid $color-border;
+        margin: 8px;
+        padding: 8px 12px;
       }
 
       input:checked ~ label {
-        color: $white-color !important;
         background-color: $primary-color;
+        color: $white-color !important;
       }
     }
   }

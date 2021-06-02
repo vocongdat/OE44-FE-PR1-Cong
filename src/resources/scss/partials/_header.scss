@@ -1,11 +1,10 @@
 // Navbar Sub
 .navbar__sub {
-  position: relative;
-  z-index: 1;
-
   background-color: $background-color-dark;
   color: $text-light;
   line-height: 32px;
+  position: relative;
+  z-index: 1;
 
   .subnav__left {
     i {
@@ -21,13 +20,13 @@
 
   .subnav__right-list {
     display: flex;
-    list-style: none;
     justify-content: flex-end;
+    list-style: none;
 
     .subnav__right-item {
-      padding: 0 14px;
       border-right: 1px solid $border-color;
       border-left: 1px solid $border-color;
+      padding: 0 14px;
 
       a {
         color: $text-light;
@@ -46,20 +45,19 @@
 }
 
 .header {
-  position: relative;
-
+  background-color: $white-color;
   display: inline-flex;
   flex-direction: row;
   height: $height-header;
+  position: relative;
   width: 100%;
 
-  background-color: $white-color;
   &__logo {
     @include logoPage(70%);
 
     .logo__img {
-      position: relative;
       height: 100%;
+      position: relative;
 
       &-first {
         @include logoImg(30%, -10px, 1);
@@ -72,9 +70,9 @@
   }
 
   .header__contact {
+    font-size: 1.2rem;
     margin-top: 30px;
     margin-bottom: 20px;
-    font-size: 1.2rem;
 
     .header__icon-phone {
       margin-right: 4px;
@@ -90,14 +88,14 @@
   }
 
   .form-search {
-    margin-bottom: 30px;
-    font-size: 1.4rem;
-    display: flex;
     align-items: center;
+    display: flex;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
 
     .form-control {
-      width: 50%;
       border: none;
+      width: 50%;
 
       &:focus {
         outline: none;
@@ -105,9 +103,9 @@
     }
 
     .contact__separate {
-      width: 1px;
-      height: 32px;
       background-color: $color-separate;
+      height: 32px;
+      width: 1px;
     }
 
     .icon__search {
@@ -122,22 +120,20 @@
 }
 
 .navbar {
+  background-color: $primary-color;
+  color: $white-color;
+  display: flex;
+  text-transform: uppercase;
   position: relative;
   z-index: 1;
 
-  display: flex;
-  background-color: $primary-color;
-  color: $white-color;
-
-  text-transform: uppercase;
-
   .navbar__icon {
+    cursor: pointer;
+    font-size: 1.8rem;
+    height: 100%;
     padding: 16px 12px;
     width: 16px;
-    height: 100%;
-    font-size: 1.8rem;
 
-    cursor: pointer;
     &:hover {
       opacity: 0.8;
     }
@@ -150,31 +146,75 @@
     list-style: none;
 
     .navbar__item {
-      display: flex;
       align-items: center;
+      display: flex;
+      position: relative;
+
+      &:hover .navbar__product-list {
+        display: block;
+      }
     }
 
     .navbar__link {
-      padding: 20px;
       cursor: pointer;
       color: $white-color;
+      padding: 20px;
+
       &:hover {
         background-color: $color-green-dark;
+      }
+    }
+
+    .icon__subnav {
+      margin-left: 8px;
+    }
+
+    .navbar__product-list {
+      background-color: $primary-color;
+      display: none;
+      position: absolute;
+      height: auto;
+      left: 0px;
+      list-style: none;
+      top: 60px;
+      width: 130px;
+
+      .navbar__product-item {
+        cursor: pointer;
+        padding: 12px;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $white-color;
+        }
+
+        &:hover {
+          background-color: #06a749;
+        }
+      }
+
+      &::after {
+        background-color: transparent;
+        content: '';
+        position: absolute;
+        height: 30px;
+        left: 0;
+        top: -28px;
+        width: 100%;
       }
     }
   }
 
   .navbar__icon--mobile {
-    display: flex;
-    justify-content: flex-end;
     align-items: center;
+    display: flex;
     height: 100%;
+    justify-content: flex-end;
 
     i {
       font-size: 1.8rem;
       height: 16px;
-      width: 16px;
       padding: 0 16px;
+      width: 16px;
     }
   }
 }

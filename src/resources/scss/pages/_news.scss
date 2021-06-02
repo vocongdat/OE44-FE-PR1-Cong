@@ -26,26 +26,27 @@
       margin: 0 8px;
 
       .news__icon {
-        width: 16px;
+        color: $primary-color;
+        font-size: 1.6rem;
         height: 16px;
         margin-right: 8px;
-        font-size: 1.6rem;
-
-        color: $primary-color;
+        width: 16px;
       }
     }
   }
 
   .news__img {
-    margin: 20px 0;
-    height: 380px;
-    width: 100%;
-
-    font-size: 1.4rem;
-
     background-position: center -70px;
     background-repeat: no-repeat;
     background-size: cover;
+    font-size: 1.4rem;
+    height: 380px;
+    margin: 20px 0;
+    width: 100%;
+
+    @include media-tablet {
+      height: 250px;
+    }
 
     @include media-mobile {
       height: 200px;
