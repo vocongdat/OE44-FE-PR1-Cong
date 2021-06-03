@@ -1,1 +1,44 @@
 +breadcrumbs('Đăng kí', '/register')
+
+.grid.wide
+    .register
+        .row
+            .col.l-12
+                +formHeader('Thông tin cá nhân')
+        
+        form(action="", method="post").register__form
+            .row
+                .col.l-6.m-6.c-12
+                    +formControl('text', 'Họ và tên', 'form__control', 'register-full-name', 'Full name', 'Nhập họ và tên', true)                
+                
+                .col.l-6.m-6.c-12
+                    +formControl('text', 'Số điện thoạt', 'form__control', 'register-phone-number', 'Phone number', 'Nhập số điện thoại', true)
+                
+                .col.l-6.m-6.c-12
+                    +formControl('email', 'Email của bạn', 'form__control', 'register-email', 'Email', 'Nhập địa chỉ email', true)
+                
+                .col.l-6.m-6.c-12
+                    +formControl('text', 'Website của bạn', 'form__control', 'website-by-me', 'Website', 'Nhập địa chỉ Website của bạn', true)
+                
+                .col.l-6.m-6.c-12
+                    .login__other
+                        label(style='display: flex')
+                            input.input-checkbox(name='register notice to email' value='notice-sent-to-email' type='checkbox')
+                            | Đăng kí nhận thông tin qua email
+            
+            .row
+                .col.l-12
+                    +formHeader('Thông tin tài khoản')
+            
+            .row 
+                .col.l-6.m-6.c-12
+                    +formControl('text', 'Mật khẩu', 'form__control', 'register-password', 'Password', 'Nhập mật khẩu', true)
+            
+                .col.l-6.m-6.c-12
+                    +formControl('text', 'Nhập lại mật khẩu', 'form__control', 'register-password-retype', 'Password Relay', 'Nhập lại mật khẩu', true)
+            
+            .row 
+                .col.l-6.m-6.c-12
+                    button.btn.btn__prev Quay lại
+                    button(type="submit").btn.btn__login Đăng kí
+        

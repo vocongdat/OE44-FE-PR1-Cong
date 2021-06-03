@@ -149,3 +149,12 @@ mixin pageNumber
                 li
                     input(id= page._id, type="radio", name="page")
                     label(for= page._id)= page.name
+
+//- Form Control
+mixin formHeader(title)
+    h2.register__header= title
+
+mixin formControl(type, content, className, id, name, placeholder, require)
+    .form__group
+        label.form__label(for= id, tooltip-required= require)= content
+        input(id= id, class= className, type= type, name= name, placeholder= placeholder required)

@@ -1,0 +1,52 @@
+.register {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.register__header {
+  color: $primary-color;
+  font-size: 2rem;
+  text-transform: uppercase;
+
+  @include media-tablet {
+    margin-top: 16px;
+  }
+
+  @include media-mobile {
+    margin-top: 16px;
+  }
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+
+  label {
+    margin-top: 24px;
+  }
+
+  .form__control {
+    border: 1px solid $color-border;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    padding: 10px;
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+    }
+  }
+
+  .input-checkbox {
+    margin: auto;
+    outline: none;
+  }
+}
+
+.btn__prev {
+  background-color: $white-color;
+  border: 1px solid $primary-color;
+  color: $text-color;
+  margin-right: 16px;
+}

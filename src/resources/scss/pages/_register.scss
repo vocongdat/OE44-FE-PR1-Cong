@@ -1,0 +1,18 @@
+.register__form {
+  margin-top: 12px;
+
+  label {
+    position: relative;
+
+    &::after {
+      content: '*';
+      color: $red-color;
+      font-size: 1.4rem;
+      margin-left: 2px;
+    }
+  }
+}
+
+.input-checkbox {
+  margin-right: 12px;
+}

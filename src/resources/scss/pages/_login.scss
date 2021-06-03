@@ -1,0 +1,25 @@
+.login__other {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 48px;
+
+  .login__forget {
+    color: $text-color;
+    font-style: italic;
+    text-decoration: underline $gray-color solid !important ;
+    margin-left: 32px;
+  }
+}
+
+.login__content {
+  margin-top: 16px;
+  margin-bottom: 24px;
+  text-align: justify;
+
+  @include textStyle(1.4rem, 1.4);
+}
+
+.btn__login {
+  margin-bottom: 24px;
+}

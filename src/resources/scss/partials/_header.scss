@@ -166,7 +166,9 @@
     }
 
     .icon__subnav {
-      margin-left: 8px;
+      position: absolute;
+      right: 8px;
+      top: 20px;
     }
 
     .navbar__product-list {

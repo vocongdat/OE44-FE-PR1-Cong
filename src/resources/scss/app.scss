@@ -14,12 +14,16 @@
 @import 'components/product';
 @import 'components/news';
 @import 'components/sidebar';
+@import 'components/buttom';
+@import 'components/form';
 
 // Page
 @import 'pages/cart';
 @import 'pages/news';
 @import 'pages/home';
+@import 'pages/login';
 @import 'pages/product';
+@import 'pages/register';
 @import 'pages/news-detail';
 @import 'pages/products-detail';
 
