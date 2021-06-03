@@ -1,0 +1,36 @@
+.contact {
+  .register__header {
+    margin-top: 30px;
+  }
+
+  .map__img {
+    background: url('../img/contact.png') no-repeat center/ cover;
+    height: 490px;
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  .input-textarea {
+    font-size: 1.2rem;
+    min-height: 120px;
+    padding: 0.625rem;
+    resize: vertical;
+    width: 100%;
+  }
+
+  .btn__contact {
+    float: right;
+    margin: 24px 0;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+
+  .contact__logo-wrap {
+    position: relative;
+
+    @include logoPage(70%);
+  }
+}

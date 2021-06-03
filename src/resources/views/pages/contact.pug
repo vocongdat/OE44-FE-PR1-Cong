@@ -1,0 +1,56 @@
+extends ../layouts/main
+
+block container
+
+    +breadcrumbs('Liên hệ', '#')
+
+    .contact
+        .map__img
+        .grid.wide
+            .row
+                .col.l-6.m-6.c-12
+                    +formHeader('Thông tin liên hệ')
+            .row
+                .col.l-6.m-6.c-12
+                    form(action="", method="post").contact-form
+                        .row
+                            .col.l-12.m-12.c-12
+                                +formControl('text', 'Họ và tên', 'form__control', 'register-full-name', 'Full name', 'Nhập họ và tên', true)                
+
+                            .col.l-12.m-12.c-12
+                                +formControl('email', 'Email của bạn', 'form__control', 'register-email', 'Email', 'Nhập địa chỉ email', true)
+
+                            .col.l-12.m-12.c-12
+                                +formControl('text', 'Số điện thoạt', 'form__control', 'register-phone-number', 'Phone number', 'Nhập số điện thoại', true)
+
+                            .col.l-12.m-12.c-12
+                                .form-group
+                                    p Bình luận
+                                    textarea#comments.input-textarea(name='comment' placeholder='Nhập bình luận...')
+                            
+                            .col.l-12.m-12.c-12
+                                button(type="submit").btn.btn__contact Gửi
+
+                .col.l-6.m-6.c-12
+                    .row 
+                        .col.l-6.m-12.c-12
+                            .contact__logo-wrap
+                                +logoPage
+                        
+                        .col.l-10.m-12.c-12
+                            .footer__logo-body 
+                                p.footer__description
+                                    | Green shop được thành lập từ 8/2010 được sự tin tưởng của 
+                                    | khách hàng trong suốt thời gian hoạt động đên nay cửa hàng 
+                                    | ngày một phát triển
+                        
+                                ul.footer__contact-list
+                                    li.footer__contact-item 
+                                        i.fas.fa-mobile-alt 
+                                        span Điện thoại :
+                                        a(href="tel:+8466558868").contact__link (84-4) 66.558.868
+                        
+                                    li.footer__contact-item 
+                                        i.far.fa-envelope
+                                        span Email :
+                                        a(href="mailto:info@dkt.com.vn").contact__link info@dkt.com.vn
