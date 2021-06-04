@@ -1,0 +1,92 @@
+.cart-button {
+  border: 0;
+  border-radius: 4px;
+  background-color: $primary-color;
+  cursor: pointer;
+  color: $white-color;
+  height: 38px;
+  margin: 4px 0px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  padding: 10px;
+  user-select: none;
+  width: 60px;
+
+  @include prefix(transition, all 0.3s ease-in-out, moz webkit o);
+
+  @include media-smaller-mobile {
+    margin: 0px 4px;
+  }
+
+  &:active {
+    @include prefix(transform, scale(0.9), ms moz webkit o);
+  }
+
+  .fa-shopping-cart {
+    font-size: 1.6rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+
+    @include prefix(transform, translate(-50%, -50%), ms moz webkit o);
+  }
+
+  span {
+    color: $white-color;
+    font-size: 1.2em;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+
+    @include prefix(transform, translate(-50%, -50%), ms moz webkit o);
+  }
+
+  span.added {
+    opacity: 0;
+  }
+
+  &:hover {
+    background-color: $color-green-dark;
+
+    .fa-shopping-cart {
+      @include prefix(
+        animation,
+        slide-cart 1.5s ease-in-out forwards,
+        moz webkit
+      );
+    }
+
+    span.added {
+      @include prefix(
+        animation,
+        show-txt 1.5s ease-in-out forwards,
+        moz webkit
+      );
+    }
+  }
+}
+
+.pqt-plus,
+.pqt-minus {
+  border-radius: 5px;
+  background: $white-color;
+  display: block;
+  height: 38px;
+  margin: auto;
+  padding: 10px 14px;
+  user-select: none;
+  width: 38px;
+
+  i {
+    font-size: 1.4rem;
+  }
+
+  &:hover {
+    background: $color-green-dark;
+    color: $white-color;
+    cursor: pointer;
+  }
+}

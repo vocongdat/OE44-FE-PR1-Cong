@@ -1,54 +1,56 @@
-each item in listProduct
-    +breadcrumbs('Giỏ hàng', '/cart')
+extends ../layouts/main
 
-.grid.wide
-    .row 
-        .col.l-12
-            section.cart
-                table#t01.cart__table
-                    caption.cart__caption Giỏ hàng
-                    thead
-                        tr
-                            th(scope='col') Hình ảnh
-                            th(scope='col') Tên sản phẩm
-                            th(scope='col') Đơn giá
-                            th(scope='col') Số lượng
-                            th(scope='col') Thành tiền
-                            th(scope='col') Xóa
-                    tbody
-                        each item in cart
+block container
+
+    each item in listProduct
+        +breadcrumbs('Giỏ hàng', '#')
+
+    .grid.wide
+        .row 
+            .col.l-12
+                section.cart
+                    table#t01.cart__table
+                        caption.cart__caption Giỏ hàng
+                        thead
                             tr
-                                th(scope='col', data-label="Hình ảnh").cart__body-img
-                                    img(src=`./assets/img/product/${item.urlImg}`, alt=item.name).cart__img
-                                td(data-label="Tên sản phẩm").cart__name= item.name
-                                td(data-label="Đơn giá")= `${item.price}.000 đ`
-                                td(data-label="Số lượng")
-                                    button.btn.btn__reduction
-                                        i.fas.fa-minus.icon__qnt
-                                    input#input-qnt(type="number", min="0", max=item.qnt , step="1", name="Input qnt" value=1)
-                                    button.btn.btn__increase
-                                        i.fas.fa-plus.icon__qnt
-                                    
-                                td(data-label="Thành tiền")= `${item.price}.000 đ`
-                                td(data-label="Xóa")
-                                    i.fas.fa-trash-alt.cart__icon--trash
+                                th(scope='col') Hình ảnh
+                                th(scope='col') Tên sản phẩm
+                                th(scope='col') Đơn giá
+                                th(scope='col') Số lượng
+                                th(scope='col') Thành tiền
+                                th(scope='col') Xóa
+                        tbody
+                            each item in cart
+                                tr
+                                    th.cart__body-img(scope='col', data-label="Hình ảnh")
+                                        a(href="/products-detail.html") 
+                                            img.cart__img(src=`./assets/img/product/${item.urlImg}`, alt=item.name)
+                                    td.cart__name(data-label="Tên sản phẩm")
+                                        a(href="/products-detail.html")= item.name
+                                    td(data-label="Đơn giá")= `${item.price}.000 đ`
+                                    td.cart__qnt(data-label="Số lượng")
+                                        include ../components/add-to-cart
 
-                .cart__btn 
-                    button(type="submit").btn.btn--cancel Hủy đơn hàng 
-                    button(type="submit").btn.btn--continue Tiếp tục mua
-                
-                table#t02
-                    tbody
-                        tr
-                            th Tổng tiền(Chưa thuế)
-                            td(data-label="Tổng tiền(Chưa thuế)") 270.000 đ
-                        tr
-                            th Thuế (Vat 10%)
-                            td(data-label="Thuế (Vat 10%)") 27.000 đ
-                    tfoot
-                        tr
-                            th Tổng phải thanh toán
-                            td(data-label="Tổng phải thanh toán") 297.000 đ
-                
-                .cart__btn 
-                    button(type="submit").btn.btn--continue Thanh toán
+                                    td(data-label="Thành tiền")= `${item.price}.000 đ`
+                                    td(data-label="Xóa")
+                                        i.fas.fa-trash-alt.cart__icon--trash
+
+                    .cart__btn 
+                        button.btn.btn--cancel(type="submit") Hủy đơn hàng 
+                        button.btn.btn--success(type="submit") Tiếp tục mua
+                    
+                    table#t02
+                        tbody
+                            tr
+                                th Tổng tiền(Chưa thuế)
+                                td(data-label="Tổng tiền(Chưa thuế)") 270.000 đ
+                            tr
+                                th Thuế (Vat 10%)
+                                td(data-label="Thuế (Vat 10%)") 27.000 đ
+                        tfoot
+                            tr
+                                th Tổng phải thanh toán
+                                td(data-label="Tổng phải thanh toán") 297.000 đ
+                    
+                    .cart__btn
+                        button.btn.btn--success(type="submit") Thanh toán

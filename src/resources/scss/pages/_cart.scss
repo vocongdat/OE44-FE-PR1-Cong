@@ -18,8 +18,10 @@
 
     .cart__caption {
       color: $primary-color;
-      font-size: 1.6rem;
-      font-weight: 500;
+      font: {
+        size: 1.6rem;
+        weight: 500;
+      }
       margin-bottom: 30px;
       text-align: start;
       padding-top: 4px;
@@ -32,8 +34,8 @@
 
     thead {
       tr {
-        color: $white-color;
         background-color: $primary-color;
+        color: $white-color;
         height: 48px;
         letter-spacing: 0.5px;
       }
@@ -59,13 +61,30 @@
       }
 
       .cart__name {
-        color: $primary-color;
+        a {
+          color: $primary-color;
+        }
       }
 
       #input-qnt {
         border: none;
-        padding: 14px 0px;
+        padding: 10px 14px;
         text-align: center;
+
+        &:focus {
+          outline-color: $primary-color;
+        }
+
+        @include media-tablet {
+          padding: 10px 0;
+        }
+      }
+
+      .btn__reduction,
+      .btn__increase {
+        border-radius: 0;
+        color: $primary-color;
+        padding: 0;
       }
 
       th {
@@ -77,9 +96,6 @@
         height: 24px;
         width: 24px;
       }
-      .btn {
-        @include btn(30px, 30px);
-      }
     }
   }
 
@@ -87,26 +103,6 @@
     clear: both;
     margin: 40px 0;
     text-align: end;
-
-    .btn {
-      border-radius: 9999px;
-      cursor: pointer;
-      padding: 12px 20px;
-      text-transform: uppercase;
-
-      @extend %display-blur;
-    }
-
-    .btn--cancel {
-      border: 1px solid $primary-color;
-      background-color: $white-color;
-    }
-
-    .btn--continue {
-      border: none;
-      background-color: $primary-color;
-      color: $white-color;
-    }
   }
 
   #t02 {

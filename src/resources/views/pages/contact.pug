@@ -12,7 +12,7 @@ block container
                     +formHeader('Thông tin liên hệ')
             .row
                 .col.l-6.m-6.c-12
-                    form(action="", method="post").contact-form
+                    form.contact-form(action="", method="post")
                         .row
                             .col.l-12.m-12.c-12
                                 +formControl('text', 'Họ và tên', 'form__control', 'register-full-name', 'Full name', 'Nhập họ và tên', true)                
@@ -21,7 +21,7 @@ block container
                                 +formControl('email', 'Email của bạn', 'form__control', 'register-email', 'Email', 'Nhập địa chỉ email', true)
 
                             .col.l-12.m-12.c-12
-                                +formControl('text', 'Số điện thoạt', 'form__control', 'register-phone-number', 'Phone number', 'Nhập số điện thoại', true)
+                                +formControl('text', 'Số điện thoại', 'form__control', 'register-phone-number', 'Phone number', 'Nhập số điện thoại', true)
 
                             .col.l-12.m-12.c-12
                                 .form-group
@@ -29,11 +29,11 @@ block container
                                     textarea#comments.input-textarea(name='comment' placeholder='Nhập bình luận...')
                             
                             .col.l-12.m-12.c-12
-                                button(type="submit").btn.btn__contact Gửi
+                                button.btn.btn--sent(type="submit") Gửi
 
                 .col.l-6.m-6.c-12
                     .row 
-                        .col.l-6.m-12.c-12
+                        .col.l-7.m-12.c-12
                             .contact__logo-wrap
                                 +logoPage
                         
@@ -48,9 +48,9 @@ block container
                                     li.footer__contact-item 
                                         i.fas.fa-mobile-alt 
                                         span Điện thoại :
-                                        a(href="tel:+8466558868").contact__link (84-4) 66.558.868
+                                        a.contact__link(href="tel:+8466558868") (84-4) 66.558.868
                         
                                     li.footer__contact-item 
                                         i.far.fa-envelope
                                         span Email :
-                                        a(href="mailto:info@dkt.com.vn").contact__link info@dkt.com.vn
+                                        a.contact__link(href="mailto:info@dkt.com.vn") info@dkt.com.vn

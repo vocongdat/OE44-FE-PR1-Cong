@@ -1,0 +1,15 @@
+.products__title {
+  border-bottom: 3px solid $primary-color;
+  color: $primary-color;
+  display: inline-block;
+  font-size: 1.8rem;
+  margin-top: 34px;
+  padding-bottom: 12px;
+}
+
+.separate {
+  background-color: $color-separate;
+  height: 1px;
+  margin-bottom: 14px;
+  width: 100%;
+}

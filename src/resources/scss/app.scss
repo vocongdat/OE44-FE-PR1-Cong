@@ -5,6 +5,7 @@
 @import 'base/function';
 @import 'base/variables';
 @import 'base/placeholders';
+@import 'base/animation';
 
 // Components
 @import 'components/carousel';
@@ -14,8 +15,14 @@
 @import 'components/product';
 @import 'components/news';
 @import 'components/sidebar';
-@import 'components/buttom';
+@import 'components/button';
 @import 'components/form';
+@import 'components/icon';
+@import 'components/title';
+@import 'components/scroll-top';
+@import 'components/add-to-cart';
+@import 'components/page-number';
+@import 'components/btn-share';
 
 // Page
 @import 'pages/cart';

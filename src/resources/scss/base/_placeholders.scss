@@ -1,25 +1,17 @@
-%display-none {
-  @media (max-width: 1023px) {
-    display: none;
-  }
-}
-
 %form-register-style {
   .form__register {
-    display: flex;
-    flex-direction: row;
+    @include display-flex(row, '', '');
 
     @media (max-width: 1023px) {
       margin-top: 18px;
     }
 
     .form-control {
-      padding: 12px;
-      width: 100%;
-      height: 46px;
-
       border: none;
       font-size: 1.8rem;
+      height: 46px;
+      padding: 12px;
+      width: 100%;
 
       &:focus {
         outline: none;
@@ -31,17 +23,13 @@
       cursor: pointer;
 
       i {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        width: 46px;
-        height: 46px;
-
-        font-size: 1.4rem;
-
-        color: $white-color;
         background-color: $primary-color;
+        color: $white-color;
+        font-size: 1.4rem;
+        height: 46px;
+        width: 46px;
+
+        @include display-flex('', center, center);
       }
 
       &:hover {
@@ -53,22 +41,34 @@
 
 %animation-zoom {
   &:hover img {
-    transform: scale(1.1);
-    transition: all ease-out 0.3s;
+    @include prefix(transform, scale(1.1), ms moz webkit o);
+    @include prefix(transition, all 0.3s ease-out, moz webkit o);
   }
 }
 
-%display-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-%display-blur {
+%feeling-click {
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 1;
+
+  @include prefix(transition, all 0.3s ease-out, moz webkit o);
 
   &:hover {
-    opacity: 1;
+    opacity: 0.8;
+
+    @include prefix(transform, scale(1.08), ms moz webkit o);
   }
+}
+
+%full-screen-abs {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+%display-inline-flex {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
 }

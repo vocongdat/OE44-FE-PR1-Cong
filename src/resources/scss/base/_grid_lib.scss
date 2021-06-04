@@ -30,7 +30,7 @@
   padding-left: 0;
   padding-right: 0;
 }
-@media (max-width: 768px) {
+@media (max-width: 48em) {
   .row.mx-0 {
     margin-left: 0px;
     margin-right: 0px;
@@ -146,7 +146,7 @@
 }
 
 /* >= Tablet */
-@media (min-width: 740px) {
+@media (min-width: 46.25em) {
   .row {
     margin-left: -8px;
     margin-right: -8px;
@@ -282,7 +282,7 @@
 }
 
 /* PC medium resolution > */
-@media (min-width: 1113px) {
+@media (min-width: 69.5625em) {
   .row {
     margin-left: -12px;
     margin-right: -12px;
@@ -434,14 +434,14 @@
 }
 
 /* Tablet - PC low resolution */
-@media (min-width: 740px) and (max-width: 1023px) {
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
   .wide {
-    width: 644px;
+    width: 680px;
   }
 }
 
 /* > PC low resolution */
-@media (min-width: 1024px) and (max-width: 1239px) {
+@media (min-width: 64em) and (max-width: 77.4375em) {
   .wide {
     width: 984px;
   }

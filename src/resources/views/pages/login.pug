@@ -1,27 +1,31 @@
-+breadcrumbs('Đăng nhập', '/login')
+extends ../layouts/main
 
-.grid.wide
-    .login
-        .row
-            .col.l-6.m-10.c-12
-                +formHeader('Thông tin cá nhân')
-                
-                form(action="", method="post").login__form
-                    +formControl('email', 'Email của bạn', 'form__control', 'email', 'Email', 'Enter your email', false)
-                    +formControl('text', 'Mật khẩu', 'form__control', 'login-password', 'Password', 'Enter your password', false)
+block container
+
+    +breadcrumbs('Đăng nhập', '#')
+
+    .grid.wide
+        .login
+            .row
+                .col.l-6.m-10.c-12
+                    +formHeader('Thông tin cá nhân')
                     
-                    .login__other
-                        label(style='display: flex')
-                            input.input-checkbox(name='emorize' value='memorize' type='checkbox')
-                            | Ghi nhớ tài khoản
-                        a.login__forget(href="#") Bạn quên mật khẩu ?
+                    form.login__form(action="", method="post")
+                        +formControl('email', 'Email của bạn', 'form__control', 'email', 'Email', 'Nhập địa chỉ email...', false)
+                        +formControl('text', 'Mật khẩu', 'form__control', 'login-password', 'Password', 'Nhập mật khẩu', false)
+                        
+                        .login__other
+                            label(style='display: flex')
+                                input.input-checkbox(name='emorize' value='memorize' type='checkbox')
+                                | Ghi nhớ tài khoản
+                            a.login__forget(href="#") Bạn quên mật khẩu ?
+                        
+                        a.btn.btn--success(href="cart.html") Đăng nhập
+                
+                .col.l-6.m-10.c-12
+                    +formHeader('Bạn chưa có tài khoản ?')
                     
-                    button(type="submit").btn.btn__login Đăng nhập
-            
-            .col.l-6.m-10.c-12
-                +formHeader('Bạn chưa có tài khoản ?')
-                
-                p.login__content Đăng kí tài khoản ngay để có thể mua hàng nhanh chóng và dễ dàng hơn!
-                    | Ngoài ra còn có rất nhiều chính sách và ưu đãi cho các thành viên citybike.
-                
-                button.btn.btn__login Đăng kí
+                    p.login__content Đăng kí tài khoản ngay để có thể mua hàng nhanh chóng và dễ dàng hơn! 
+                        | Ngoài ra còn có rất nhiều chính sách và ưu đãi cho các thành viên citybike.
+                    
+                    a.btn.btn--success(href="register.html") Đăng kí

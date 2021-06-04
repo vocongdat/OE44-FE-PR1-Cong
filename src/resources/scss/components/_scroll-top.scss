@@ -1,0 +1,29 @@
+.scroll-top {
+  bottom: 32px;
+  position: fixed;
+  right: 32px;
+  z-index: 1;
+
+  .scroll-top__link {
+    color: $text-color;
+
+    .scroll-top__icon {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  @include media-tablet {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  @include media-small-tablet {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  @include media-mobile {
+    bottom: 4px;
+    right: 4px;
+  }
+}

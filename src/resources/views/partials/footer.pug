@@ -8,9 +8,9 @@
                 h3.footer__title 
                     | ĐĂNG KÍ NHẬN EMAIL TỪ CHÚNG TÔI
             .col.l-5.l-o-1.m-8.c-12
-                form(action="/", method="post").form__register
-                    input(type="email", name="Email").form-control
-                    button(type="submit").register__btn
+                form.form__register(action="/", method="post")
+                    input.form-control(type="email", name="Email")
+                    button.register__btn(type="submit")
                         i.fas.fa-paper-plane
 .footer__body 
     .grid.wide
@@ -27,11 +27,11 @@
                         li.footer__contact-item 
                             i.fas.fa-mobile-alt 
                             span Điện thoại :
-                            a(href="tel:+8466558868").contact__link (84-4) 66.558.868
+                            a.contact__link(href="tel:+8466558868") (84-4) 66.558.868
                         li.footer__contact-item 
                             i.far.fa-envelope
                             span Email :
-                            a(href="mailto:info@dkt.com.vn").contact__link info@dkt.com.vn
+                            a.contact__link(href="mailto:info@dkt.com.vn") info@dkt.com.vn
 
             .col.l-2.m-6.c-12
                 +footerList('THÔNG TIN KHÁCH HÀNG',infoCustomer)

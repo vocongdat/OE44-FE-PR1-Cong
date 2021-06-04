@@ -1,17 +1,28 @@
+.news {
+  .cmt {
+    a {
+      color: $primary-color;
+
+      span {
+        color: $text-color;
+      }
+    }
+  }
+}
+
 .news__detail-cmt {
   padding: 40px 0;
 
   .news__title {
+    font-size: 1.6rem;
     text-transform: uppercase;
-
-    @include textStyle(1.6rem, 1.6);
   }
 
   .cmt__wrap {
-    display: flex;
     border-bottom: 1px solid $color-separate;
-    flex-direction: row;
     padding: 20px 0;
+
+    @include display-flex(row, '', '');
 
     &[data-answer='true'] {
       margin-left: 90px;
@@ -24,9 +35,11 @@
 
   .cmt__img-wrap {
     .cmt__img {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center left -54px;
+      background: {
+        size: cover;
+        repeat: no-repeat;
+        position: center left -54px;
+      }
       border-radius: 9999px;
       height: 80px;
       width: 80px;
@@ -34,15 +47,13 @@
   }
 
   .cmt__body {
-    line-height: 1.6;
-    margin-left: 20px;
     font-size: 1.3rem;
+    margin-left: 20px;
+    line-height: 1.6;
   }
 
   .cmt__header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    @include display-flex(row, space-between, '');
 
     .cmt__username {
       font-weight: 400;
@@ -53,16 +64,18 @@
       cursor: pointer;
       font-style: italic;
       position: relative;
-      text-decoration: underline;
-      text-decoration-color: $text-color-footer;
+      text: {
+        decoration: underline;
+        decoration-color: $text-color-footer;
+      }
 
       &:hover:after {
-        content: attr(data-username);
         border: 1px solid $primary-color;
         border-radius: 4px;
+        content: attr(data-username);
         font-size: 0.8rem;
-        right: -40px;
         position: absolute;
+        right: -40px;
         width: 100%;
       }
     }
@@ -74,54 +87,16 @@
   }
 
   .cmt__daytime {
-    font-style: italic;
-    font-weight: 200;
+    font: {
+      style: italic;
+      weight: 200;
+    }
   }
 }
 
 .form__cmt-wrap {
   .news__title {
+    font-size: 1.4rem;
     text-transform: uppercase;
-
-    @include textStyle(1.6rem, 1.6);
-  }
-
-  .form__cmt {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-    .form__cmt-info {
-      display: flex;
-      gap: 30px;
-
-      @include media-mobile {
-        flex-direction: column;
-      }
-    }
-
-    .form__control {
-      font-size: 1.4rem;
-      padding: 12px;
-      width: 100%;
-    }
-  }
-
-  .btn {
-    border: none;
-    border-radius: 9999px;
-    background-color: $primary-color;
-    cursor: pointer;
-    color: $white-color;
-    float: right;
-    margin: 20px 0 40px 0;
-    padding: 12px 40px;
-    text-transform: uppercase;
-
-    @extend %display-blur;
-
-    @include media-mobile {
-      width: 100%;
-    }
   }
 }

@@ -1,8 +1,8 @@
-section.slide
+article.slide
     include ./components/carousel.pug
 
-section.products
-    article.products__featured
+article.products
+    section.products__featured
         .grid.wide 
             .row
                 .col.l-12.m-12.c-12 
@@ -11,68 +11,62 @@ section.products
                     .col.l-12.m-12.c-12
                         +productDisplay('spx2-4.png', 'new','Cây chân chim', 4.5 ,'250', '260')
                     .col.l-12.m-12.c-12
-                        .row.mx-0
-                            .col.l-6.m-6.c-6
+                        .row.mx-0.products__small-mobile
+                            .col.l-6.m-6.c-12
                                 +productDisplay('spx2-5.png', '','Cây dạ lam', 5 ,'500', '250')
-                            .col.l-6.m-6.c-6
+                            .col.l-6.m-6.c-12
                                 +productDisplay('spx2-15.png', '','Cây danh dự', 5 ,'850', '250')
                 .col.l-6.m-12.c-12
                     .col.l-12.m-12.c-12
-                        .row.mx-0
-                            .col.l-6.m-6.c-6.ps-0
+                        .row.mx-0.products__small-mobile
+                            .col.l-6.m-6.c-12.ps-0
                                 +productDisplay('spx2-11.png', '','Cây cọ ta', 1.5 ,'150', '250')
-                            .col.l-6.m-6.c-6.pe-0
+                            .col.l-6.m-6.c-12.pe-0
                                 +productDisplay('spx2-6.png', '','Cây dứa nhỏ', 5 ,'375', '250')
                     .col.l-12.m-12.c-12.pe-0.ps-0
                         +productDisplay('spx2-3.png', '50','Cây đa búp nhỏ', 5 ,'1.000', '250')
 
-    .grid.wide
-        .row
-            .col.l-3.m-12.c-12
-                .product__header 
-                    +titleHeader('Sản phẩm mua nhiều')
-                    +controlProduct('slide1','slide2')
-                article.products__buy-a-lot
-                    .col.l-12.m-12.c-0.px-0
-                        each product in productBuyALot
-                            +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent)
-                    +slideProduct('slide1', 'slide2', 'slider-mobile-buy-a-lot', productBuyALot, 'mobile-more')
-            .col.l-9.m-12.c-12
-                .product__header
-                    +titleHeader('Sản phẩm khuyến mãi')
-                    +controlProduct('slide3','slide4')
-                article.products__sale
-                    .row.mx-0
-                        each product in productSale
-                            .col.l-4.m-6.c-0
-                                +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent )
-                    +slideProduct('slide3', 'slide4', 'slider-mobile-sale', productSale)
+    section
+        .grid.wide
+            .row
+                .col.l-3.m-12.c-12
+                    .product__header.product__header--hidden
+                        +titleHeader('Sản phẩm mua nhiều')
+                        +controlProduct('slide1','slide2')
+                    section.products__buy-a-lot
+                        .col.l-12.m-12.c-0.px-0
+                            each product in productBuyALot
+                                +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent)
+                        +slideProduct('slide1', 'slide2', 'slider-mobile-buy-a-lot', productBuyALot, 'mobile-more')
+                .col.l-9.m-12.c-12
+                    .product__header
+                        +titleHeader('Sản phẩm khuyến mãi')
+                        +controlProduct('slide3','slide4')
+                    section.products__sale
+                        +slideProduct('slide3', 'slide4', 'slider-mobile-sale', productSale, 'latop-3-2')
+    section
+        .grid.wide 
+            .row
+                .col.l-12.m-12.c-12
+                    .banner__home
+                        +banner('./assets/img/banner.png', 'Banner tree')
 
-    .grid.wide 
-        .row
-            .col.l-12.m-12.c-12
-                .banner__home
-                    +banner('./assets/img/banner.png', 'Banner tree')
-
-    article.products__new
+    section.products__new
         .grid.wide
             .row
                 .col.l-12.m-12.c-12
                     .product__header
                         +titleHeader('Sản phẩm mới')
                         +controlProduct('slide5','slide6')
-                    +slideProduct('slide5', 'slide6', 'slider-mobile-new', productsNew)
-                each product in productsNew
-                    .col.l-3.m-6.c-0
-                        +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent)
+                    +slideProduct('slide5', 'slide6', 'slider-mobile-new', productsNew,'latop-4-2')
 
-section.news
+article.news
     .grid.wide 
         .row 
             .col.l-12.m-12.c-0
                 +titleHeader('Tin tức')
             each Item in blog
-                .col.l-4.m-6.c-0
+                .col.l-4.m-6.c-0.news__wrap
                     +news(Item.urlImg, Item.time, Item.title, Item.dsc)
 
 //- Modal Layout

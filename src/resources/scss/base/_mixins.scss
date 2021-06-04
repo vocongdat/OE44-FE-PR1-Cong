@@ -10,76 +10,105 @@
   }
 }
 
+@mixin media-small-tablet {
+  @media screen and (max-width: 46.25em) and (min-width: 37.5em) {
+    @content;
+  }
+}
+
 @mixin media-mobile {
   @media screen and (max-width: 46.1875em) {
     @content;
   }
 }
 
-@mixin textStyle($font-size, $line-height) {
-  font-size: $font-size;
-  line-height: $line-height;
+@mixin media-small-mobile {
+  @media screen and (max-width: 25.875em) {
+    @content;
+  }
+}
+
+@mixin media-smaller-mobile {
+  @media screen and (max-width: 20em) {
+    @content;
+  }
+}
+
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
 }
 
 // Logo Text Page
 @mixin logoPage($top) {
   .logo__name {
-    display: flex;
-    align-items: center;
     height: $height-header;
+
+    @include display-flex('', '', center);
+
     .img__green-shop {
       width: 120%;
+    }
+
+    @include media-small-tablet {
+      width: 60%;
     }
   }
 
   .logo__slogan {
+    color: $text-light;
+    font: {
+      size: 2rem;
+      weight: 200;
+    }
+    letter-spacing: 1.2px;
+    margin-left: 8px;
     position: absolute;
     top: $top;
-
-    margin-left: 8px;
-
-    color: $text-light;
-
-    font-size: 2rem;
-    font-weight: 200;
-    letter-spacing: 1.2px;
   }
 }
 
 // Logo Image Page
 @mixin logoImg($top, $left, $z-index) {
+  left: $left;
   position: absolute;
   top: $top;
-  left: $left;
   z-index: $z-index;
 }
 
 // Social Icon
 @mixin iconSocial($font-size, $border: false) {
   .social__icon-list {
-    @media (max-width: 1023px) {
-      margin-top: 18px;
-      margin-bottom: 18px;
+    @extend %display-inline-flex;
+
+    @include media-tablet {
+      margin: {
+        bottom: 18px;
+        top: 18px;
+      }
     }
-    display: inline-flex;
 
     .social__icon-item {
       list-style: none;
       padding: 0 8px;
+
       @if $border {
         border-right: 1px solid $border-color;
+
         &:first-child {
           border-left: 1px solid $border-color;
         }
       }
 
       .social__icon-link {
-        font-size: $font-size;
         color: $text-light;
-        text-decoration: none;
-        width: 14px;
+        font-size: $font-size;
         height: 14px;
+        text-decoration: none;
         text-align: center;
+        width: 14px;
       }
     }
   }
@@ -88,16 +117,16 @@
 //Show Product
 @mixin product($horizontal: false, $large: false) {
   .product {
-    @extend %display-center;
-
-    flex-direction: column;
-
-    margin: 16px 0;
     border: 1px solid $color-separate;
+    box-shadow: 0 2.8px 2.4px rgba(0, 0, 0, 0.01),
+      0 4.4px 7.4px rgba(0, 0, 0, 0.021), 0 7px 17.6px rgba(0, 0, 0, 0.044),
+      0 21px 40px rgba(0, 0, 0, 0.14);
+    margin: 16px 0;
+
+    @include display-flex(column, center, center);
 
     @if $horizontal {
-      flex-direction: row;
-      justify-content: flex-start;
+      @include display-flex(row, flex-start, '');
 
       @if $large == false {
         padding-left: 14px;
@@ -119,9 +148,13 @@
 
       @if $horizontal == false {
         &:hover .form__control {
-          visibility: visible;
           opacity: 1;
-          transition: all ease-out 0.3s;
+
+          @include prefix(
+            transition,
+            all cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.45s,
+            moz webkit o
+          );
         }
       }
 
@@ -149,28 +182,28 @@
           @media (max-width: 768px) {
             height: 100%;
             margin-right: 0;
+
             img {
-              width: 100%;
               height: auto;
+              width: 100%;
             }
           }
         }
       }
 
       span {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-
-        @extend %display-center;
-
         border-radius: 9999px;
         background-color: $primary-color;
         color: $white-color;
         font-size: 1.4rem;
         height: 60px;
+        left: 20px;
+        position: absolute;
+        top: 20px;
         text-transform: uppercase;
         width: 60px;
+
+        @include display-flex('', center, center);
       }
 
       @if $horizontal {
@@ -180,46 +213,30 @@
       }
 
       .form__control {
+        left: 50%;
+        opacity: 0;
         position: absolute;
         top: 50%;
-        left: 50%;
 
-        display: flex;
-        flex-direction: row;
+        @include display-flex(row, '', '');
 
-        opacity: 0;
-        visibility: hidden;
-        transform: translate(-50%, -50%);
-
-        .btn__buy-now {
-          @extend %display-center;
-
-          border: none;
-          border-radius: 9999px;
-          background-color: $primary-color;
-          color: $white-color;
-          font-size: 1.4rem;
-          height: 40px;
-          text-transform: uppercase;
-          width: 120px;
+        @include media-mobile {
+          @include display-flex(column, '', center);
         }
 
-        .icon__search {
-          @extend %display-center;
+        @include prefix(transform, translate(-50%, -50%), ms moz webkit o);
 
-          border-radius: 9999px;
-          background-color: $white-color;
-          height: 40px;
-          margin-left: 4px;
-          width: 40px;
-        }
+        @include prefix(
+          transition,
+          all cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.45s,
+          moz webkit o
+        );
       }
     }
 
     .product__body {
-      @include textStyle(1.6rem, 1.6);
-
       color: $text-color;
+      font-size: 1.6rem;
       font-weight: 300;
       padding: 16px 0;
       text-align: center;
@@ -251,9 +268,7 @@
 
       .product__star {
         @media (max-width: 768px) {
-          align-items: center;
-          display: flex;
-          justify-content: center;
+          @include display-flex('', center, center);
         }
 
         i {
@@ -267,8 +282,10 @@
 
       .product__price {
         @if $large {
-          margin-top: 14px;
-          margin-bottom: 14px;
+          margin: {
+            top: 14px;
+            bottom: 14px;
+          }
         }
         .product__price-sale {
           color: $red-color;
@@ -281,8 +298,7 @@
         }
       }
       .product__control {
-        display: flex;
-        flex-direction: row;
+        @include display-flex(row, '', center);
 
         @media (max-width: 768px) {
           justify-content: center;
@@ -291,51 +307,13 @@
           display: none;
         }
 
-        .btn__buy-now {
-          @extend %display-center;
-          @extend %display-blur;
-
-          border: none;
-          border-radius: 9999px;
-          background-color: $primary-color;
-          color: $white-color;
-          font-size: 1.4rem;
-          height: 40px;
-          text-transform: uppercase;
-          width: 120px;
-        }
-
-        .product__control-link {
-          color: $text-color;
-          text-decoration: none;
-
-          .icon__search {
-            margin: 0 12px;
-
-            @extend %display-blur;
-          }
-        }
-
-        .product__control-icon {
-          @extend %display-center;
-
-          border-radius: 9999px;
-          border: 1px solid $color-separate;
-          background-color: $white-color;
-          height: 40px;
-          margin-left: 4px;
-          width: 40px;
-        }
-
         .item__heart-label {
           cursor: grabbing;
         }
 
-        input[type='checkbox'] {
-          display: none;
-        }
+        @include display-none-input(checkbox);
 
-        input:checked ~ label {
+        input[type='checkbox']:checked ~ label {
           color: $primary-color;
         }
       }
@@ -355,26 +333,16 @@
 }
 
 // Control Slide
-@mixin controlCarousel($typeDevice) {
+@mixin controlCarousel {
   .control-slide {
     position: absolute;
     right: 0;
     top: 50%;
 
-    @if $typeDevice == mobile {
-      @media (min-width: 768px) {
-        display: none;
-      }
-    } @else {
-      display: inline-flex;
-    }
+    @extend %display-inline-flex;
 
     i {
-      @extend %display-center;
-
-      border-radius: 9999px;
       border: 1px solid $border-dark;
-      font-size: 1.2rem;
       height: 28px;
       width: 28px;
 
@@ -388,39 +356,53 @@
 @mixin tableMobile($textColorBefore) {
   @include media-mobile {
     td {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      padding: 16px 8px;
+      padding: 16px 14px;
+
+      @include display-flex('', space-between, center);
 
       &::before {
         color: $textColorBefore;
         content: attr(data-label);
         float: left;
         font-weight: bold;
+        text-align: left;
+        width: 50%;
       }
     }
 
     tr {
       display: block;
       margin-bottom: 16px;
+
+      .cart__qnt {
+        max-width: 100%;
+      }
     }
   }
 }
 
-@mixin btn($width, $height) {
-  background-color: $white-color;
-  border: 1px solid $color-separate;
-  cursor: pointer;
-  height: $height;
-  width: $width;
+@mixin display-flex($direction, $horizontal, $vertical) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 
-  .icon__qnt {
-    font-size: 1.2rem;
+  @if $direction != '' {
+    @include prefix(flex-direction, $direction, webkit ms);
   }
 
-  &:hover {
-    border-color: $primary-color;
-    color: $primary-color;
+  @if $horizontal != '' {
+    @include prefix(justify-content, $horizontal, webkit ms);
+  }
+
+  @if $vertical != '' {
+    -webkit-box-align: $vertical;
+    @include prefix(align-items, $vertical, webkit ms);
+  }
+}
+
+@mixin display-none-input($type) {
+  input[type='#{$type}'] {
+    display: none;
   }
 }

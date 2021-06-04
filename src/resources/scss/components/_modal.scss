@@ -2,67 +2,58 @@
   display: none;
 
   &:checked ~ .modal {
-    visibility: hidden;
-    opacity: 0;
+    @include prefix(
+      animation,
+      scale-down-center 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards,
+      moz webkit
+    );
+  }
+
+  &:checked ~ .modal__overlay {
+    display: none;
   }
 }
 
 .modal {
-  position: fixed;
+  will-change: opacity, transform;
   z-index: 2;
 
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  @extend %full-screen-abs;
+  @include display-flex('', '', '');
 
-  display: flex;
+  @include prefix(
+    animation,
+    scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) forwards,
+    moz webkit
+  );
 
-  opacity: 1;
-  transition: all 0.3s ease-in-out;
-
-  @media (max-width: 768px) {
+  @include media-mobile {
     display: none;
+
+    .modal__overlay {
+      display: none;
+    }
   }
 
   .modal__overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     background-color: $background-transparent;
+
+    @extend %full-screen-abs;
   }
 
   .modal__body {
+    background-color: $background-modal;
+    margin: auto;
     position: relative;
     z-index: 1;
 
-    margin: auto;
-
-    background-color: $background-modal;
-
     .modal__inner {
-      display: flex;
-      flex-direction: row;
+      @include display-flex(row, '', '');
+
       padding: 80px 30px 48px 18px;
 
       .modal__inner-img {
         margin-right: 16px;
-      }
-    }
-
-    .modal__btn--close {
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      cursor: pointer;
-
-      .icon-close {
-        width: 20px;
-        height: 20px;
-
-        font-size: 2rem;
-
-        color: $primary-color;
       }
     }
   }
@@ -70,45 +61,52 @@
   .modal__inner-content {
     @extend %form-register-style;
 
-    .modal__content--sub {
-      @include textStyle(2.4rem, 1.4);
-
-      font-weight: 100;
+    .modal__content-sub {
       color: $text-color;
+      font: {
+        size: 2.4rem;
+        weight: 100;
+      }
     }
 
-    .modal__content--header {
-      @include textStyle(2.6rem, 1.4);
-
-      margin-bottom: 18px;
-
+    .modal__content-header {
       color: $primary-color;
+      font-size: 2.6rem;
+      margin-bottom: 18px;
       text-transform: uppercase;
     }
 
-    .modal__content--dsc {
+    .modal__content-dsc {
       font-size: 1.4rem;
-      margin: 16px 0 40px 0;
+      margin: {
+        top: 16px;
+        bottom: 40px;
+      }
     }
 
     .form__submit {
-      display: flex;
+      @include display-flex('', '', '');
 
       .form__control {
         width: 100%;
       }
-
-      .btn-submit {
-      }
     }
-    .notify {
-      display: flex;
-      align-items: center;
 
-      .notify__label {
-        @include textStyle(1.4rem, 1.6);
+    .modal__notify {
+      @include display-flex(row, '', center);
 
-        margin-left: 4px;
+      input[type='checkbox'] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+      }
+
+      .modal__notify-label {
+        cursor: pointer;
+        margin-left: 6px;
+
+        @extend %display-inline-flex;
+        @include prefix(user-select, none, ms webkit moz);
       }
     }
   }

@@ -1,57 +1,87 @@
-include ../components/sidebar.pug
+extends ../layouts/main
 
-+breadcrumbs('Danh sách sản phẩm', 'product')
+block container
 
-.grid.wide 
-    .row
-        .col.l-3.m-4.c-0
-            section.sidebar
-                +product-list
-                +price-list
-                +color-list
+    include ../components/sidebar.pug
 
-        .col.l-9.m-8
-            .row
-                .col.l-12.m-12.c-12
-                    .product__banner
-                        +banner('./assets/img/banner-2.png', 'Banner Book')
+    +breadcrumbs('Danh sách sản phẩm', '/product.html')
 
-            .product__header-wrap
-                .product__header-layout
-                    label(for='grid-layout')
-                        i.fas.fa-th.icon__layout
-                    label(for='list-layout')
-                        i.fas.fa-th-list.icon__layout
+    .grid.wide 
+        .row.product
+            .col.l-3.m-4.c-0
+                section.sidebar
+                    +product-list
+                    +price-list
+                    +color-list
 
-                .product__header-sort-wrap
-                    .product__header-sort
-                        p.title__sort Sắp xếp theo 
-                        select#sort-category(name='Sort Category')
-                            option(disabled selected value) Tên sản phẩm
-                            option(value='tree') Cây
-                            option(value='flower') Hoa
-                            option(value='fruit') Quả
-
-                    .product__header-sort
-                        p.title__sort Hiển thị
-                        select#show__item(name='Show Items')
-                            option(value='all',selected) All
-                            option(value='5') 5
-                            option(value='10') 10
-                            option(value='15') 15
-                            option(value='20') 20
-
-            input(id= 'list-layout', type="radio", name="layout")
-            .product-grid
+            .col.l-9.m-8
                 .row
-                    each product in products
-                        .col.l-4.m-6.c-12
-                            +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent)
+                    .col.l-12.m-12.c-12
+                        .product__banner
+                            +banner('./assets/img/banner-2.png', 'Banner Book')
 
-            input(id= 'grid-layout', type="radio", name="layout" checked)
-            .product-list
-                .row
-                    each product in products
-                        .col.l-12.m-12.c-12
-                            +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent, product.dsc,product._id)
-            +pageNumber
+                .product__header-wrap
+                    .product__header-layout
+                        label(for='grid-layout')
+                            i.fas.fa-th.icon.icon__layout.icon--active
+                        label(for='list-layout')
+                            i.fas.fa-th-list.icon.icon__layout
+
+                    .product__header-sort-wrap
+                        .product__header-sort
+                            p.title__sort Sắp xếp theo 
+                            select#sort-category(name='Sort Category')
+                                option(disabled selected value) Tên sản phẩm
+                                option(value='tree') Cây
+                                option(value='flower') Hoa
+                                option(value='fruit') Quả
+
+                        .product__header-sort
+                            p.title__sort Hiển thị
+                            select#show__item(name='Show Items')
+                                option(value='all',selected) All
+                                option(value='5') 5
+                                option(value='10') 10
+                                option(value='15') 15
+                                option(value='20') 20
+
+                input.input__radio--layout(id= 'list-layout', type="radio", name="layout")
+                .product-grid
+                    .row
+                        each product in products
+                            .col.l-4.m-6.c-12
+                                +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent)
+
+                input.input__radio--layout(id= 'grid-layout', type="radio", name="layout" checked)
+                .product-list
+                    .row
+                        each product in products
+                            .col.l-12.m-12.c-12
+                                +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent, product.dsc,product._id)
+                +pageNumber
+        
+        .row
+            .col.l-0.m-0.c-12   
+                input#sidebar__mobile-input.sidebar__input(type='checkbox' name='' hidden='')
+                label.sidebar__overlay(for='sidebar__mobile-input')
+                
+                nav.sidebar__mobile
+                    label.sidebar__mobile-btn--close(for="sidebar__mobile-input")
+                        i.fas.fa-times
+                    
+                    .sidebar__wrap-item
+                        input#sidebar__mobile-input.sidebar__input-radio(type='radio')
+                        label.sidebar__mobile-title(for='sidebar__mobile-input') Danh mục sản phẩm
+                        
+                        ul.category__list
+                            each item in productList
+                                li.category__item
+                                    input(id= item.name, type="radio", name="product-category", value= item.name)
+                                    label.category__item-title(for=item.name)
+                                        i.fas.fa-angle-right
+                                        span.category__item-name= item.name
+                                        span.category__item-qnt= `( ${item.qnt} )`
+                        
+        .filter__product
+            label.filter__product-label(for="sidebar__mobile-input")
+                i.fas.fa-filter.icon.filter__product-icon

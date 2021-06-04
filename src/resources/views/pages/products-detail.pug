@@ -1,119 +1,120 @@
-each item in listProduct
-    +breadcrumbs(item.name, '/')
+extends ../layouts/main
 
-    section.product__detail-wrap
-        article.product__detail--header 
-            .grid.wide 
-                .row 
-                    .col.l-4.img-wrap
-                        .img__larger 
-                            img(src=`./assets/img/product/${item.imgMain}`, alt= item.name)
-                        
-                        .img__similar-wrap
-                            each i, index in item.imgSimilar
-                                .img__similar
-                                    img(src=`./assets/img/product/${i}`, alt=`Cây dạ lam${index}`)
+block container
+
+    each item in listProduct
+        +breadcrumbs(item.name, '/')
+
+        article.product__detail-wrap
+            section.product__detail--header 
+                .grid.wide 
+                    .row 
+                        .col.l-4.img-wrap
+                            .img__main 
+                                img(src=`./assets/img/product/${item.imgMain}`, alt= item.name)
+                            
+                            .img__similar-wrap
+                                each i, index in item.imgSimilar
+                                    .img__similar(style={'--tooltip-img': `../img/product/${i}`  })
+                                        img(src=`./assets/img/product/${i}`, alt=`Cây dạ lam${index}`)
+                                    .img__similar-hover
+                                        img(src=`./assets/img/product/${i}`, alt=`Cây dạ lam${index}`)
+                        .col.l-8
+                            .product__header--content
+                                h1.content__title= item.name
                                 
-                                .img__similar--hover 
-                                    img(src=`./assets/img/product/${i}`, alt=`Cây dạ lam${index}`)
-                    .col.l-8
-                        .product__header--content
-                            h1.content__title= item.name
-                            
-                            span.content__star
-                                - for (var i = 0; i < item.star; i++)
-                                    if item.star - i < 1
-                                        i.fas.fa-star-half-alt
-                                    else 
-                                        i.fas.fa-star
-                            .content__price 
-                                span.content__price--sale=`${item.priceSale}.000 đ`
-                                span.content__price--current=`${item.priceCurrent}.000 đ`
-                            
-                            .separate
-                            p.content__dsc= item.dsc
-                            .separate
+                                span.content__star
+                                    - for (var i = 0; i < item.star; i++)
+                                        if item.star - i < 1
+                                            i.fas.fa-star-half-alt
+                                        else 
+                                            i.fas.fa-star
+                                
+                                .content__price 
+                                    span.content__price--sale=`${item.priceSale}.000 đ`
+                                    span.content__price--current=`${item.priceCurrent}.000 đ`
+                                
+                                .separate
+                                p.content__dsc= item.dsc
 
-                            .content__qnt
-                                if item.qnt == 0
-                                    p Sản phẩm này hiện tại đang tạm hết hàng
-                                else
-                                    label(for="qnt").content__price-label Số lượng
-                                    button.btn.btn__reduction
-                                        i.fas.fa-minus.icon__qnt
+                                .separate
+                                .content__qnt
+                                    if item.qnt == 0
+                                        p Sản phẩm này hiện tại đang tạm hết hàng
+                                    else
+                                        label.content__price-label(for="qnt") Số lượng
+                                        include ../components/add-to-cart
+                                .separate
+                                
+                                .product__control
+                                    a.btn.btn__buy-now(href="cart.html") Mua ngay
+
+                                    a.product__control-link(href="")
+                                        i.fas.fa-search.icon.icon--border
+
+                                    input(id= item._id, type="checkbox", name= productName)
+                                    label.item__heart-label(for= item._id)
+                                        i.fas.fa-heart.icon.icon--border
                                     
-                                    input#input-qnt(type="number", min="1", max=item.qnt , step="1", name="Input qnt")
-                                    button.btn.btn__increase
-                                        i.fas.fa-plus.icon__qnt
-                            .separate
-                            
-                            .product__control
-                                button.btn__buy-now Mua ngay
-
-                                a(href="").product__control-link
-                                    i.fas.fa-search.product__control-icon.icon__search
-
-                                input(id= item._id, type="checkbox", name= productName)
-                                label(for= item._id).item__heart-label
-                                    i.fas.fa-heart.product__control-icon.icon__heart
-                            
-                            .product__share-list 
-                                each icon in iconShare
-                                    .product__share-wrap
-                                        .product__share-item(tooltip-data= icon.qnt)
-                                            a(href= icon.url, target="_blank")
-                                                img(src=`./assets/img/share/${icon.urlIcon}`, alt= icon.name)
-                                        .product__share-qnt
-                                            p= icon.qnt
-        article.product__detail
-            .grid.wide.product__detail--border
-                .row.no-gutters
-                    .col.l-4.m-4.c-12
-                        label(for='info').label-title Thông tin sản phẩm
-                    .col.l-4.m-4.c-12
-                        label(for='review').label-title Khách hàng đánh giá
-                    .col.l-4.m-4.c-12
-                        label(for='tag').label-title Thẻ tag
-                
-                .row.product__detail-wrap
-                    .product__info-wrap
-                        input#info(type="radio", name="product-info", value='info' checked)
-                        .col.l-12.product__info
-                            each val in item.info
-                                p= `Tên phổ thông: ${val.commonName}`
-                                br/
-                                p= `Tên khoa học: ${val.scienceName}`
-                                br/
-                                p= `Họ thực vật: ${val.plantFamily}`
-                                br/
-                                p= `Chiều cao: ${val.height}`
-                                br/
-                                p= val.origin
-                                br/
-                                p= val.detail
-                                br/
+                                .btn__share-list 
+                                    each icon in iconShare
+                                        .btn__share-wrap
+                                            .btn__share-item(tooltip-data= icon.qnt)
+                                                a(href= icon.url, target="_blank")
+                                                    img(src=`./assets/img/share/${icon.urlIcon}`, alt= icon.name)
+                                            .btn__share-qnt
+                                                p= icon.qnt
+            section.product__detail
+                .grid.wide.product__detail--border
+                    .row.no-gutters.mx-4
+                        .col.l-4.m-4.c-12
+                            label.label-title(for='info' class="active") Thông tin sản phẩm
+                        
+                        .col.l-4.m-4.c-12
+                            label.label-title(for='review') Khách hàng đánh giá
+                        
+                        .col.l-4.m-4.c-12
+                            label.label-title(for='tag') Thẻ tag
                     
-                    .product__cmt-wrap
-                        input#review(type="radio", name="product-info", value='review')
-                        .col.l-12.product__cmt
-                            each val in item.review
-                                span.time 
-                                    time= val.time
-                                    time= val.day
-                                p= `- Người dùng: ${val.customer}`
-                                p.cmt= `${val.cmt}`
-                    
-                    .product__tag-wrap
-                        input#tag(type="radio", name="product-info", value='tag')
-                        .col.l-12.product__tag
-                            each val in item.tag
-                                a(href= val.urlTag).tag= `#${val.nameTag}`
+                    .row.product__detail-wrap
+                        .product__info-wrap
+                            input#info(type="radio", name="product-info", value='info' checked)
+                            .col.l-12.product__info
+                                each val in item.info
+                                    p= `Tên phổ thông: ${val.commonName}`
+                                    br/
+                                    p= `Tên khoa học: ${val.scienceName}`
+                                    br/
+                                    p= `Họ thực vật: ${val.plantFamily}`
+                                    br/
+                                    p= `Chiều cao: ${val.height}`
+                                    br/
+                                    p= val.origin
+                                    br/
+                                    p= val.detail
+                                    br/
+                        
+                        .product__cmt-wrap
+                            input#review(type="radio", name="product-info", value='review')
+                            .col.l-12.product__cmt
+                                each val in item.review
+                                    span.time 
+                                        time= val.time
+                                        time= val.day
+                                    p= `- Người dùng: ${val.customer}`
+                                    p.cmt= `${val.cmt}`
+                        
+                        .product__tag-wrap
+                            input#tag(type="radio", name="product-info", value='tag')
+                            .col.l-12.product__tag
+                                each val in item.tag
+                                    a.tag(href= val.urlTag)= `#${val.nameTag}`
 
-        article.product__same-category
-            .grid.wide 
-                .row 
-                    .col.l-12.m-12.c-12
-                        .product__header
-                            +titleHeader('Sản phẩm cùng loại')
-                            +controlProduct('slide8','slide9')
-                        +slideProduct('slide8', 'slide9', 'slider-laptop-new', item.sameType,'laptop')
+            section.product__same-category
+                .grid.wide 
+                    .row 
+                        .col.l-12.m-12.c-12
+                            .product__header
+                                +titleHeader('Sản phẩm cùng loại')
+                                +controlProduct('slide8','slide9')
+                            +slideProduct('slide8', 'slide9', 'slider-laptop-new', item.sameType,'')

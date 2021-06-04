@@ -1,0 +1,70 @@
+.btn__share-list {
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+
+  @include display-flex(row, '', center);
+
+  .btn__share-wrap {
+    margin-top: 20px;
+
+    @include display-flex(row, '', center);
+  }
+
+  .btn__share-item {
+    margin-right: 14px;
+    position: relative;
+    width: 60px;
+
+    @extend %feeling-click;
+
+    img {
+      width: 100%;
+    }
+
+    &:hover::before {
+      border: {
+        color: transparent $white-color transparent transparent;
+        style: solid;
+        width: 6px 6px;
+      }
+      content: '';
+      position: absolute;
+      right: -13px;
+      top: 50%;
+      z-index: 1;
+
+      @include prefix(transform, translateY(-50%), ms moz webkit o);
+    }
+
+    &:hover::after {
+      border: {
+        color: transparent $border-color transparent transparent;
+        style: solid;
+        width: 6px 6px;
+      }
+      content: '';
+      cursor: pointer;
+      position: absolute;
+      right: -11px;
+      top: 50%;
+
+      @include prefix(transform, translateY(-50%), ms moz webkit o);
+    }
+
+    &:hover ~ .btn__share-qnt {
+      visibility: visible;
+    }
+  }
+
+  .btn__share-qnt {
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    height: 24px;
+    margin-right: 20px;
+    visibility: hidden;
+    width: 24px;
+
+    @include display-flex('', center, center);
+  }
+}

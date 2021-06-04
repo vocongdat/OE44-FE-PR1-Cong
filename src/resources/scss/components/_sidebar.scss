@@ -1,27 +1,50 @@
 .category__list {
+  font-size: 1.4rem;
   list-style: none;
 
-  @include textStyle(1.4rem, 1.6);
-
   .category__item {
-    align-items: center;
     border-bottom: 1px solid $color-separate;
-    display: flex;
     padding: 12px 0;
+
+    @include display-flex('', '', center);
+
+    @include display-none-input(checkbox);
 
     input:checked ~ label {
       color: $primary-color !important;
+
+      i {
+        @include prefix(transform, rotate(90deg), ms moz webkit o);
+      }
+
+      p {
+        @include prefix(
+          animation,
+          shadow-drop-2-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            forwards,
+          moz webkit
+        );
+      }
     }
 
     .category__item-title {
-      align-items: center;
-      display: flex;
+      @include display-flex('', '', center);
     }
+
+    @include prefix(user-select, none, ms webkit moz);
 
     i {
       font-size: 1.4rem;
       height: 14px;
       width: 14px;
+
+      @include prefix(transform, rotate(0), ms moz webkit o);
+
+      @include prefix(
+        transition,
+        all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        moz webkit o
+      );
     }
 
     .category__item-color {
@@ -42,14 +65,17 @@
 
     .new__feed-wrap {
       .new__feed-img {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background: {
+          position: center;
+          size: cover;
+          repeat: no-repeat;
+        }
         border: 2px solid $color-separate;
         cursor: pointer;
         height: 80px;
-        transition: all ease-in-out 0.3s;
         width: 80px;
+
+        @include prefix(transition, all 0.3s ease-in-out, moz webkit o);
       }
     }
 
@@ -63,27 +89,26 @@
     }
 
     &:hover .new__feed-img {
-      transform: scale(1.1);
+      @include prefix(transform, scale(1.1), ms moz webkit o);
     }
   }
 }
 
-input[type='radio'] {
-  display: none;
-}
-
 .blog-tag {
   .category__list {
-    display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    -webkit-flex-wrap: wrap;
 
+    @include display-flex(row, '', '');
     .category__item {
       border-bottom: none;
       padding: 0;
 
+      @include display-none-input(radio);
+
       .category__item-title {
         border: 1px solid $color-border;
+        cursor: pointer;
         margin: 8px;
         padding: 8px 12px;
       }

@@ -1,83 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100&display=swap');
+
 .carousel {
   position: relative;
 
-  input[type='radio'] {
-    display: none;
-  }
+  @include display-none-input(radio);
 
   .slider {
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
     min-width: 100%;
+    overflow: hidden;
+
+    @include display-flex(row, '', '');
 
     .slider-item {
-      position: relative;
-
+      background: url('../img/slide/slide.png') no-repeat center / cover;
       height: 400px;
       min-width: 100%;
+      position: relative;
 
-      transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
-      background: url('../img/slide/slide.png') no-repeat center / cover;
+      @include prefix(
+        transition,
+        all 800ms cubic-bezier(0.77, 0, 0.175, 1),
+        moz webkit o
+      );
     }
   }
 
   .text-content {
-    position: absolute;
-    top: 0;
-    right: 0;
     bottom: 0;
-    left: 0;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     color: $white-color;
-    text-transform: uppercase;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text: {
+      shadow: 0 5px 3px $background-transparent;
+      transform: uppercase;
+    }
+
+    @include display-flex(column, center, center);
 
     .text-heading_sub {
-      @include textStyle(3rem, 1.6);
+      font-size: 3rem;
     }
 
     .text-heading {
-      @include textStyle(6rem, 1.6);
-
-      @extend %display-none;
+      font: {
+        family: 'Roboto Slab', serif;
+        size: 6rem;
+      }
     }
 
     .text-description {
-      text-transform: none;
-      @include textStyle(1.6rem, 1.6);
-
-      @extend %display-none;
-    }
-
-    .btn__detail {
-      border: none;
-      border-radius: 9999px;
-      background-color: $primary-color;
-
-      .btn__detail-link {
-        color: $white-color;
-        display: inline-block;
-        font-size: 1.6rem;
-        padding: 16px 30px;
-        text-transform: uppercase;
+      font: {
+        style: italic;
+        size: 1.6rem;
       }
-
-      :hover {
-        opacity: 0.8;
+      text-transform: none;
+    }
+    @include media-tablet {
+      .text-heading,
+      .text-description {
+        display: none;
+      }
+    }
+    @include media-mobile {
+      .text-heading,
+      .text-description {
+        display: none;
       }
     }
   }
 
   .carousel__control {
     bottom: 32px;
-    position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    position: absolute;
+
+    @include prefix(transform, translateX(-50%), ms moz webkit o);
     z-index: 1;
 
     label {
@@ -95,19 +94,19 @@
 // Control Slider
 #left:checked {
   & ~ .slider .slider-item {
-    transform: translateX(0%);
+    @include prefix(transform, translateX(0%), ms moz webkit o);
   }
 }
 
 #center:checked {
   & ~ .slider .slider-item {
-    transform: translateX(-100%);
+    @include prefix(transform, translateX(-100%), ms moz webkit o);
   }
 }
 
 #right:checked {
   & ~ .slider .slider-item {
-    transform: translateX(-200%);
+    @include prefix(transform, translateX(-200%), ms moz webkit o);
   }
 }
 
@@ -121,32 +120,34 @@
 .product__slide-control {
   overflow: hidden;
 
-  input[type='radio'] {
-    display: none;
-  }
+  @include display-none-input(radio);
 }
 
 .slider-product {
-  transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
+  @include prefix(
+    transition,
+    all 800ms cubic-bezier(0.77, 0, 0.175, 1),
+    moz webkit o
+  );
 
   .overflow {
     .inner__content {
-      display: flex;
+      @include display-flex('', '', '');
     }
   }
 }
 
 // Control Slider Product
-$number-slide: 9;
+$number-slide: 10;
 
 @for $i from 1 through $number-slide {
   @if $i % 2 == 0 {
     #slide#{$i}:checked ~ .slider-product {
-      transform: translateX(-100%);
+      @include prefix(transform, translateX(-100%), ms moz webkit o);
     }
   } @else {
     #slide#{$i}:checked ~ .slider-product {
-      transform: translateX(0%);
+      @include prefix(transform, translateX(0%), ms moz webkit o);
     }
   }
 }

@@ -9,9 +9,10 @@ mixin footerList(title, list)
 
 //- Logo Page
 mixin logoPage 
-    .logo__name
-        img.img__green-shop(src="./assets/img/logo.png", alt="Green Shop")
-    p.logo__slogan Món quà từ thiên nhiên
+    a(href="/") 
+        .logo__name
+            img.img__green-shop(src="./assets/img/logo.png", alt="Green Shop")
+        p.logo__slogan Món quà từ thiên nhiên
 
 //- Icon Social
 mixin iconSocial 
@@ -21,14 +22,13 @@ mixin iconSocial
                 a.social__icon-link(class= icon, href="#")
 
 //- Carousel
-mixin sliderItem(headerSub, header, des)
+mixin sliderBanner(headerSub, header, des, url)
     .slider-item
         .text-content
-            h2.text-heading_sub= headerSub 
-            h3.text-heading= header
+            h1.text-heading_sub= headerSub 
+            h2.text-heading= header
             p.text-description= des
-            button.btn__detail 
-                a(href="#").btn__detail-link Xem chi tiết 
+            a.btn.btn--detail(href= url) Xem chi tiết 
 
 //- Breadcrumbs
 mixin breadcrumbs(navigation, link)
@@ -36,10 +36,10 @@ mixin breadcrumbs(navigation, link)
         .row 
             .col.l-12.m-12.c-12
                 .breadcrumbs
-                    a(href="#").breadcrumbs__link
-                        .span.breadcrumbs__home Home /
-                    a(href= link).breadcrumbs__link
-                        .span.breadcrumbs__navigation= navigation
+                    a.breadcrumbs__link(href="/")
+                        span.breadcrumbs__home Home /
+                    a.breadcrumbs__link(href= link)
+                        span.breadcrumbs__navigation= navigation
 //- Show Product
 mixin productDisplay(urlImg, productType, productName, rateStar, priceSale, priceCurrent, productDsc, _id)
     .product
@@ -51,10 +51,10 @@ mixin productDisplay(urlImg, productType, productName, rateStar, priceSale, pric
                     span= productType
                 else 
                     span(style='background-color: #d64146;')= `- ${productType}%`
-            .form__control 
-                a(href="#").btn__buy-now Mua ngay
-                a(href="").icon__link-search
-                    i.fas.fa-search.icon__search
+            .form__control
+                a.btn.btn__buy-now(href="cart.html") Mua ngay
+                a.icon__link-search(href="products-detail.html")
+                    i.fas.fa-search.icon.icon--detail
         .product__body 
             p.product__name= productName
 
@@ -72,25 +72,25 @@ mixin productDisplay(urlImg, productType, productName, rateStar, priceSale, pric
                     span.product__price-current=`${priceCurrent}.000 đ`
 
             .product__control
-                button.btn__buy-now Mua ngay
+                a.btn.btn__buy-now(href="cart.html") Mua ngay
 
-                a(href="").product__control-link
-                    i.fas.fa-search.product__control-icon.icon__search
+                a(href="products-detail.html")
+                    i.fas.fa-search.icon.icon--detail.icon--border
 
                 input(id= _id, type="checkbox", name= productName)
-                label(for= _id).item__heart-label
-                    i.fas.fa-heart.product__control-icon.icon__heart
+                label.item__heart-label(for= _id)
+                    i.fas.fa-heart.icon.icon--border
 
 //- News
 mixin news(urlImg, time, header, dsc)
     .news_wrap
-        a(href= header).news__img 
+        a.home__news-img(href='news-detail.html')
             img(src=`./assets/img/news/${urlImg}`, alt= header)
         .news__body
             time= time
             h6.news__body--header= header
             p.news__body--dsc= dsc
-            a(href= header).read__more Đọc tiếp
+            a.read__more(href='news-detail.html') Đọc tiếp
 
 mixin titleHeader(title)
     h2.products__title= title
@@ -99,9 +99,9 @@ mixin titleHeader(title)
 mixin controlProduct(controlLeft,controlRight)
     .control-slide
         label(for= controlLeft)
-            i.fas.fa-chevron-left
+            i.fas.fa-chevron-left.icon
         label(for= controlRight)
-            i.fas.fa-chevron-right
+            i.fas.fa-chevron-right.icon
 
 //- Slide Product
 mixin slideProduct(controlLeft, controlRight, slideName, itemSlide, typeDevice)
@@ -120,22 +120,51 @@ mixin slideProduct(controlLeft, controlRight, slideName, itemSlide, typeDevice)
                                     +productDisplay(itemSlide[i].urlImg,itemSlide[i].type ,itemSlide[i].name, itemSlide[i].star,itemSlide[i].priceSale)
                                     +productDisplay(itemSlide[i+1].urlImg,itemSlide[i+1].type ,itemSlide[i+1].name, itemSlide[i+1].star,itemSlide[i+1].priceSale,itemSlide[i+1].priceCurrent)
                                     +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
-                        //- Laptop
-                        when 'laptop'
+
+                        when 'latop-3-2'
+                                - for(var i = 0 ; i < itemSlide.length / 6 ; i++)
+                                    .col.l-12.m-12.c-12
+                                        .row
+                                            .col.l-4.m-6.c-12
+                                                +productDisplay(itemSlide[i].urlImg,itemSlide[i].type ,itemSlide[i].name, itemSlide[i].star,itemSlide[i].priceSale)
+                                            .col.l-4.m-6.c-0
+                                                +productDisplay(itemSlide[i+1].urlImg,itemSlide[i+1].type ,itemSlide[i+1].name, itemSlide[i+1].star,itemSlide[i+1].priceSale,itemSlide[i+1].priceCurrent)
+                                            .col.l-4.m-0.c-0
+                                                +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
+                                        .row
+                                            .col.l-4.m-6.c-0
+                                                +productDisplay(itemSlide[i].urlImg,itemSlide[i].type ,itemSlide[i].name, itemSlide[i].star,itemSlide[i].priceSale)
+                                            .col.l-4.m-6.c-0
+                                                +productDisplay(itemSlide[i+1].urlImg,itemSlide[i+1].type ,itemSlide[i+1].name, itemSlide[i+1].star,itemSlide[i+1].priceSale,itemSlide[i+1].priceCurrent)
+                                            .col.l-4.m-0.c-0
+                                                +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
+                        when 'latop-4-2'
                             - for(var i = 0 ; i < itemSlide.length / 4 ; i++)
-                                .col.l-3.m-4.c-6
-                                    +productDisplay(itemSlide[i].urlImg,itemSlide[i].type ,itemSlide[i].name, itemSlide[i].star,itemSlide[i].priceSale)
-                                .col.l-3.m-4.c-6
-                                    +productDisplay(itemSlide[i+1].urlImg,itemSlide[i+1].type ,itemSlide[i+1].name, itemSlide[i+1].star,itemSlide[i+1].priceSale,itemSlide[i+1].priceCurrent)
-                                .col.l-3.m-4.c-6
-                                    +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
-                                .col.l-3.m-4.c-6
-                                    +productDisplay(itemSlide[i+3].urlImg,itemSlide[i+3].type ,itemSlide[i+3].name, itemSlide[i+3].star,itemSlide[i+3].priceSale,itemSlide[i+3].priceCurrent)
-                        //- Mobile
+                                .col.l-12.m-12.c-12
+                                    .row
+                                        .col.l-3.m-6.c-12
+                                            +productDisplay(itemSlide[i].urlImg,itemSlide[i].type ,itemSlide[i].name, itemSlide[i].star,itemSlide[i].priceSale)
+                                        .col.l-3.m-6.c-0
+                                            +productDisplay(itemSlide[i+1].urlImg,itemSlide[i+1].type ,itemSlide[i+1].name, itemSlide[i+1].star,itemSlide[i+1].priceSale,itemSlide[i+1].priceCurrent)
+                                        .col.l-3.m-0.c-0
+                                            +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
+                                        .col.l-3.m-0.c-0
+                                            +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
+                                    .row
+                                        .col.l-3.m-6.c-0
+                                            +productDisplay(itemSlide[i].urlImg,itemSlide[i].type ,itemSlide[i].name, itemSlide[i].star,itemSlide[i].priceSale)
+                                        .col.l-3.m-6.c-0
+                                            +productDisplay(itemSlide[i+1].urlImg,itemSlide[i+1].type ,itemSlide[i+1].name, itemSlide[i+1].star,itemSlide[i+1].priceSale,itemSlide[i+1].priceCurrent)
+                                        .col.l-3.m-0.c-0
+                                            +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
+                                        .col.l-3.m-0.c-0
+                                            +productDisplay(itemSlide[i+2].urlImg,itemSlide[i+2].type ,itemSlide[i+2].name, itemSlide[i+2].star,itemSlide[i+2].priceSale,itemSlide[i+2].priceCurrent)
+
+                        //- Laptop 4-1
                         default
-                            each product in itemSlide
-                                .col.l-0.m-0.c-12
-                                    +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent)
+                            each item in itemSlide
+                                .col.l-3.m-6.c-12
+                                    +productDisplay(item.urlImg,item.type ,item.name, item.star,item.priceSale)
 
 mixin banner(urlImg, altImg)
     .banner
@@ -143,16 +172,15 @@ mixin banner(urlImg, altImg)
 
 //- Page
 mixin pageNumber
-    .row
-        ul.page__number
-            each page in pageNumber
-                li
-                    input(id= page._id, type="radio", name="page")
-                    label(for= page._id)= page.name
+    ul.page__number
+        each page in pageNumber
+            li
+                input(id= page._id, type="radio", name="page")
+                label(for= page._id)= page.name
 
 //- Form Control
 mixin formHeader(title)
-    h2.register__header= title
+    h1.form__header= title
 
 mixin formControl(type, content, className, id, name, placeholder, require)
     .form__group

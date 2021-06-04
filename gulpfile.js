@@ -8,7 +8,7 @@ const del = require('del');
 
 const FilesPath = {
   pug: {
-    src: './src/resources/views/layouts/*.pug',
+    src: './src/resources/views/pages/*.pug',
     dest: './public',
     watch: './src/resources/views/**/*.pug',
   },
@@ -33,11 +33,6 @@ const FilesPath = {
 function views() {
   return src(FilesPath.pug.src)
     .pipe(pug({ pretty: true }))
-    .pipe(
-      rename({
-        basename: 'index',
-      })
-    )
     .pipe(dest(FilesPath.pug.dest))
     .pipe(browserSync.stream());
 }

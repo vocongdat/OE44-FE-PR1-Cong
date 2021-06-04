@@ -2,18 +2,18 @@
     .grid.wide
         .row
             .col.l-6.m-0.c-0
-                .subnav__left 
+                .subnav__left
                     i.far.fa-clock
                     span.time__open Open time: 8:00 - 18:00  Monday - Sunday
                     +iconSocial
             .col.l-3.l-o-3.m-0.c-0
                 ul.subnav__right-list
                     li.subnav__right-item
-                        a(href="#")
+                        a(href="login.html")
                             i.fas.fa-user
                             span Đăng nhập
                     li.subnav__right-item
-                        a(href="#")
+                        a(href="register.html")
                             i.fas.fa-user-plus
                             span Đăng kí
 section.header
@@ -21,42 +21,74 @@ section.header
         .row 
             .col.l-6.m-10.c-12
                 .header__logo
-                    .row 
+                    .row
                         .col.l-6.m-6.c-12
                             +logoPage
                         .col.l-6.m-0.c-0
                             .logo__img
-                                img(src="./assets/img/logo-2.png", alt="Logo Green Shop 2").logo__img-first
-                                img(src="./assets/img/logo-1.png", alt="Logo Green Shop 1").logo__img-second
+                                img.logo__img-first(src="./assets/img/logo-2.png", alt="Logo Green Shop 2")
+                                img.logo__img-second(src="./assets/img/logo-1.png", alt="Logo Green Shop 1")
             .col.l-6.m-0.c-0
-                .header__contact
-                    i.fas.fa-phone-alt.header__icon-phone
-                    span.contact__title HỖ TRỢ :
-                    a(href="tel:+0466742332").contact__link--tel (04) 6674 2334 - 
-                    a(href="tel:+0437868904").contact__link--tel (04) 3786 8904
-                form(action="", method="get").form-search
-                    input(type="text", placeholder="Tìm kiếm..." name="Search").form-control
-                    p.contact__separate
-                    i.fas.fa-search.icon__search
-                    span.qnt 0
-                    span Sản phẩm
+                    .header__contact
+                        i.fas.fa-phone-alt.header__icon-phone
+                        span.contact__title HỖ TRỢ :
+                        a.contact__link--tel(href="tel:+0466742332") (04) 6674 2334 - 
+                        a.contact__link--tel(href="tel:+0437868904") (04) 3786 8904
+                    .header__search-wrap
+                        .header__search
+                            input.form-control(type="text", placeholder="Tìm kiếm..." name="Search")
+                            p.contact__separate
+                            i.fas.fa-search.icon--search
+                        .header__product-qnt
+                            a(href="cart.html")
+                                i.fas.fa-shopping-basket
+                            span.qnt 0 Sản phẩm
+
 nav.navbar
     .grid.wide
         .row
-            .col-l-2
-                i.fas.fa-bars.navbar__icon         
-            .col.l-10.m-0.c-0    
+            .col.l-12.m-12.c-0    
                 ul.navbar__list 
                     each item in navbarList
                         li.navbar__item
-                            a(href= item.url).navbar__link= item.name
+                            a.navbar__link(href= item.urlNavbar)= item.name
                             if item.listMore
                                 i.fas.fa-caret-down.icon__subnav
                                 ul.navbar__product-list
                                     each i in item.listMore
-                                        li.navbar__product-item= i
+                                        li.navbar__product-item
+                                            a.navbar__product-link(href= i.urlMore)= i.name
 
-            .col.l-0.m-4.m-o-7.c-4.c-o-7
+            .col.l-0.m-0.c-12
                 .navbar__icon--mobile
-                    i.fas.fa-search
-                    i.fas.fa-shopping-basket
+                    label.navbar-menu(for='nav__mobile-input')
+                        i.fas.fa-bars.navbar__icon
+                    .icon-right
+                        a(href="#")
+                            i.fas.fa-search.icon-search
+                        a(href="cart.html") 
+                            i.fas.fa-shopping-basket
+        .row
+            .col.l-0.m-0.c-12
+                input#nav__mobile-input.nav__input(type='checkbox' name='' hidden='')
+                label.nav__overlay(for='nav__mobile-input')
+                nav.nav__mobile
+                    label.nav__mobile-btn--close(for="nav__mobile-input")
+                        i.fas.fa-times
+                    ul.navbar__mobile-list
+                        li.navbar__mobile-item
+                            a.nav__mobile-link(href="login.html") Đăng nhập
+                        li.navbar__mobile-item
+                            a.nav__mobile-link(href="register.html") Đăng kí
+                        each item in navbarList
+                            li.navbar__mobile-item
+                                a.nav__mobile-link(href= item.urlNavbar)= item.name
+                                if item.listMore
+                                    i.fas.fa-caret-down.icon__subnav
+                                    ul.subnav__mobile-list
+                                        each i in item.listMore
+                                            li.subnav__mobile-item
+                                                a(href= i.urlMore)= i.name
+.scroll-top
+    a.scroll-top__link(href="#")
+        i.fas.fa-chevron-up.icon.scroll-top__icon

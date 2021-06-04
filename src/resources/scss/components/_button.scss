@@ -1,0 +1,77 @@
+.btn {
+  border: none;
+  border-radius: 9999px;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 120px;
+  padding: 12px 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+
+  @include prefix(transition, opacity 0.2s ease, moz webkit o);
+
+  @extend %feeling-click;
+}
+
+.btn + .btn {
+  margin: {
+    left: 16px;
+    top: 8px;
+  }
+}
+
+.btn--detail {
+  background-color: $primary-color;
+  box-shadow: 0 5px 3px $background-transparent;
+  color: $white-color;
+  font-size: 1.6rem;
+}
+
+.btn__buy-now {
+  font-size: 1.4rem;
+
+  @extend .btn--detail;
+  @include display-flex('', center, center);
+
+  @include media-tablet {
+    padding: {
+      left: 24px;
+      right: 24px;
+    }
+  }
+
+  @include media-mobile {
+    margin-bottom: 8px;
+  }
+}
+
+.btn--cancel {
+  border: 1px solid $primary-color;
+  background-color: $white-color;
+  color: $primary-color;
+}
+
+.btn--success {
+  background-color: $primary-color;
+  color: $white-color;
+}
+
+@include media-smaller-mobile {
+  .btn--cancel,
+  .btn--success {
+    width: 100%;
+  }
+
+  .btn + .btn {
+    margin-left: 0;
+  }
+}
+
+.btn--sent {
+  float: right;
+  margin: 24px 0;
+
+  @extend .btn--success;
+}
