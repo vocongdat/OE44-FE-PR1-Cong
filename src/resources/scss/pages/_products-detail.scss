@@ -47,6 +47,19 @@
         border-radius: 4px;
         width: 100%;
       }
+
+      @include media-tablet {
+        left: 0%;
+        top: 20%;
+      }
+      @include media-mobile {
+        left: -18%;
+        top: 0%;
+        height: 100px;
+        img {
+          width: 80%;
+        }
+      }
     }
   }
 }

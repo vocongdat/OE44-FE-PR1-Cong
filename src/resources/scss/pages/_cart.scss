@@ -11,7 +11,7 @@
 
   @include tableMobile($primary-color);
 
-  .cart__table {
+  &__table {
     border-collapse: collapse;
     table-layout: fixed;
     width: 100%;
@@ -99,7 +99,7 @@
     }
   }
 
-  .cart__btn {
+  &__btn {
     clear: both;
     margin: 40px 0;
     text-align: end;

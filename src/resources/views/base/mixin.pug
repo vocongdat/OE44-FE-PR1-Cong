@@ -31,15 +31,16 @@ mixin sliderBanner(headerSub, header, des, url)
             a.btn.btn--detail(href= url) Xem chi tiết 
 
 //- Breadcrumbs
-mixin breadcrumbs(navigation, link)
+mixin breadcrumbs(navigationList)
     .grid.wide 
         .row 
             .col.l-12.m-12.c-12
                 .breadcrumbs
                     a.breadcrumbs__link(href="/")
                         span.breadcrumbs__home Home /
-                    a.breadcrumbs__link(href= link)
-                        span.breadcrumbs__navigation= navigation
+                    each  link, navigation  in  navigationList
+                        a.breadcrumbs__link(href= link)
+                            span.breadcrumbs__navigation= `${navigation}`
 //- Show Product
 mixin productDisplay(urlImg, productType, productName, rateStar, priceSale, priceCurrent, productDsc, _id)
     .product

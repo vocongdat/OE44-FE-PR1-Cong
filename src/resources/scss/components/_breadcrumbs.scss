@@ -5,7 +5,7 @@
 
   @extend %display-inline-flex;
 
-  .breadcrumbs__navigation {
+  &__navigation {
     color: $primary-color;
     padding-left: 4px;
   }

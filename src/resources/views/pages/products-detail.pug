@@ -3,7 +3,9 @@ extends ../layouts/main
 block container
 
     each item in listProduct
-        +breadcrumbs(item.name, '/')
+        //- +breadcrumbs(item.name, '/')
+        +breadcrumbs({'Danh sách sản phẩm /': '/product.html', 'Cây Dạ Lam': '/'})
+
 
         article.product__detail-wrap
             section.product__detail--header 

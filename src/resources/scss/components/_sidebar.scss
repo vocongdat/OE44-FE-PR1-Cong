@@ -27,7 +27,7 @@
       }
     }
 
-    .category__item-title {
+    &-title {
       @include display-flex('', '', center);
     }
 
@@ -47,7 +47,7 @@
       );
     }
 
-    .category__item-color {
+    &-color {
       border-radius: 9999px;
       background-color: var(--tooltip-data);
       height: 28px;
@@ -55,11 +55,11 @@
       width: 28px;
     }
 
-    .category__item-name {
+    &-name {
       cursor: pointer;
     }
 
-    .category__item-qnt {
+    &-qnt {
       margin-left: 4px;
     }
 
@@ -106,7 +106,7 @@
 
       @include display-none-input(radio);
 
-      .category__item-title {
+      &-title {
         border: 1px solid $color-border;
         cursor: pointer;
         margin: 8px;
