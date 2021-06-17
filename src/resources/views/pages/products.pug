@@ -25,16 +25,16 @@ block container
                         label(for='grid-layout')
                             i.fas.fa-th.icon.icon__layout.icon--active
                         label(for='list-layout')
-                            i.fas.fa-th-list.icon.icon__layout
+                            i.fas.fa-th-list.icon.icon__layout.layout-list
 
                     .product__header-sort-wrap
                         .product__header-sort
                             p.title__sort Sắp xếp theo 
                             select#sort-category(name='Sort Category')
                                 option(disabled selected value) Tên sản phẩm
-                                option(value='tree') Cây
-                                option(value='flower') Hoa
-                                option(value='fruit') Quả
+                                option(value='price') Giá
+                                option(value='name') Tên
+                                option(value='evaluation') Đánh giá
 
                         .product__header-sort
                             p.title__sort Hiển thị
@@ -58,7 +58,10 @@ block container
                         each product in products
                             .col.l-12.m-12.c-12
                                 +productDisplay(product.urlImg,product.type ,product.name, product.star,product.priceSale,product.priceCurrent, product.dsc,product._id)
-                +pageNumber
+                .pagination__wrap
+                    button.btn.btn--paginate.btn__prev Trang trước
+                    ul.pagination
+                    button.btn.btn--paginate.btn__next Trang sau
         
         .row
             .col.l-0.m-0.c-12   
@@ -85,3 +88,9 @@ block container
         .filter__product
             label.filter__product-label(for="sidebar__mobile-input")
                 i.fas.fa-filter.icon.filter__product-icon
+
+    
+    <script src="./assets/js/showProducts.js"></script>
+    <script src="./assets/js/handleCSS.js"></script>
+    <script src="./assets/js/category.js"></script>
+    <script src="./assets/js/AddToCart.js"></script>

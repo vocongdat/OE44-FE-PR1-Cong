@@ -27,3 +27,10 @@ input(type="radio", name="close" id="close")
 
         label.modal__btn--close(for="close")
             i.fas.fa-times.icon.icon--close
+
+<script src="./assets/js/validator-short.js"></script>
+<script>
+    const form = new Validator('.form__register');
+
+    form.onSubmit = function (formData){}
+</script>

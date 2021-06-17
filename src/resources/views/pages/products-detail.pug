@@ -4,7 +4,7 @@ block container
 
     each item in listProduct
         //- +breadcrumbs(item.name, '/')
-        +breadcrumbs({'Danh sách sản phẩm /': '/product.html', 'Cây Dạ Lam': '/'})
+        +breadcrumbs({'Danh sách sản phẩm /': '/products.html', 'Cây Dạ Lam': '/'})
 
 
         article.product__detail-wrap
@@ -49,7 +49,7 @@ block container
                                 .separate
                                 
                                 .product__control
-                                    a.btn.btn__buy-now(href="cart.html") Mua ngay
+                                    button.btn.btn__buy-now Mua ngay
 
                                     a.product__control-link(href="")
                                         i.fas.fa-search.icon.icon--border
@@ -120,3 +120,7 @@ block container
                                 +titleHeader('Sản phẩm cùng loại')
                                 +controlProduct('slide8','slide9')
                             +slideProduct('slide8', 'slide9', 'slider-laptop-new', item.sameType,'')
+    
+    //- <script src="./assets/js/cartButton.js"></script>
+    //- <script src="./assets/js/AddToCart.js"></script>
+    <script src="./assets/js/showProductDetail.js"></script>

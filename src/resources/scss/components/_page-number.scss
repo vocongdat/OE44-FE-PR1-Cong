@@ -1,40 +1,25 @@
-.page__number {
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  margin: {
-    bottom: 44px;
-    right: 14px;
-    top: 44px;
-  }
-  width: 100%;
-
-  @include display-flex(row, flex-end, '');
-  @include display-none-input(radio);
-
-  li {
-    list-style: none;
-  }
-
-  li + li {
-    margin-left: 16px;
-
-    @include media-tablet {
-      margin-left: 10px;
+.pagination__wrap {
+    display: flex;
+    flex-direction: row;
+    margin: {
+        top: 20px;
+        bottom: 20px;
     }
-  }
-
-  input:checked ~ label {
-    background-color: $primary-color !important;
-    color: $white-color !important;
-  }
-
-  label {
-    border: 1px solid $color-separate;
-    display: block;
-    font-size: 1.6rem;
-    margin-bottom: 6px;
-    padding: 14px 18px;
-
-    @extend %feeling-click;
-  }
+    .pagination {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        .pagination-number {
+            margin: {
+                bottom: 10px;
+                top: 10px;
+                left: 10px;
+            }
+        }
+    }
+    .btn__next {
+        margin-left: 10px;
+    }
 }

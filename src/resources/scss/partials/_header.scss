@@ -1,347 +1,359 @@
 // Navbar Sub
 .navbar__sub {
-  background-color: $background-color-dark;
-  color: $text-light;
-  line-height: 32px;
-  position: relative;
-  z-index: 1;
+    background-color: $background-color-dark;
+    color: $text-light;
+    line-height: 32px;
+    position: relative;
+    z-index: 1;
 
-  .subnav__left {
-    @include iconSocial(1.2rem, $border: true);
-
-    i {
-      margin: 0 4px 0 0;
-    }
-
-    span {
-      margin-right: 32px;
-    }
-  }
-
-  .subnav__right-list {
-    list-style: none;
-
-    @include display-flex('', flex-end, '');
-
-    .subnav__right-item {
-      border: {
-        right: 1px solid $border-color;
-        left: 1px solid $border-color;
-      }
-      padding: 0 14px;
-
-      a {
-        color: $text-light;
-        height: 100%;
+    .subnav__left {
+        @include iconSocial(1.2rem, $border: true);
 
         i {
-          padding-right: 4px;
+            margin: 0 4px 0 0;
         }
 
-        &:hover {
-          opacity: 0.8;
+        span {
+            margin-right: 32px;
         }
-      }
     }
-  }
+
+    .subnav__right-list {
+        list-style: none;
+
+        @include display-flex('', flex-end, '');
+
+        .subnav__right-item {
+            border: {
+                right: 1px solid $border-color;
+                left: 1px solid $border-color;
+            }
+            padding: 0 14px;
+
+            a {
+                color: $text-light;
+                height: 100%;
+
+                i {
+                    padding-right: 4px;
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
 }
 
 .header {
-  background: url('../img/background.png') repeat center / contain;
-  flex-direction: row;
-  height: $height-header;
-  position: relative;
-  width: 100%;
-
-  @extend %display-inline-flex;
-
-  &__logo {
-    @include logoPage(70%);
-
-    .logo__img {
-      height: 100%;
-      position: relative;
-
-      &-first {
-        @include logoImg(30%, -10px, 1);
-      }
-
-      &-second {
-        @include logoImg(-18%, 60px, 0);
-      }
-    }
-  }
-
-  &__contact {
-    font-size: 1.2rem;
-    margin: {
-      top: 30px;
-      bottom: 20px;
-      left: 40px;
-    }
-
-    .header__icon-phone {
-      margin-right: 4px;
-    }
-
-    .contact__title {
-      margin-right: 8px;
-    }
-
-    .contact__link--tel {
-      color: $text-color;
-    }
-  }
-
-  &__search-wrap {
-    @include display-flex(row, '', '');
-  }
-
-  &__search {
-    border-radius: 9999px;
-    background-color: $white-color;
-    font-size: 1.4rem;
-
-    @include display-flex('', '', center);
-
-    .form-control {
-      border: none;
-      padding: {
-        left: 18px;
-        right: 110px;
-      }
-      width: 100%;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .contact__separate {
-      background-color: $color-separate;
-      height: 32px;
-      width: 1px;
-    }
-  }
-  &__product-qnt {
-    font-size: 1.6rem;
-    margin-left: 14px;
-
-    @include display-flex(row, '', center);
-
-    i {
-      color: $text-color;
-      height: 16px;
-      width: 16px;
-    }
-    .qnt {
-      margin-left: 10px;
-    }
-  }
-}
-
-.navbar {
-  background-color: $primary-color;
-  color: $white-color;
-  position: relative;
-  text-transform: uppercase;
-  z-index: 1;
-
-  @include display-flex('', '', '');
-
-  .navbar__icon {
-    cursor: pointer;
-    font-size: 1.8rem;
-    height: 100%;
-    width: 16px;
-
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-
-  .navbar__list {
-    font-size: 1.4rem;
-    list-style: none;
+    background: url('../img/background.png') repeat center / contain;
+    flex-direction: row;
+    height: $height-header;
+    position: relative;
+    width: 100%;
 
     @extend %display-inline-flex;
 
-    .navbar__item {
-      position: relative;
+    &__logo {
+        @include logoPage(70%);
 
-      @include display-flex('', '', center);
+        .logo__img {
+            height: 100%;
+            position: relative;
 
-      &:hover .navbar__product-list {
-        display: block;
-      }
+            &-first {
+                @include logoImg(30%, -10px, 1);
+            }
+
+            &-second {
+                @include logoImg(-18%, 60px, 0);
+            }
+        }
     }
 
-    .navbar__link {
-      cursor: pointer;
-      color: $white-color;
-      padding: 20px;
+    &__contact {
+        font-size: 1.2rem;
+        margin: {
+            top: 30px;
+            bottom: 20px;
+            left: 40px;
+        }
 
-      @include media-tablet {
-        padding: 20px 18px;
-      }
+        .header__icon-phone {
+            margin-right: 4px;
+        }
 
-      &:hover {
-        background-color: $color-green-dark;
-      }
+        .contact__title {
+            margin-right: 8px;
+        }
+
+        .contact__link--tel {
+            color: $text-color;
+        }
     }
 
-    .icon__subnav {
-      position: absolute;
-      right: 8px;
-      top: 20px;
+    &__search-wrap {
+        @include display-flex(row, '', '');
     }
 
-    .navbar__product-list {
-      background-color: $primary-color;
-      display: none;
-      position: absolute;
-      height: auto;
-      left: 0px;
-      list-style: none;
-      top: 60px;
-      width: 130px;
+    &__search {
+        border-radius: 9999px;
+        background-color: $white-color;
+        font-size: 1.4rem;
 
-      .navbar__product-item {
+        @include display-flex('', '', center);
+
+        .form-control {
+            border: none;
+            padding: {
+                left: 18px;
+                right: 110px;
+            }
+            width: 100%;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .contact__separate {
+            background-color: $color-separate;
+            height: 32px;
+            width: 1px;
+        }
+    }
+    &__product-qnt {
+        font-size: 1.8rem;
+        margin-left: 14px;
+        position: relative;
+
+        @include display-flex(row, '', center);
+
+        i {
+            color: $text-color;
+            height: 16px;
+            width: 16px;
+        }
+        .qnt {
+            align-items: center;
+            background-color: $primary-color;
+            border-radius: 50%;
+            color: $white-color;
+            display: flex;
+            font-size: 1.4rem;
+            justify-content: center;
+            height: 16px;
+            position: absolute;
+            top: 4px;
+            left: 8px;
+            width: 16px;
+        }
+    }
+}
+
+.navbar {
+    background-color: $primary-color;
+    color: $white-color;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 1;
+
+    @include display-flex('', '', '');
+
+    .navbar__icon {
         cursor: pointer;
-        padding: 12px;
-
-        .navbar__product-link {
-          color: $white-color;
-        }
-
-        &:not(:last-child) {
-          border-bottom: 1px solid $white-color;
-        }
+        font-size: 1.8rem;
+        height: 100%;
+        width: 16px;
 
         &:hover {
-          background-color: $color-green-dark;
+            opacity: 0.9;
         }
-      }
-
-      &::after {
-        background-color: transparent;
-        content: '';
-        position: absolute;
-        height: 1px;
-        left: 0;
-        top: -1px;
-        width: 100%;
-      }
-    }
-  }
-
-  .navbar__icon--mobile {
-    height: 100%;
-    padding: 20px 0;
-
-    @include display-flex('', space-between, center);
-
-    i {
-      font-size: 1.8rem;
-      height: 16px;
-      width: 16px;
     }
 
-    .navbar-menu {
-      padding-left: 8px;
-    }
+    .navbar__list {
+        font-size: 1.4rem;
+        list-style: none;
 
-    .icon-right {
-      padding-right: 8px;
+        @extend %display-inline-flex;
 
-      i {
-        color: $white-color;
-      }
-    }
+        .navbar__item {
+            position: relative;
 
-    .icon-search {
-      padding-right: 44px;
-    }
-  }
+            @include display-flex('', '', center);
 
-  .nav__overlay {
-    background-color: $background-transparent;
-    display: none;
-    @extend %full-screen-abs;
-  }
+            &:hover .navbar__product-list {
+                display: block;
+            }
+        }
 
-  .nav__mobile {
-    background-color: $primary-color;
-    font-size: 1.4rem;
-    left: 0;
-    opacity: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
+        .navbar__link {
+            cursor: pointer;
+            color: $white-color;
+            padding: 20px;
 
-    @include prefix(transition, all 0.2s ease-in-out, moz webkit o);
-    @include prefix(transform, rotate(-90deg), ms moz webkit o);
-    @include prefix(transform-origin, 0% 100%, ms moz webkit o);
+            @include media-tablet {
+                padding: 20px 18px;
+            }
 
-    .nav__mobile-btn--close {
-      bottom: 16px;
-      cursor: pointer;
-      font-size: 1.6rem;
-      height: 16px;
-      position: absolute;
-      right: 16px;
-      width: 16px;
-    }
-
-    .navbar__mobile-list {
-      list-style: none;
-
-      .navbar__mobile-item {
-        padding: 14px 0 14px 18px;
+            &:hover {
+                background-color: $color-green-dark;
+            }
+        }
 
         .icon__subnav {
-          padding-left: 8px;
+            position: absolute;
+            right: 8px;
+            top: 20px;
         }
 
-        &:not(:last-child) {
-          border-bottom: 1px solid $color-separate;
+        .navbar__product-list {
+            background-color: $primary-color;
+            display: none;
+            position: absolute;
+            height: auto;
+            left: 0px;
+            list-style: none;
+            top: 60px;
+            width: 130px;
+
+            .navbar__product-item {
+                cursor: pointer;
+                padding: 12px;
+
+                .navbar__product-link {
+                    color: $white-color;
+                }
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $white-color;
+                }
+
+                &:hover {
+                    background-color: $color-green-dark;
+                }
+            }
+
+            &::after {
+                background-color: transparent;
+                content: '';
+                position: absolute;
+                height: 1px;
+                left: 0;
+                top: -1px;
+                width: 100%;
+            }
+        }
+    }
+
+    .navbar__icon--mobile {
+        height: 100%;
+        padding: 20px 0;
+
+        @include display-flex('', space-between, center);
+
+        i {
+            font-size: 1.8rem;
+            height: 16px;
+            width: 16px;
         }
 
-        .nav__mobile-link {
-          color: $white-color;
+        .navbar-menu {
+            padding-left: 8px;
         }
-      }
+
+        .icon-right {
+            padding-right: 8px;
+
+            i {
+                color: $white-color;
+            }
+        }
+
+        .icon-search {
+            padding-right: 44px;
+        }
     }
 
-    .subnav__mobile-list {
-      display: none;
-      font-size: 1.3rem;
-      margin-left: 12px;
-      list-style: none;
-
-      .subnav__mobile-item {
-        padding: 12px 0;
-      }
-    }
-  }
-
-  .nav__input:checked ~ .nav__overlay {
-    display: block;
-  }
-
-  .nav__input:checked ~ .nav__mobile {
-    opacity: 1;
-
-    @include prefix(transform, rotate(0deg), ms moz webkit o);
-  }
-
-  @media (max-width: 1023px) {
-    .nav__bars-btn {
-      display: block;
+    .nav__overlay {
+        background-color: $background-transparent;
+        display: none;
+        @extend %full-screen-abs;
     }
 
-    .nav__pc {
-      display: none;
+    .nav__mobile {
+        background-color: $primary-color;
+        font-size: 1.4rem;
+        left: 0;
+        opacity: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+
+        @include prefix(transition, all 0.2s ease-in-out, moz webkit o);
+        @include prefix(transform, rotate(-90deg), ms moz webkit o);
+        @include prefix(transform-origin, 0% 100%, ms moz webkit o);
+
+        .nav__mobile-btn--close {
+            bottom: 16px;
+            cursor: pointer;
+            font-size: 1.6rem;
+            height: 16px;
+            position: absolute;
+            right: 16px;
+            width: 16px;
+        }
+
+        .navbar__mobile-list {
+            list-style: none;
+
+            .navbar__mobile-item {
+                padding: 14px 0 14px 18px;
+
+                .icon__subnav {
+                    padding-left: 8px;
+                }
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-separate;
+                }
+
+                .nav__mobile-link {
+                    color: $white-color;
+                }
+            }
+        }
+
+        .subnav__mobile-list {
+            display: none;
+            font-size: 1.3rem;
+            margin-left: 12px;
+            list-style: none;
+
+            .subnav__mobile-item {
+                padding: 12px 0;
+            }
+        }
     }
-  }
+
+    .nav__input:checked ~ .nav__overlay {
+        display: block;
+    }
+
+    .nav__input:checked ~ .nav__mobile {
+        opacity: 1;
+
+        @include prefix(transform, rotate(0deg), ms moz webkit o);
+    }
+
+    @media (max-width: 1023px) {
+        .nav__bars-btn {
+            display: block;
+        }
+
+        .nav__pc {
+            display: none;
+        }
+    }
 }

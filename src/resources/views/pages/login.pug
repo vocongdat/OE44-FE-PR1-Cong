@@ -10,9 +10,9 @@ block container
                 .col.l-6.m-10.c-12
                     +formHeader('Thông tin cá nhân')
                     
-                    form.login__form(action="", method="post")
+                    form#login__form(action="", method="post")
                         +formControl('email', 'Email của bạn', 'form__control', 'email', 'Email', 'Nhập địa chỉ email...', false)
-                        +formControl('text', 'Mật khẩu', 'form__control', 'login-password', 'Password', 'Nhập mật khẩu', false)
+                        +formControl('password', 'Mật khẩu', 'form__control', 'login-password', 'Password', 'Nhập mật khẩu', false)
                         
                         .login__other
                             label(style='display: flex')
@@ -29,3 +29,10 @@ block container
                         | Ngoài ra còn có rất nhiều chính sách và ưu đãi cho các thành viên citybike.
                     
                     a.btn.btn--success(href="register.html") Đăng kí
+
+    <script src="./assets/js/validator-short.js"></script>
+        <script>
+            const form = new Validator('#login__form');
+
+            form.onSubmit = function (formData) {}
+        </script>

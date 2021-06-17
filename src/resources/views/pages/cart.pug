@@ -20,24 +20,10 @@ block container
                                 th(scope='col') Thành tiền
                                 th(scope='col') Xóa
                         tbody
-                            each item in cart
-                                tr
-                                    th.cart__body-img(scope='col', data-label="Hình ảnh")
-                                        a(href="/products-detail.html") 
-                                            img.cart__img(src=`./assets/img/product/${item.urlImg}`, alt=item.name)
-                                    td.cart__name(data-label="Tên sản phẩm")
-                                        a(href="/products-detail.html")= item.name
-                                    td(data-label="Đơn giá")= `${item.price}.000 đ`
-                                    td.cart__qnt(data-label="Số lượng")
-                                        include ../components/add-to-cart
-
-                                    td(data-label="Thành tiền")= `${item.price}.000 đ`
-                                    td(data-label="Xóa")
-                                        i.fas.fa-trash-alt.cart__icon--trash
 
                     .cart__btn 
                         button.btn.btn--cancel(type="submit") Hủy đơn hàng 
-                        button.btn.btn--success(type="submit") Tiếp tục mua
+                        a.btn.btn--success(href="./products.html") Tiếp tục mua
                     
                     table#t02
                         tbody
@@ -53,4 +39,7 @@ block container
                                 td(data-label="Tổng phải thanh toán") 297.000 đ
                     
                     .cart__btn
-                        button.btn.btn--success(type="submit") Thanh toán
+                        button.btn.btn--success(type="submit", onclick='showSuccessToast()') Thanh toán
+        
+        #toast
+        script(type="module" src='./assets/js/cart.js')

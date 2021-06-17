@@ -1,136 +1,136 @@
 // Cart
 @-webkit-keyframes slide-cart {
-  0% {
-    left: -10%;
-  }
-  40%,
-  60% {
-    left: 50%;
-  }
-  100% {
-    left: 120%;
-  }
+    0% {
+        left: -10%;
+    }
+    40%,
+    60% {
+        left: 50%;
+    }
+    100% {
+        left: 120%;
+    }
 }
 
 @keyframes slide-cart {
-  0% {
-    left: -10%;
-  }
-  40%,
-  60% {
-    left: 50%;
-  }
-  100% {
-    left: 120%;
-  }
+    0% {
+        left: -10%;
+    }
+    40%,
+    60% {
+        left: 50%;
+    }
+    100% {
+        left: 120%;
+    }
 }
 
 @-webkit-keyframes show-txt {
-  0%,
-  80% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0%,
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes show-txt {
-  0%,
-  80% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0%,
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes scale-up-center {
-  0% {
-    opacity: 0;
-    @include prefix(transform, scale(0.5), ms moz webkit o);
-  }
-  100% {
-    opacity: 1;
-    @include prefix(transform, scale(1), ms moz webkit o);
-  }
+    0% {
+        opacity: 0;
+        @include prefix(transform, scale(0.5), ms moz webkit o);
+    }
+    100% {
+        opacity: 1;
+        @include prefix(transform, scale(1), ms moz webkit o);
+    }
 }
 
 @keyframes scale-up-center {
-  0% {
-    opacity: 0;
-    @include prefix(transform, scale(0.5), ms moz webkit o);
-  }
-  100% {
-    opacity: 1;
-    @include prefix(transform, scale(1), ms moz webkit o);
-  }
+    0% {
+        opacity: 0;
+        @include prefix(transform, scale(0.5), ms moz webkit o);
+    }
+    100% {
+        opacity: 1;
+        @include prefix(transform, scale(1), ms moz webkit o);
+    }
 }
 
 @-webkit-keyframes scale-down-center {
-  0% {
-    opacity: 1;
-    @include prefix(transform, scale(1), ms moz webkit o);
-  }
-  100% {
-    @include prefix(transform, scale(0.5), ms moz webkit o);
-    opacity: 0;
-    visibility: hidden;
-  }
+    0% {
+        opacity: 1;
+        @include prefix(transform, scale(1), ms moz webkit o);
+    }
+    100% {
+        @include prefix(transform, scale(0.5), ms moz webkit o);
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
 @keyframes scale-down-center {
-  0% {
-    opacity: 1;
-    @include prefix(transform, scale(1), ms moz webkit o);
-  }
-  100% {
-    @include prefix(transform, scale(0.5), ms moz webkit o);
-    opacity: 0;
-    visibility: hidden;
-  }
+    0% {
+        opacity: 1;
+        @include prefix(transform, scale(1), ms moz webkit o);
+    }
+    100% {
+        @include prefix(transform, scale(0.5), ms moz webkit o);
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
 @-webkit-keyframes shadow-drop-2-center {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-    @include prefix(transform, translateZ(0), ms moz webkit o);
-  }
-  100% {
-    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-    @include prefix(transform, translateZ(50px), ms moz webkit o);
-  }
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        @include prefix(transform, translateZ(0), ms moz webkit o);
+    }
+    100% {
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        @include prefix(transform, translateZ(50px), ms moz webkit o);
+    }
 }
 
 @keyframes shadow-drop-2-center {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-    @include prefix(transform, translateZ(0), ms moz webkit o);
-  }
-  100% {
-    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-    @include prefix(transform, translateZ(50px), ms moz webkit o);
-  }
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        @include prefix(transform, translateZ(0), ms moz webkit o);
+    }
+    100% {
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        @include prefix(transform, translateZ(50px), ms moz webkit o);
+    }
 }
 
 @-webkit-keyframes slide-right {
-  0% {
-    opacity: 0;
-    @include prefix(transform, translateX(0), ms moz webkit o);
-  }
-  100% {
-    opacity: 1;
-    @include prefix(transform, translateX(100px), ms moz webkit o);
-  }
+    0% {
+        opacity: 0;
+        @include prefix(transform, translateX(0), ms moz webkit o);
+    }
+    100% {
+        opacity: 1;
+        @include prefix(transform, translateX(100px), ms moz webkit o);
+    }
 }
 
 @keyframes slide-right {
-  0% {
-    opacity: 0;
-    @include prefix(transform, translateX(0), ms moz webkit o);
-  }
-  100% {
-    opacity: 1;
-    @include prefix(transform, translateX(100px), ms moz webkit o);
-  }
+    0% {
+        opacity: 0;
+        @include prefix(transform, translateX(0), ms moz webkit o);
+    }
+    100% {
+        opacity: 1;
+        @include prefix(transform, translateX(100px), ms moz webkit o);
+    }
 }

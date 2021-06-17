@@ -28,9 +28,9 @@ mixin color-list
             .row
                 each item in colorList
                     .col.l-6.m-12
-                        li.category__item
-                            input(id= item.nameColor, type="checkbox", name="color-category", value= item.nameColor)
-                            label.category__item-title(for=item.nameColor)
+                        li.category__item(id=`${item.value}`)
+                            input(id= item.value, type="radio", name="color-category", value= item.nameColor)
+                            label.category__item-title(for=item.nameColor, onclick=`handleFilterColor('${item.value}')`)
                                 - var color = item.color;
                                 p.category__item-color(style={'--tooltip-data':  color })
                                 span.category__item-name= item.nameColor

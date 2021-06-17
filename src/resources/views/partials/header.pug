@@ -39,10 +39,9 @@ section.header
                             input.form-control(type="text", placeholder="Tìm kiếm..." name="Search")
                             p.contact__separate
                             i.fas.fa-search.icon--search
-                        .header__product-qnt
-                            a(href="cart.html")
-                                i.fas.fa-shopping-basket
-                            span.qnt 0 Sản phẩm
+                        a.header__product-qnt(href="cart.html")
+                            i.fas.fa-shopping-basket
+                            p.qnt
 
 nav.navbar
     .grid.wide
@@ -92,3 +91,5 @@ nav.navbar
 .scroll-top
     a.scroll-top__link(href="#")
         i.fas.fa-chevron-up.icon.scroll-top__icon
+
+script(type="module" src='./assets/js/showCountProduct.js')

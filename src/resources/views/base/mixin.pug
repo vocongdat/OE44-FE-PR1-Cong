@@ -171,14 +171,6 @@ mixin banner(urlImg, altImg)
     .banner
         img(src= urlImg, alt= altImg)
 
-//- Page
-mixin pageNumber
-    ul.page__number
-        each page in pageNumber
-            li
-                input(id= page._id, type="radio", name="page")
-                label(for= page._id)= page.name
-
 //- Form Control
 mixin formHeader(title)
     h1.form__header= title
@@ -186,4 +178,5 @@ mixin formHeader(title)
 mixin formControl(type, content, className, id, name, placeholder, require)
     .form__group
         label.form__label(for= id, tooltip-required= require)= content
-        input(id= id, class= className, type= type, name= name, placeholder= placeholder required)
+        input(id= id, class= className, rules='required', type= type, name= name, placeholder= placeholder required)
+        span.form-message
