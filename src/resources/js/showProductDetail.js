@@ -1,13 +1,16 @@
-const id = new URLSearchParams(window.location.search).get('id');
-const productBodyElement = document.querySelector('.product__detail--header');
+import { getOneProduct } from './API/productsApi.js';
+import inputNumber from './inputQuantity.js';
 
-const renderPageDetail = async () => {
-    const res = await fetch(
-        `https://congdat.herokuapp.com/api/products?id=${id}`
-    );
-    const post = await res.json();
-    const productInfo = post.body[0];
-    const html = `
+window.addEventListener('DOMContentLoaded', () => {
+    const renderPageDetail = async () => {
+        const id = new URLSearchParams(window.location.search).get('id');
+        const productBodyElement = document.querySelector(
+            '.product__detail--header'
+        );
+        const dataProductInfo = await getOneProduct(id);
+        const productInfo = dataProductInfo.body[0];
+
+        const html = `
             <div class="grid wide"> 
               <div class="row"> 
                 <div class="col l-4 img-wrap">
@@ -32,13 +35,15 @@ const renderPageDetail = async () => {
                     <div class="separate"></div>
                     <p class="content__dsc">${productInfo.description}</p>
                     <div class="separate"></div>
-                    <div class="content__qnt">
-                      <label class="content__price-label" for="qnt">Số lượng</label><span class="pqt-plus"><i class="fas fa-plus"></i></span>
-                      <button class="cart-button"><span class="added">1</span><i class="fa fa-shopping-cart"></i></button><span class="pqt-minus"><i class="fas fa-minus"></i></span>
+                    <div class="content__qnt quantity">
+                      <label class="content__price-label" for="qnt">Số lượng</label>
+                      <span class="quantity--esc id="${productInfo.id}"><i class="fas fa-minus"></i></span>
+                      <input class="quantity--input" type="number" min="1" max=${productInfo.quantity} value="1">
+                      <span class="quantity--desc id="${productInfo.id}"><i class="fas fa-plus"></i></span>
                     </div>
                     <div class="separate"></div>
                     <div class="product__control">
-                    <button class="btn btn__buy-now" id="${productInfo.id}" onclick="handleAddToCart('${productInfo.id}')">Mua ngay</button
+                    <button class="btn btn__buy-now" id="${productInfo.id}" onclick="addToCart('${productInfo.id}')">Mua ngay</button
                       <a class="product__control-link" href=""><i class="fas fa-search icon icon--border"></i></a>
                       <input id="1" type="checkbox">
                       <label class="item__heart-label" for="1"><i class="fas fa-heart icon icon--border"></i></label>
@@ -74,9 +79,10 @@ const renderPageDetail = async () => {
               </div>
             </div>
     `;
-    productBodyElement.innerHTML = html;
-};
-
-window.addEventListener('DOMContentLoaded', () => {
-    renderPageDetail();
+        productBodyElement.innerHTML = html;
+        inputNumber();
+    };
+    (() => {
+        renderPageDetail();
+    })();
 });

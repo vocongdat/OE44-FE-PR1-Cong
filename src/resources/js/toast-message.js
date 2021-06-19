@@ -1,23 +1,3 @@
-function showSuccessToast() {
-    console.log('Success');
-    toast({
-        title: 'Thành công!',
-        message: 'Bạn đã thanh toán thành công',
-        type: 'success',
-        duration: 5000,
-    });
-}
-
-function showErrorToast() {
-    toast({
-        title: 'Thất bại!',
-        message: 'Có lỗi xảy ra, vui lòng liên hệ quản trị viên.',
-        type: 'error',
-        duration: 5000,
-    });
-}
-
-// Toast function
 function toast({ title = '', message = '', type = 'info', duration = 3000 }) {
     const main = document.getElementById('toast');
     if (main) {
@@ -63,3 +43,5 @@ function toast({ title = '', message = '', type = 'info', duration = 3000 }) {
         main.appendChild(toast);
     }
 }
+
+export default toast;

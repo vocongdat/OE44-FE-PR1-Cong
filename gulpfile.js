@@ -13,7 +13,7 @@ const FilesPath = {
         watch: './src/resources/views/**/*.pug',
     },
     scripts: {
-        src: './src/resources/js/*.js',
+        src: './src/resources/js/**/*.js',
         dest: './public/assets/js',
     },
     styles: {

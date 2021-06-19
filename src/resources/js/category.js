@@ -1,18 +1,12 @@
-var categoryAPI = 'https://congdat.herokuapp.com/api/categories';
+import { getCategory } from './API/categoryApi.js';
+import { handleShowProduct } from './showProducts.js';
 
-const getCategory = (callback) => {
-    fetch(categoryAPI)
-        .then((res) => res.json())
-        .then(callback)
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-};
-
-// Function render Products Grid
-const renderCategories = async (item) => {
-    const listCategoriesBlock = $('.product-list .category__list');
-    const categoriesList = item.body;
+const renderCategories = async () => {
+    const listCategoriesBlock = document.querySelector(
+        '.product-list .category__list'
+    );
+    const dataCategories = await getCategory();
+    const categoriesList = dataCategories.body;
     let htmls = categoriesList.map((item) => {
         return `
             <li class="category__item">
@@ -22,7 +16,7 @@ const renderCategories = async (item) => {
                     name="product-category"
                     value="${item.id}"
                 />
-                <label onclick="handleFilterCategory('${item.id}')" class="category__item-title" for="${item.id}"
+                <label class="category__item-title" for="${item.id}"
                     ><i class="fas fa-angle-right"></i
                     ><span class="category__item-name">${item.name}</span
                     ><span class="category__item-qnt">( 10 )</span></label
@@ -34,44 +28,43 @@ const renderCategories = async (item) => {
     listCategoriesBlock.innerHTML = htmls.join('');
 };
 
-const handleFilterCategory = async (id) => {
-    const categoriesElement = $$('.product-list .category__item');
-
+const handleFilterCategory = async () => {
+    const categoriesElement = document.querySelectorAll(
+        '.product-list .category__item'
+    );
+    console.log(categoriesElement);
     for (let itemCategory of categoriesElement) {
         itemCategory.onclick = () => {
-            categoryAPI = `https://congdat.herokuapp.com/api/products?categoryId=${id}&_page=1&_limit=6`;
-            getCategory(renderGridProducts);
-            getCategory(renderListProducts);
-            getProducts(renderPagination);
+            console.log(123);
         };
     }
 };
 
 const handleFilterColor = async (color_id) => {
-    const colorElement = $$('.color-list .category__item');
+    const colorElement = document.querySelectorAll(
+        '.color-list .category__item'
+    );
     for (let itemColor of colorElement) {
         itemColor.onclick = () => {
             categoryAPI = `https://congdat.herokuapp.com/api/products?color=${color_id}`;
-            getCategory(renderGridProducts);
-            getCategory(renderListProducts);
         };
     }
 };
 
 const handleFilterPrice = async (price_id) => {
-    const priceElement = $$('.price-list .category__item');
+    const priceElement = document.querySelectorAll(
+        '.price-list .category__item'
+    );
     for (let itemColor of colorElement) {
         itemColor.onclick = () => {
             categoryAPI = `https://congdat.herokuapp.com/api/products?color=${color_id}`;
-            getCategory(renderGridProducts);
-            getCategory(renderListProducts);
         };
     }
 };
 
-// Start app
-(() => {
-    getCategory(renderCategories);
-    handleFilterCategory();
-    handleFilterColor();
-})();
+export {
+    renderCategories,
+    handleFilterCategory,
+    handleFilterColor,
+    handleFilterPrice,
+};

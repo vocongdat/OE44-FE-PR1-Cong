@@ -2,13 +2,13 @@ mixin product-list
     article.product-list
         +titleHeader('Danh mục sản phẩm')
         ul.category__list
-            each item in productList
-                li.category__item
-                    input(id= item.name, type="checkbox", name="product-category", value= item.name)
-                    label.category__item-title(for=item.name)
-                        i.fas.fa-angle-right
-                        span.category__item-name= item.name
-                        span.category__item-qnt= `( ${item.qnt} )`
+            //- each item in productList
+            //-     li.category__item
+            //-         input(id= item.name, type="checkbox", name="product-category", value= item.name)
+            //-         label.category__item-title(for=item.name)
+            //-             i.fas.fa-angle-right
+            //-             span.category__item-name= item.name
+            //-             span.category__item-qnt= `( ${item.qnt} )`
 
 mixin price-list
     article.price-list

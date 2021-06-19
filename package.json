@@ -29,5 +29,9 @@
   "bugs": {
     "url": "https://github.com/vocongdat/OE44-FE-PR1-Cong/issues"
   },
-  "homepage": "https://github.com/vocongdat/OE44-FE-PR1-Cong#readme"
+  "homepage": "https://github.com/vocongdat/OE44-FE-PR1-Cong#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "query-string": "^7.0.0"
+  }
 }

@@ -1,4 +1,10 @@
 import getParent from './getParent.js';
+import getDataLocal from './inputQuantity.js';
+
+const getData = (key) => {
+    const dataString = localStorage.getItem(key);
+    return JSON.parse(dataString);
+};
 
 const inputNumber = () => {
     const inputQuantityElements = document.querySelectorAll('.quantity--input');

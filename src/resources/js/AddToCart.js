@@ -1,21 +1,19 @@
-const quantityElement = $('.added');
-
-const buyNowButtonElement = $('.btn__buy-now');
-
-buyNowButtonElement.onclick = () => {
-    const quantityProduct = quantityElement.textContent;
-    localStorage.setItem('qnt', quantityProduct);
-};
-
-const productID = [];
-
-const handleAddToCart = (id) => {
+const addToCart = (id) => {
+    const dataLocal = localStorage.getItem('productID');
+    const productID = JSON.parse(dataLocal) || [];
     const isHasID = productID.find((idProduct) => idProduct.id === id);
+    const quantityElement = document.querySelector('.quantity--input');
+
     if (!isHasID) {
         productID.push({ id: id, quantity: 1 });
     } else {
-        isHasID.quantity = isHasID.quantity + 1;
+        if (quantityElement) {
+            isHasID.quantity =
+                Number(isHasID.quantity) + Number(quantityElement.value);
+            location.assign('./cart.html');
+        } else {
+            isHasID.quantity = isHasID.quantity + 1;
+        }
     }
-    alert('Bạn đã thêm sản phẩm vào giỏ hàng');
     localStorage.setItem('productID', JSON.stringify(productID));
 };
