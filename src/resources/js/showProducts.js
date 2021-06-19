@@ -1,6 +1,6 @@
 import { getProducts } from './API/productsApi.js';
 import { handleLayOutButton } from './handleCSS.js';
-import { renderCategories, handleFilterCategory } from './category.js';
+import { renderCategories } from './category.js';
 import { handlePagination, renderPagination } from './paginate.js';
 import { renderGridProducts, renderListProducts } from './renderLayout.js';
 
@@ -16,7 +16,6 @@ export const handleShowProduct = async (page = 1, limit = 6) => {
         renderCategories();
         handlePagination(paginateProduct);
         renderPagination();
-        handleFilterCategory();
     })();
 };
 

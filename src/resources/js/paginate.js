@@ -4,9 +4,10 @@ export const handlePagination = async (paginate) => {
     const paginationBlock = document.querySelector('.pagination');
     const totalProducts = paginate._totalRow;
     const limits = paginate._limit;
-    var paginationNumber = Math.round(totalProducts / limits);
-
-    totalProducts % limits === 0 ? paginationNumber : paginationNumber++;
+    var paginationNumber = 1;
+    totalProducts <= limits
+        ? paginationNumber
+        : (paginationNumber = Math.round(totalProducts / limits));
 
     let htmlPagination = [];
     for (let i = 1; i <= paginationNumber; i++) {

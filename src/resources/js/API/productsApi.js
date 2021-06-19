@@ -10,4 +10,23 @@ const getOneProduct = async (id) => customFetch(`${API}products?id=${id}`);
 const getSliceProduct = async (start = 1, end = 7) =>
     customFetch(`${API}products?_start=${start}&_end=${end}`);
 
-export { getAllProducts, getProducts, getOneProduct, getSliceProduct };
+const getProductByCategory = async (id) =>
+    customFetch(`${API}products?categoryId=${id}&_page=1&_limit=6`);
+
+const getProductByPrice = async (_gte, _lte) =>
+    customFetch(
+        `${API}products?price_gte=${_gte}&price_lte=${_lte}&_page=1&_limit=6`
+    );
+
+const getProductByColor = async (color) =>
+    customFetch(`${API}products?color=${color}&_page=1&_limit=6`);
+
+export {
+    getAllProducts,
+    getProducts,
+    getOneProduct,
+    getSliceProduct,
+    getProductByCategory,
+    getProductByPrice,
+    getProductByColor,
+};

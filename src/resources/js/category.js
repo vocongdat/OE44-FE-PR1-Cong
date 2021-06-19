@@ -1,5 +1,12 @@
+import {
+    getProductByCategory,
+    getProductByPrice,
+    getProductByColor,
+} from './API/productsApi.js';
 import { getCategory } from './API/categoryApi.js';
 import { handleShowProduct } from './showProducts.js';
+import { renderGridProducts, renderListProducts } from './renderLayout.js';
+import { handlePagination, renderPagination } from './paginate.js';
 
 const renderCategories = async () => {
     const listCategoriesBlock = document.querySelector(
@@ -9,7 +16,7 @@ const renderCategories = async () => {
     const categoriesList = dataCategories.body;
     let htmls = categoriesList.map((item) => {
         return `
-            <li class="category__item">
+            <li class="category__item" data-id="${item.id}">
                 <input
                     id="${item.id}"
                     type="radio"
@@ -24,47 +31,41 @@ const renderCategories = async () => {
             </li>
         `;
     });
-
     listCategoriesBlock.innerHTML = htmls.join('');
+    handleFilter();
 };
 
-const handleFilterCategory = async () => {
-    const categoriesElement = document.querySelectorAll(
-        '.product-list .category__item'
-    );
-    console.log(categoriesElement);
-    for (let itemCategory of categoriesElement) {
-        itemCategory.onclick = () => {
-            console.log(123);
-        };
+const handleCategoriesProduct = (dataProducts) => {
+    const productsList = dataProducts.body;
+    const paginateProduct = dataProducts.pagination;
+    renderGridProducts(productsList);
+    renderListProducts(productsList);
+    handlePagination(paginateProduct);
+    renderPagination();
+};
+
+const handleFilter = async () => {
+    const categoriesElement = document.getElementsByClassName('category__item');
+    for (let element of categoriesElement) {
+        element.addEventListener('click', async () => {
+            const dataID = element.getAttribute('data-id');
+            if (dataID) {
+                const dataProducts = await getProductByCategory(dataID);
+                handleCategoriesProduct(dataProducts);
+            }
+            const gte = element.getAttribute('data-gte');
+            const lte = element.getAttribute('data-lte');
+            if (gte && lte) {
+                const dataProducts = await getProductByPrice(gte, lte);
+                handleCategoriesProduct(dataProducts);
+            }
+            const color = element.getAttribute('data-color');
+            if (color) {
+                const dataProducts = await getProductByColor(color);
+                handleCategoriesProduct(dataProducts);
+            }
+        });
     }
 };
 
-const handleFilterColor = async (color_id) => {
-    const colorElement = document.querySelectorAll(
-        '.color-list .category__item'
-    );
-    for (let itemColor of colorElement) {
-        itemColor.onclick = () => {
-            categoryAPI = `https://congdat.herokuapp.com/api/products?color=${color_id}`;
-        };
-    }
-};
-
-const handleFilterPrice = async (price_id) => {
-    const priceElement = document.querySelectorAll(
-        '.price-list .category__item'
-    );
-    for (let itemColor of colorElement) {
-        itemColor.onclick = () => {
-            categoryAPI = `https://congdat.herokuapp.com/api/products?color=${color_id}`;
-        };
-    }
-};
-
-export {
-    renderCategories,
-    handleFilterCategory,
-    handleFilterColor,
-    handleFilterPrice,
-};
+export { renderCategories };
