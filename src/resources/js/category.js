@@ -45,9 +45,12 @@ const handleCategoriesProduct = (dataProducts) => {
 };
 
 const handleFilter = async () => {
-    const categoriesElement = document.getElementsByClassName('category__item');
+    const categoriesElement = await document.getElementsByClassName(
+        'category__item'
+    );
     for (let element of categoriesElement) {
         element.addEventListener('click', async () => {
+            console.log();
             const dataID = element.getAttribute('data-id');
             if (dataID) {
                 const dataProducts = await getProductByCategory(dataID);
@@ -57,6 +60,7 @@ const handleFilter = async () => {
             const lte = element.getAttribute('data-lte');
             if (gte && lte) {
                 const dataProducts = await getProductByPrice(gte, lte);
+                console.log(dataProducts);
                 handleCategoriesProduct(dataProducts);
             }
             const color = element.getAttribute('data-color');

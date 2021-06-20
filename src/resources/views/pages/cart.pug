@@ -22,7 +22,7 @@ block container
                         tbody
 
                     .cart__btn 
-                        button.btn.btn--cancel(type="submit" onclick="showWarnToast()") Hủy đơn hàng 
+                        button.btn.btn--cancel(type="submit") Hủy đơn hàng 
                         a.btn.btn--success(href="./products.html") Tiếp tục mua
                     
                     table#t02
@@ -39,7 +39,7 @@ block container
                                 td(data-label="Tổng phải thanh toán") 297.000 đ
                     
                     .cart__btn
-                        button.btn.btn--success(type="submit", onclick='showSuccessToast()') Thanh toán
+                        button.btn.btn--success.btn--pay(type="submit") Thanh toán
         
         #toast
-        script(type="module" src='./assets/js/cart.js')
+        script(type="module" src='./assets/js/handleCart.js')

@@ -1,42 +1,63 @@
 import getParent from './getParent.js';
-import getDataLocal from './inputQuantity.js';
+import { $, $$ } from './variables.js';
+import { getDataLocal } from './getDataLocal.js';
+import { handleCart } from './handleCart.js';
 
-const getData = (key) => {
-    const dataString = localStorage.getItem(key);
-    return JSON.parse(dataString);
+const handleCash = (elementProduct, valueQuantity) => {
+    const cashElement = elementProduct.querySelector('.product-cash-total');
+    const priceProductElement = elementProduct.querySelector('.product-price');
+    const priceProduct = priceProductElement.getAttribute('data-price');
+    const cashPrice = valueQuantity.value * priceProduct;
+    cashElement.textContent = `${cashPrice}.000đ`;
 };
 
-const inputNumber = () => {
-    const inputQuantityElements = document.querySelectorAll('.quantity--input');
-    const quantityDesc = document.querySelectorAll('.quantity--desc');
-    const quantityEsc = document.querySelectorAll('.quantity--esc');
+const handleDeleteProduct = (paramElement) => {
+    const dataLocalString = getDataLocal('productID');
+    const idProductElement = paramElement.querySelector('.product--delete');
+    idProductElement.addEventListener('click', () => {
+        const idProduct = idProductElement.getAttribute('data-id');
+        const id = dataLocalString.filter((product) => {
+            return product.id != idProduct;
+        });
+        localStorage.setItem('productID', JSON.stringify(id));
+        handleCart();
+    });
+};
+
+const handleInputQuantity = () => {
+    const inputQuantityElements = $$('.quantity--input');
+    const quantityDesc = $$('.quantity--desc');
+    const quantityEsc = $$('.quantity--esc');
 
     inputQuantityElements.forEach((element) => {
         element.onblur = () => {
             console.log(element.value);
         };
-        element.addEventListener('change', () => {
+        element.onchange = () => {
             console.log(element.value);
-        });
+        };
     });
     quantityDesc.forEach((descBtn) => {
+        const parentProduct = getParent(descBtn, 'tr');
         descBtn.addEventListener('click', () => {
-            const parentProduct = getParent(descBtn, 'tr');
             const quantityInputElement =
                 parentProduct.querySelector('.quantity--input');
             quantityInputElement.value++;
+            handleCash(parentProduct, quantityInputElement);
         });
+        handleDeleteProduct(parentProduct);
     });
-    quantityEsc.forEach((descBtn) => {
-        descBtn.addEventListener('click', () => {
-            const parentProduct = getParent(descBtn, 'tr');
+    quantityEsc.forEach((escBtn) => {
+        escBtn.addEventListener('click', () => {
+            const parentProduct = getParent(escBtn, 'tr');
             const quantityInputElement =
                 parentProduct.querySelector('.quantity--input');
             if (quantityInputElement.value > 0) {
                 quantityInputElement.value--;
             }
+            handleCash(parentProduct, quantityInputElement);
         });
     });
 };
 
-export default inputNumber;
+export default handleInputQuantity;
