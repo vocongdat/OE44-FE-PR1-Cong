@@ -1,5 +1,6 @@
 import { getOneProduct } from './API/productsApi.js';
-import inputNumber from './inputQuantity.js';
+import { getDataLocal } from './getDataLocal.js';
+import { inputQuantity } from './inputToCart.js';
 
 window.addEventListener('DOMContentLoaded', () => {
     const renderPageDetail = async () => {
@@ -7,6 +8,15 @@ window.addEventListener('DOMContentLoaded', () => {
         const productBodyElement = document.querySelector(
             '.product__detail--header'
         );
+        let quantityNumber = 1;
+        const dataLocal = getDataLocal('productID');
+        if (dataLocal && dataLocal.length > 0) {
+            const productData = dataLocal.find((value) => {
+                return value.id === id;
+            });
+            quantityNumber = productData.quantity;
+        }
+
         const dataProductInfo = await getOneProduct(id);
         const productInfo = dataProductInfo.body[0];
 
@@ -38,7 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     <div class="content__qnt quantity">
                       <label class="content__price-label" for="qnt">Số lượng</label>
                       <span class="quantity--esc id="${productInfo.id}"><i class="fas fa-minus"></i></span>
-                      <input class="quantity--input" type="number" min="1" max=${productInfo.quantity} value="1">
+                      <input class="quantity--input" type="number" min="1" max=${productInfo.quantity} value="${quantityNumber}" onkeypress='validateNumber(event)'>
                       <span class="quantity--desc id="${productInfo.id}"><i class="fas fa-plus"></i></span>
                     </div>
                     <div class="separate"></div>
@@ -80,7 +90,7 @@ window.addEventListener('DOMContentLoaded', () => {
             </div>
     `;
         productBodyElement.innerHTML = html;
-        inputNumber();
+        inputQuantity();
     };
     (() => {
         renderPageDetail();

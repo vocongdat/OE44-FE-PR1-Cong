@@ -1,0 +1,32 @@
+.main
+    .overplay
+    form#form-1.form(action='' method='POST')
+        h3.heading Thanh toán
+        p.desc Hóa đơn thanh toán tại GreenShop ❤️
+        .spacer
+        .form-group
+            label.form-label(for='fullname') Tên đầy đủ
+            input#fullname.form-control(name='fullname' rules='required' type='text' placeholder='VD: Công Đạt')
+            span.form-message
+        .form-group
+            label.form-label(for='phone') Số điện thoại
+            input#phone.form-control(name='phone' rules='required|phone' type='tel' placeholder='VD: 036...')
+            span.form-message
+        .form-group
+            label.form-label(for='address') Nhập địa chỉ giao hàng
+            input#address.form-control(name='address' rules='required|address' type='text' placeholder='Nhập địa chỉ')
+            span.form-message
+        .form-group.horizontal#payment-methods
+            p.form-label Phương thức thanh toán
+            .form-wrap
+                input#money.form-control(name='payment' type='radio' value='money')
+                label(for='money') Thanh toán khi nhận hàng
+            .form-wrap
+                input#card.form-control(name='payment' type='radio' value='card')
+                label(for='card') Thẻ tín dụng
+            span.form-message
+        .form-group.credit-form
+            label.form-label(for='credit') Nhập tài khoản ngân hàng của bạn
+            input#credit.form-control(name='credit' rules='required|credit' type='text' placeholder='VD: 4045....')
+            span.form-message
+        button.form-submit.btn--other Đặt hàng

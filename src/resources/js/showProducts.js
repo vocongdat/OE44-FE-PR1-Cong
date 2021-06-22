@@ -13,12 +13,12 @@ export const handleShowProduct = async (page = 1, limit = 6) => {
 
     (() => {
         handleLayOutButton();
-        renderCategories();
-        handlePagination(paginateProduct);
+        handlePagination(paginateProduct, page);
         renderPagination();
     })();
 };
 
 (() => {
     handleShowProduct();
+    renderCategories();
 })();

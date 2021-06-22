@@ -18,3 +18,28 @@ export const handleLayOutButton = () => {
         };
     }
 };
+
+export const handlePayment = () => {
+    const checkedMoney = document.querySelector('#money');
+    const checkedCard = document.querySelector('#card');
+    const creditElements = document.querySelector('.credit-form');
+    const formElements = document.querySelector('#form-1');
+    checkedMoney.addEventListener('click', () => {
+        if (checkedMoney.checked) {
+            creditElements.querySelector('.form-label').remove();
+            creditElements.querySelector('.form-control').remove();
+            creditElements.querySelector('.form-message').remove();
+        }
+    });
+    checkedCard.addEventListener('click', () => {
+        let html;
+
+        if (checkedCard.checked) {
+            html = `
+              <label class="form-label" for="credit">Nhập tài khoản ngân hàng của bạn</label>
+              <input class="form-control" id="credit" name="credit" rules="required|credit" type="text" placeholder="VD: 4045...."><span class="form-message"></span>
+            `;
+        }
+        creditElements.innerHTML = html;
+    });
+};

@@ -29,17 +29,23 @@ block container
                         tbody
                             tr
                                 th Tổng tiền(Chưa thuế)
-                                td(data-label="Tổng tiền(Chưa thuế)") 270.000 đ
+                                td(data-label="Tổng tiền(Chưa thuế)" id="total-cash") 270.000 đ
                             tr
                                 th Thuế (Vat 10%)
-                                td(data-label="Thuế (Vat 10%)") 27.000 đ
+                                td(data-label="Thuế (Vat 10%)" id='vat') 27.000 đ
                         tfoot
                             tr
                                 th Tổng phải thanh toán
-                                td(data-label="Tổng phải thanh toán") 297.000 đ
+                                td(data-label="Tổng phải thanh toán" id="total-pay") 297.000 đ
                     
                     .cart__btn
                         button.btn.btn--success.btn--pay(type="submit") Thanh toán
         
         #toast
+
+    include ../components/form-pay.pug
+
         script(type="module" src='./assets/js/handleCart.js')
+        script(src='./assets/js/inputNumber.js')
+        script(type="module" src='./assets/js/formSubmit.js')
+        

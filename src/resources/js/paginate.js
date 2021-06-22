@@ -1,6 +1,7 @@
 import { handleShowProduct } from './showProducts.js';
+import { $, $$ } from './variables.js';
 
-export const handlePagination = async (paginate) => {
+export const handlePagination = async (paginate, page) => {
     const paginationBlock = document.querySelector('.pagination');
     const totalProducts = paginate._totalRow;
     const limits = paginate._limit;
@@ -20,6 +21,12 @@ export const handlePagination = async (paginate) => {
     }
 
     paginationBlock.innerHTML = htmlPagination.join('');
+    const listPagination = $$('.pagination-number .btn--paginate');
+    listPagination.forEach((pageNumber) => {
+        if (Number(pageNumber.textContent) === page) {
+            pageNumber.classList.add('btn--active');
+        }
+    });
 };
 
 export const renderPagination = () => {
@@ -28,6 +35,7 @@ export const renderPagination = () => {
         paginationBlock.forEach((item) => {
             item.addEventListener('click', () => {
                 const pageNumber = Number(item.textContent);
+                const value = item.querySelector('.btn--paginate').textContent;
                 handleShowProduct(pageNumber);
             });
         });

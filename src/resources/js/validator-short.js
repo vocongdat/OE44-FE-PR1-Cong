@@ -1,3 +1,6 @@
+import toast from './toast-message.js';
+import { handleCart } from './handleCart.js';
+
 function Validator(formSelector) {
     // Lấy selector cha
     const getParent = (element, selector) => {
@@ -28,6 +31,27 @@ function Validator(formSelector) {
                     ? undefined
                     : `Vui lòng nhập tối thiểu ${min} kí tự`;
             };
+        },
+        phone: (value) => {
+            const regex =
+                /^\+?\d{1,3}?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
+
+            return regex.test(value)
+                ? undefined
+                : 'Trường này phải là số điện thoại';
+        },
+        address: (value) => {
+            const regex = /^\d+\s[A-z]+\s[A-z]+/g;
+
+            return regex.test(value) ? undefined : 'Trường này phải là địa chỉ';
+        },
+        credit: (value) => {
+            const regex =
+                /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
+
+            return regex.test(value)
+                ? undefined
+                : 'Trường này phải là số thẻ tín dụng';
         },
     };
 
@@ -108,7 +132,6 @@ function Validator(formSelector) {
     // Xử lí hành vi submit form
     formElement.onsubmit = (e) => {
         e.preventDefault();
-        console.log(this);
 
         const inputs = formElement.querySelectorAll('[name][rules]');
         let isValid = true;
@@ -159,9 +182,31 @@ function Validator(formSelector) {
                 );
                 // Gọi lại hàm onSubmit và trả về Data
                 this.onSubmit(formValues);
+
+                const elementsFormPay = document.querySelector('.main');
+                const otherButtonElement =
+                    document.querySelector('.btn--other');
+
+                const overplayElement =
+                    elementsFormPay.querySelector('.overplay');
+                overplayElement.classList.add('display-block');
+                otherButtonElement.addEventListener('click', () => {
+                    toast({
+                        title: 'Đặt hàng thành công!',
+                        message: 'Cảm ơn bạn đã đặt hàng trên GreenShop',
+                        type: 'success',
+                        duration: 3000,
+                    });
+                    localStorage.clear();
+                    handleCart();
+                    overplayElement.classList.remove('display-block');
+                    elementsFormPay.classList.remove('display');
+                });
             } else {
                 formElement.submit();
             }
         }
     };
 }
+
+export default Validator;

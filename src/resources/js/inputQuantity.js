@@ -1,5 +1,5 @@
 import getParent from './getParent.js';
-import { $, $$ } from './variables.js';
+import { $, $$, formatNumber } from './variables.js';
 import { getDataLocal } from './getDataLocal.js';
 import { handleCart } from './handleCart.js';
 
@@ -7,8 +7,8 @@ const handleCash = (elementProduct, valueQuantity) => {
     const cashElement = elementProduct.querySelector('.product-cash-total');
     const priceProductElement = elementProduct.querySelector('.product-price');
     const priceProduct = priceProductElement.getAttribute('data-price');
-    const cashPrice = valueQuantity.value * priceProduct;
-    cashElement.textContent = `${cashPrice}.000đ`;
+    const cashPrice = formatNumber(valueQuantity.value * priceProduct);
+    cashElement.textContent = `${cashPrice}.000 đ`;
 };
 
 const handleDeleteProduct = (paramElement) => {
@@ -29,9 +29,26 @@ const handleInputQuantity = () => {
     const quantityDesc = $$('.quantity--desc');
     const quantityEsc = $$('.quantity--esc');
 
+    const dataLocal = getDataLocal('productID');
+
     inputQuantityElements.forEach((element) => {
         element.onblur = () => {
-            console.log(element.value);
+            const parentProduct = getParent(element, 'tr');
+            const quantityInputElement =
+                parentProduct.querySelector('.quantity--input');
+            quantityInputElement.value;
+            handleCash(parentProduct, quantityInputElement);
+            const id = parentProduct
+                .querySelector('.product--delete')
+                .getAttribute('data-id');
+            dataLocal.forEach((product) => {
+                if (product.id === id) {
+                    return (product.quantity = Number(
+                        quantityInputElement.value
+                    ));
+                }
+            });
+            localStorage.setItem('productID', JSON.stringify(dataLocal));
         };
         element.onchange = () => {
             console.log(element.value);
@@ -44,6 +61,17 @@ const handleInputQuantity = () => {
                 parentProduct.querySelector('.quantity--input');
             quantityInputElement.value++;
             handleCash(parentProduct, quantityInputElement);
+            const id = parentProduct
+                .querySelector('.product--delete')
+                .getAttribute('data-id');
+            dataLocal.forEach((product) => {
+                if (product.id === id) {
+                    return (product.quantity = Number(
+                        quantityInputElement.value
+                    ));
+                }
+            });
+            localStorage.setItem('productID', JSON.stringify(dataLocal));
         });
         handleDeleteProduct(parentProduct);
     });
@@ -56,6 +84,17 @@ const handleInputQuantity = () => {
                 quantityInputElement.value--;
             }
             handleCash(parentProduct, quantityInputElement);
+            const id = parentProduct
+                .querySelector('.product--delete')
+                .getAttribute('data-id');
+            dataLocal.forEach((product) => {
+                if (product.id === id) {
+                    return (product.quantity = Number(
+                        quantityInputElement.value
+                    ));
+                }
+            });
+            localStorage.setItem('productID', JSON.stringify(dataLocal));
         });
     });
 };

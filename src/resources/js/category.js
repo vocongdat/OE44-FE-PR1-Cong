@@ -4,7 +4,6 @@ import {
     getProductByColor,
 } from './API/productsApi.js';
 import { getCategory } from './API/categoryApi.js';
-import { handleShowProduct } from './showProducts.js';
 import { renderGridProducts, renderListProducts } from './renderLayout.js';
 import { handlePagination, renderPagination } from './paginate.js';
 
@@ -50,17 +49,18 @@ const handleFilter = async () => {
     );
     for (let element of categoriesElement) {
         element.addEventListener('click', async () => {
-            console.log();
             const dataID = element.getAttribute('data-id');
+
             if (dataID) {
                 const dataProducts = await getProductByCategory(dataID);
                 handleCategoriesProduct(dataProducts);
             }
+
             const gte = element.getAttribute('data-gte');
             const lte = element.getAttribute('data-lte');
             if (gte && lte) {
                 const dataProducts = await getProductByPrice(gte, lte);
-                console.log(dataProducts);
+                console.log(gte, lte);
                 handleCategoriesProduct(dataProducts);
             }
             const color = element.getAttribute('data-color');

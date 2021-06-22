@@ -4,12 +4,17 @@ const addToCart = (id) => {
     const isHasID = productID.find((idProduct) => idProduct.id === id);
     const quantityElement = document.querySelector('.quantity--input');
 
-    if (!isHasID) {
+    if (!isHasID && !quantityElement) {
         productID.push({ id: id, quantity: 1 });
+    } else if (!isHasID && quantityElement) {
+        productID.push({
+            id: id,
+            quantity: quantityElement.value,
+        });
+        location.assign('./cart.html');
     } else {
         if (quantityElement) {
-            isHasID.quantity =
-                Number(isHasID.quantity) + Number(quantityElement.value);
+            isHasID.quantity = Number(quantityElement.value);
             location.assign('./cart.html');
         } else {
             isHasID.quantity = isHasID.quantity + 1;

@@ -13,9 +13,9 @@ const getSliceProduct = async (start = 1, end = 7) =>
 const getProductByCategory = async (id) =>
     customFetch(`${API}products?categoryId=${id}&_page=1&_limit=6`);
 
-const getProductByPrice = async (_gte, _lte) =>
+const getProductByPrice = async (gte, lte) =>
     customFetch(
-        `${API}products?price_gte=${_gte}&price_lte=${_lte}&_page=1&_limit=6`
+        `${API}products?price_gte=${gte}&price_lte=${lte}&_page=1&_limit=6`
     );
 
 const getProductByColor = async (color) =>
