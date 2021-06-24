@@ -5,6 +5,9 @@ const pug = require('gulp-pug');
 const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 const del = require('del');
+const autoprefixer = require('autoprefixer');
+const sourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
 
 const FilesPath = {
     pug: {
@@ -47,6 +50,9 @@ function styles() {
     return src(FilesPath.styles.src)
         .pipe(sass())
         .pipe(concat('style.css'))
+        .pipe(sourcemaps.init())
+        .pipe(postcss([autoprefixer()]))
+        .pipe(sourcemaps.write('.'))
         .pipe(dest(FilesPath.styles.dest))
         .pipe(browserSync.stream());
 }
