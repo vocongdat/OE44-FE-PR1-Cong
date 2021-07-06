@@ -50,7 +50,7 @@ nav.navbar
                 ul.navbar__list 
                     each item in navbarList
                         li.navbar__item
-                            a.navbar__link(href= item.urlNavbar)= item.name
+                            a.navbar__link(href= `./${item.urlNavbar}`)= item.name
                             if item.listMore
                                 i.fas.fa-caret-down.icon__subnav
                                 ul.navbar__product-list

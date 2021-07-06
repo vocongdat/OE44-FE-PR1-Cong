@@ -1,408 +1,412 @@
 @mixin media-laptop {
-  @media screen and (min-width: 64em) {
-    @content;
-  }
+    @media screen and (min-width: 64em) {
+        @content;
+    }
 }
 
 @mixin media-tablet {
-  @media screen and (max-width: 63.9375em) and (min-width: 46.25em) {
-    @content;
-  }
+    @media screen and (max-width: 63.9375em) and (min-width: 46.25em) {
+        @content;
+    }
 }
 
 @mixin media-small-tablet {
-  @media screen and (max-width: 46.25em) and (min-width: 37.5em) {
-    @content;
-  }
+    @media screen and (max-width: 46.25em) and (min-width: 37.5em) {
+        @content;
+    }
 }
 
 @mixin media-mobile {
-  @media screen and (max-width: 46.1875em) {
-    @content;
-  }
+    @media screen and (max-width: 46.1875em) {
+        @content;
+    }
 }
 
 @mixin media-small-mobile {
-  @media screen and (max-width: 25.875em) {
-    @content;
-  }
+    @media screen and (max-width: 25.875em) {
+        @content;
+    }
 }
 
 @mixin media-smaller-mobile {
-  @media screen and (max-width: 20em) {
-    @content;
-  }
+    @media screen and (max-width: 20em) {
+        @content;
+    }
 }
 
 @mixin prefix($property, $value, $prefixes) {
-  @each $prefix in $prefixes {
-    -#{$prefix}-#{$property}: $value;
-  }
-  #{$property}: $value;
+    @each $prefix in $prefixes {
+        -#{$prefix}-#{$property}: $value;
+    }
+    #{$property}: $value;
 }
 
 // Logo Text Page
 @mixin logoPage($top) {
-  .logo__name {
-    height: $height-header;
+    .logo__name {
+        height: $height-header;
 
-    @include display-flex('', '', center);
+        @include display-flex('', '', center);
 
-    .img__green-shop {
-      width: 120%;
+        .img__green-shop {
+            width: 120%;
+        }
+
+        @include media-small-tablet {
+            width: 60%;
+        }
     }
 
-    @include media-small-tablet {
-      width: 60%;
+    .logo__slogan {
+        color: $text-light;
+        font: {
+            size: 2rem;
+            weight: 200;
+        }
+        letter-spacing: 1.2px;
+        margin-left: 8px;
+        position: absolute;
+        top: $top;
     }
-  }
-
-  .logo__slogan {
-    color: $text-light;
-    font: {
-      size: 2rem;
-      weight: 200;
-    }
-    letter-spacing: 1.2px;
-    margin-left: 8px;
-    position: absolute;
-    top: $top;
-  }
 }
 
 // Logo Image Page
 @mixin logoImg($top, $left, $z-index) {
-  left: $left;
-  position: absolute;
-  top: $top;
-  z-index: $z-index;
+    left: $left;
+    position: absolute;
+    top: $top;
+    z-index: $z-index;
 }
 
 // Social Icon
 @mixin iconSocial($font-size, $border: false) {
-  .social__icon-list {
-    @extend %display-inline-flex;
+    .social__icon-list {
+        @extend %display-inline-flex;
 
-    @include media-tablet {
-      margin: {
-        bottom: 18px;
-        top: 18px;
-      }
-    }
-
-    .social__icon-item {
-      list-style: none;
-      padding: 0 8px;
-
-      @if $border {
-        border-right: 1px solid $border-color;
-
-        &:first-child {
-          border-left: 1px solid $border-color;
+        @include media-tablet {
+            margin: {
+                bottom: 18px;
+                top: 18px;
+            }
         }
-      }
 
-      .social__icon-link {
-        color: $text-light;
-        font-size: $font-size;
-        height: 14px;
-        text-decoration: none;
-        text-align: center;
-        width: 14px;
-      }
+        .social__icon-item {
+            list-style: none;
+            padding: 0 8px;
+
+            @if $border {
+                border-right: 1px solid $border-color;
+
+                &:first-child {
+                    border-left: 1px solid $border-color;
+                }
+            }
+
+            .social__icon-link {
+                color: $text-light;
+                font-size: $font-size;
+                height: 14px;
+                text-decoration: none;
+                text-align: center;
+                width: 14px;
+            }
+        }
     }
-  }
 }
 
 //Show Product
 @mixin product($horizontal: false, $large: false) {
-  .product {
-    border: 1px solid $color-separate;
-    box-shadow: 0 2.8px 2.4px rgba(0, 0, 0, 0.01),
-      0 4.4px 7.4px rgba(0, 0, 0, 0.021), 0 7px 17.6px rgba(0, 0, 0, 0.044),
-      0 21px 40px rgba(0, 0, 0, 0.14);
-    margin: 16px 0;
+    .product {
+        border: 1px solid $color-separate;
+        box-shadow: 0 2.8px 2.4px rgba(0, 0, 0, 0.01),
+            0 4.4px 7.4px rgba(0, 0, 0, 0.021),
+            0 7px 17.6px rgba(0, 0, 0, 0.044), 0 21px 40px rgba(0, 0, 0, 0.14);
+        margin: 16px 0;
 
-    @include display-flex(column, center, center);
+        @include display-flex(column, center, center);
 
-    @if $horizontal {
-      @include display-flex(row, flex-start, '');
+        @if $horizontal {
+            @include display-flex(row, flex-start, '');
 
-      @if $large == false {
-        padding-left: 14px;
-      }
+            @if $large == false {
+                padding-left: 14px;
+            }
 
-      &:first-child {
-        margin-top: 30px;
-      }
+            &:first-child {
+                margin-top: 30px;
+            }
 
-      @if $large {
-        @media (max-width: 768px) {
-          flex-direction: column;
-        }
-      }
-    }
-
-    .product__header {
-      position: relative;
-
-      @if $horizontal == false {
-        &:hover .form__control {
-          opacity: 1;
-
-          @include prefix(
-            transition,
-            all cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.45s,
-            moz webkit o
-          );
-        }
-      }
-
-      .product__header-img {
-        @if $large {
-          height: 252px;
-          margin-right: 16px;
-        }
-
-        img {
-          @if $horizontal {
             @if $large {
-              height: 100%;
-              width: 240px;
-            } @else {
-              height: 78px;
-              width: 78px;
+                @media (max-width: 768px) {
+                    flex-direction: column;
+                }
             }
-          } @else {
-            width: 100%;
-          }
         }
 
-        @if $large {
-          @media (max-width: 768px) {
-            height: 100%;
-            margin-right: 0;
+        .product__header {
+            position: relative;
 
-            img {
-              height: auto;
-              width: 100%;
+            @if $horizontal == false {
+                &:hover .form__control {
+                    opacity: 1;
+
+                    @include prefix(
+                        transition,
+                        all cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.45s,
+                        moz webkit o
+                    );
+                }
             }
-          }
+
+            .product__header-img {
+                @if $large {
+                    height: 252px;
+                    margin-right: 16px;
+                }
+
+                img {
+                    @if $horizontal {
+                        @if $large {
+                            height: 100%;
+                            width: 240px;
+                        } @else {
+                            height: 78px;
+                            width: 78px;
+                        }
+                    } @else {
+                        width: 100%;
+                    }
+                }
+
+                @if $large {
+                    @media (max-width: 768px) {
+                        height: 100%;
+                        margin-right: 0;
+
+                        img {
+                            height: auto;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            span {
+                border-radius: 9999px;
+                background-color: $primary-color;
+                color: $white-color;
+                font-size: 1.4rem;
+                height: 60px;
+                left: 20px;
+                position: absolute;
+                top: 20px;
+                text-transform: uppercase;
+                width: 60px;
+
+                @include display-flex('', center, center);
+            }
+
+            @if $horizontal {
+                span {
+                    display: none;
+                }
+            }
+
+            .form__control {
+                left: 50%;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+
+                @include display-flex(row, '', '');
+
+                @include media-mobile {
+                    @include display-flex(column, '', center);
+                }
+
+                @include prefix(
+                    transform,
+                    translate(-50%, -50%),
+                    ms moz webkit o
+                );
+
+                @include prefix(
+                    transition,
+                    all cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.45s,
+                    moz webkit o
+                );
+            }
         }
-      }
 
-      span {
-        border-radius: 9999px;
-        background-color: $primary-color;
-        color: $white-color;
-        font-size: 1.4rem;
-        height: 60px;
-        left: 20px;
-        position: absolute;
-        top: 20px;
-        text-transform: uppercase;
-        width: 60px;
+        .product__body {
+            color: $text-color;
+            font-size: 1.6rem;
+            font-weight: 300;
+            padding: 16px 0;
+            text-align: center;
 
-        @include display-flex('', center, center);
-      }
+            @if $horizontal {
+                margin-left: 16px;
+                text-align: start;
+            }
+            .product__name {
+                @media (max-width: 768px) {
+                    text-align: center;
+                }
+            }
 
-      @if $horizontal {
-        span {
-          display: none;
+            .product__dsc {
+                margin-top: 4px;
+
+                @media (max-width: 768px) {
+                    margin-right: 14px;
+                    text-align: justify;
+                }
+            }
+
+            @if ($large == false) {
+                .product__dsc {
+                    display: none;
+                }
+            }
+
+            .product__star {
+                @media (max-width: 768px) {
+                    @include display-flex('', center, center);
+                }
+
+                i {
+                    color: $yellow-color;
+
+                    &:not(:first-child) {
+                        margin-left: 2px;
+                    }
+                }
+            }
+
+            .product__price {
+                @if $large {
+                    margin: {
+                        top: 14px;
+                        bottom: 14px;
+                    }
+                }
+                .product__price-sale {
+                    color: $red-color;
+                    margin-right: 12px;
+                }
+
+                .product__price-current {
+                    font-size: 1.6rem;
+                    text-decoration: line-through;
+                }
+            }
+            .product__control {
+                @include display-flex(row, '', center);
+
+                @media (max-width: 768px) {
+                    justify-content: center;
+                }
+                @if $large == false {
+                    display: none;
+                }
+
+                .item__heart-label {
+                    cursor: grabbing;
+                }
+
+                @include display-none-input(checkbox);
+
+                input[type='checkbox']:checked ~ label {
+                    color: $primary-color;
+                }
+            }
         }
-      }
-
-      .form__control {
-        left: 50%;
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-
-        @include display-flex(row, '', '');
-
-        @include media-mobile {
-          @include display-flex(column, '', center);
-        }
-
-        @include prefix(transform, translate(-50%, -50%), ms moz webkit o);
-
-        @include prefix(
-          transition,
-          all cubic-bezier(0.55, 0.055, 0.675, 0.19) 0.45s,
-          moz webkit o
-        );
-      }
     }
-
-    .product__body {
-      color: $text-color;
-      font-size: 1.6rem;
-      font-weight: 300;
-      padding: 16px 0;
-      text-align: center;
-
-      @if $horizontal {
-        margin-left: 16px;
-        text-align: start;
-      }
-      .product__name {
-        @media (max-width: 768px) {
-          text-align: center;
-        }
-      }
-
-      .product__dsc {
-        margin-top: 4px;
-
-        @media (max-width: 768px) {
-          margin-right: 14px;
-          text-align: justify;
-        }
-      }
-
-      @if ($large == false) {
-        .product__dsc {
-          display: none;
-        }
-      }
-
-      .product__star {
-        @media (max-width: 768px) {
-          @include display-flex('', center, center);
-        }
-
-        i {
-          color: $yellow-color;
-
-          &:not(:first-child) {
-            margin-left: 2px;
-          }
-        }
-      }
-
-      .product__price {
-        @if $large {
-          margin: {
-            top: 14px;
-            bottom: 14px;
-          }
-        }
-        .product__price-sale {
-          color: $red-color;
-          margin-right: 12px;
-        }
-
-        .product__price-current {
-          font-size: 1.6rem;
-          text-decoration: line-through;
-        }
-      }
-      .product__control {
-        @include display-flex(row, '', center);
-
-        @media (max-width: 768px) {
-          justify-content: center;
-        }
-        @if $large == false {
-          display: none;
-        }
-
-        .item__heart-label {
-          cursor: grabbing;
-        }
-
-        @include display-none-input(checkbox);
-
-        input[type='checkbox']:checked ~ label {
-          color: $primary-color;
-        }
-      }
-    }
-  }
 }
 
 // Banner
 @mixin banner($width) {
-  .banner {
-    height: 100%;
+    .banner {
+        height: 100%;
 
-    img {
-      width: $width;
+        img {
+            width: $width;
+        }
     }
-  }
 }
 
 // Control Slide
 @mixin controlCarousel {
-  .control-slide {
-    position: absolute;
-    right: 0;
-    top: 50%;
+    .control-slide {
+        position: absolute;
+        right: 0;
+        top: 50%;
 
-    @extend %display-inline-flex;
+        @extend %display-inline-flex;
 
-    i {
-      border: 1px solid $border-dark;
-      height: 28px;
-      width: 28px;
+        i {
+            border: 1px solid $border-dark;
+            height: 28px;
+            width: 28px;
 
-      &:first-child {
-        margin-right: 4px;
-      }
+            &:first-child {
+                margin-right: 4px;
+            }
+        }
     }
-  }
 }
 
 @mixin tableMobile($textColorBefore) {
-  @include media-mobile {
-    td {
-      padding: 16px 14px;
+    @include media-mobile {
+        td {
+            padding: 16px 14px;
 
-      @include display-flex('', space-between, center);
+            @include display-flex('', space-between, center);
 
-      &::before {
-        color: $textColorBefore;
-        content: attr(data-label);
-        float: left;
-        font-weight: bold;
-        text-align: left;
-        width: 50%;
-      }
+            &::before {
+                color: $textColorBefore;
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-align: left;
+                width: 50%;
+            }
+        }
+
+        tr {
+            display: block;
+            margin-bottom: 16px;
+
+            .cart__qnt {
+                max-width: 100%;
+            }
+        }
     }
-
-    tr {
-      display: block;
-      margin-bottom: 16px;
-
-      .cart__qnt {
-        max-width: 100%;
-      }
-    }
-  }
 }
 
 @mixin display-flex($direction, $horizontal, $vertical) {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
 
-  @if $direction != '' {
-    @include prefix(flex-direction, $direction, webkit ms);
-  }
+    @if $direction != '' {
+        @include prefix(flex-direction, $direction, webkit ms);
+    }
 
-  @if $horizontal != '' {
-    @include prefix(justify-content, $horizontal, webkit ms);
-  }
+    @if $horizontal != '' {
+        @include prefix(justify-content, $horizontal, webkit ms);
+    }
 
-  @if $vertical != '' {
-    -webkit-box-align: $vertical;
-    @include prefix(align-items, $vertical, webkit ms);
-  }
+    @if $vertical != '' {
+        -webkit-box-align: $vertical;
+        @include prefix(align-items, $vertical, webkit ms);
+    }
 }
 
 @mixin display-none-input($type) {
-  input[type='#{$type}'] {
-    display: none;
-  }
+    input[type='#{$type}'] {
+        display: none;
+    }
 }

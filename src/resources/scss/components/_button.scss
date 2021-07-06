@@ -89,6 +89,12 @@
     padding: 12px;
 }
 
+.btn__prev,
+.btn__next {
+    min-width: 160px;
+    height: 42px;
+}
+
 .btn--active {
     background-color: $primary-color;
     color: $white-color;
