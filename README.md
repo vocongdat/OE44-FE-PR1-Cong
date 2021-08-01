@@ -7,7 +7,12 @@ An E-Commerce website for ordering Decorative Plants Online
 ## Demo
 
 <div align="center">
-    <img src="./readme_img/demo.gif" style="width: 800px" />
+    <img src="./demo/Screenshot (1).png" style="width: 800px" />
+    ### Home Page
+    <img src="./demo/Screenshot (2).png" style="width: 800px" />
+    ### Product Page
+    <img src="./demo/Screenshot (3).png" style="width: 800px" />
+    <img src="./demo/Screenshot (4).png" style="width: 800px" />
 </div>
 
 ## Tools used
